@@ -6,6 +6,6 @@ export const theme = {
     tourButton: "#CECFDF",
     accent: "#6870CD",
     suggestedMarker: "#DDD9E8",
-    darkAccent: "#383E75",
+    darkAccent: "#757BBD",
   }
 };
