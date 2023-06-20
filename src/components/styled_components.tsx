@@ -588,6 +588,13 @@ export const MapControlErrorMessage = styled.span((props) => ({
   padding: "2px",
 }));
 
+export const DetailsImage = styled.img(() => ({
+  width: "100%",
+  height: "400px",
+  objectFit: "cover",
+  overflow: "hidden",
+}));
+
 export const DetailsContentContainer = styled.div(() => ({
   margin: "1rem 0",
 }));

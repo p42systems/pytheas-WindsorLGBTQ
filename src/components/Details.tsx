@@ -1,6 +1,18 @@
 import { useAtomValue } from "jotai";
 import { icon } from "leaflet";
 import ReactPlayer from "react-player";
+import {
+  ButtonBack,
+  ButtonFirst,
+  ButtonLast,
+  ButtonNext,
+  CarouselProvider,
+  DotGroup,
+  Image,
+  Slide,
+  Slider
+} from 'pure-react-carousel';
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { Redirect, useLocation } from "wouter";
 
@@ -12,6 +24,7 @@ import {
   HeaderDetails,
   HeaderDetailsH2,
   BackButton,
+  DetailsImage,
   DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
@@ -51,6 +64,81 @@ function Details() {
     return <Redirect to="/notfound" />;
   }
 
+// Conditional detail.url rendering
+
+const isMultipleImages = (urlObject: {path: string, type: string, imageAlt: string}) => urlObject.type === "image";
+
+let mediaType: string;
+
+let mediaPlayer;
+
+function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
+  if (!urlArray){
+    mediaType = "";
+  } else if (urlArray.length === 1 && urlArray[0].type === "video"){
+    mediaType = "video";
+  } else if (urlArray.length === 1 && urlArray[0].type === "image"){
+    mediaType = "image";
+  } else if (urlArray.length > 1 && urlArray.every(isMultipleImages)){
+    mediaType = "multipleImages"
+  } else if (urlArray.length > 1 && !urlArray.every(isMultipleImages)){
+    mediaType = "mixedMedia"
+  };
+
+  console.log(mediaType);
+
+  switch (mediaType){
+    case "video":
+      mediaPlayer =
+        <ReactPlayer
+          controls={true}
+          height={"400px"}
+          width={"100%"}
+          url={urlArray[0].path}
+        />
+      break;
+    case "image":
+      mediaPlayer = 
+        <DetailsImage src={urlArray[0].path} alt={urlArray[0].imageAlt} />;
+      break;
+    case "multipleImages":
+      mediaPlayer =
+        <CarouselProvider
+        visibleSlides={2}
+        totalSlides={urlArray.length}
+        naturalSlideWidth={500}
+        naturalSlideHeight={400}
+        isIntrinsicHeight
+        >
+          <Slider>
+            {
+              urlArray.map((urlObject, index) => {
+                return (
+                  <Slide tag="a" index={index} key={index}>
+                    <Image src={urlObject.path} alt={urlObject.imageAlt} hasMasterSpinner={false} />
+                  </Slide>
+                )
+              })
+            }
+          </Slider>
+          <ButtonFirst>First</ButtonFirst>
+          <ButtonBack>Back</ButtonBack>
+          <ButtonNext>Next</ButtonNext>
+          <ButtonLast>Last</ButtonLast>
+          <DotGroup dotNumbers />
+        </CarouselProvider>;
+      break;
+    case "mixedMedia":
+      // to be developed
+      break;
+    default:
+      break;
+  }
+
+};
+
+CheckMedia(detail.url);
+
   return (
     <>
       <Header size="short">
@@ -83,12 +171,8 @@ function Details() {
       <MainContainer>
         <SectionContentContainer>
           <DetailCheckboxContainer></DetailCheckboxContainer>
-          <ReactPlayer
-            controls={true}
-            height={"400px"}
-            width={"100%"}
-            url={detail.url}
-          />
+
+          { mediaPlayer }
 
           <DetailsContentContainer>
             <p>{detail.description}</p>
