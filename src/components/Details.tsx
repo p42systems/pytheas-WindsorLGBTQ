@@ -104,18 +104,27 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
     case "multipleImages":
       mediaPlayer =
         <CarouselProvider
-        visibleSlides={2}
-        totalSlides={urlArray.length}
-        naturalSlideWidth={500}
-        naturalSlideHeight={400}
-        isIntrinsicHeight
+          visibleSlides={2}
+          totalSlides={urlArray.length}
+          naturalSlideWidth={300}
+          naturalSlideHeight={400}
+          isIntrinsicHeight
         >
           <Slider>
             {
               urlArray.map((urlObject, index) => {
                 return (
                   <Slide tag="a" index={index} key={index}>
-                    <Image src={urlObject.path} alt={urlObject.imageAlt} hasMasterSpinner={false} />
+                    <Image
+                      style={{
+                        objectFit: "cover",
+                        maxHeight: "600px",
+                        cursor: "initial"
+                      }}
+                      src={urlObject.path}
+                      alt={urlObject.imageAlt}
+                      hasMasterSpinner={true}
+                    />
                   </Slide>
                 )
               })
@@ -125,7 +134,9 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
           <ButtonBack>Back</ButtonBack>
           <ButtonNext>Next</ButtonNext>
           <ButtonLast>Last</ButtonLast>
-          <DotGroup dotNumbers />
+          <DotGroup
+            dotNumbers
+          />
         </CarouselProvider>;
       break;
     case "mixedMedia":

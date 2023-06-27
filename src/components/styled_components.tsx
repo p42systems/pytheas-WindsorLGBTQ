@@ -590,7 +590,7 @@ export const MapControlErrorMessage = styled.span((props) => ({
 
 export const DetailsImage = styled.img(() => ({
   width: "100%",
-  height: "400px",
+  height: "100%",
   objectFit: "cover",
   overflow: "hidden",
 }));
