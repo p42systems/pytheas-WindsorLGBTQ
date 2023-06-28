@@ -6,9 +6,7 @@ import {
   ButtonFirst,
   ButtonLast,
   ButtonNext,
-  CarouselProvider,
   DotGroup,
-  Image,
   Slide,
   Slider
 } from 'pure-react-carousel';
@@ -25,6 +23,8 @@ import {
   HeaderDetailsH2,
   BackButton,
   DetailsImage,
+  DetailsCarousel,
+  DetailsCarouselImage,
   DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
@@ -85,8 +85,6 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
     mediaType = "mixedMedia"
   };
 
-  console.log(mediaType);
-
   switch (mediaType){
     case "video":
       mediaPlayer =
@@ -103,7 +101,7 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
       break;
     case "multipleImages":
       mediaPlayer =
-        <CarouselProvider
+        <DetailsCarousel
           visibleSlides={2}
           totalSlides={urlArray.length}
           naturalSlideWidth={300}
@@ -115,12 +113,7 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
               urlArray.map((urlObject, index) => {
                 return (
                   <Slide tag="a" index={index} key={index}>
-                    <Image
-                      style={{
-                        objectFit: "cover",
-                        maxHeight: "600px",
-                        cursor: "initial"
-                      }}
+                    <DetailsCarouselImage
                       src={urlObject.path}
                       alt={urlObject.imageAlt}
                       hasMasterSpinner={true}
@@ -137,7 +130,7 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
           <DotGroup
             dotNumbers
           />
-        </CarouselProvider>;
+        </DetailsCarousel>;
       break;
     case "mixedMedia":
       // to be developed
