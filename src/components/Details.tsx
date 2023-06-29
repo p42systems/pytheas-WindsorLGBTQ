@@ -123,13 +123,17 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
               })
             }
           </Slider>
-          <ButtonFirst>First</ButtonFirst>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
-          <ButtonLast>Last</ButtonLast>
-          <DotGroup
-            dotNumbers
-          />
+          {
+            urlArray.length > 2
+            ? <>
+                <ButtonFirst>First</ButtonFirst>
+                <ButtonBack>Back</ButtonBack>
+                <ButtonNext>Next</ButtonNext>
+                <ButtonLast>Last</ButtonLast>
+                <DotGroup dotNumbers/>
+              </>
+            : null
+          }
         </DetailsCarousel>;
       break;
     case "mixedMedia":
