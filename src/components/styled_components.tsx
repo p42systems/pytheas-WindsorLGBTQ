@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { TourStates } from "../types";
 import { Link } from "wouter";
+import { CarouselProvider, Image as CarouselImage } from 'pure-react-carousel';
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -588,11 +589,28 @@ export const MapControlErrorMessage = styled.span((props) => ({
   padding: "2px",
 }));
 
-export const DetailsImage = styled.img(() => ({
-  width: "100%",
-  height: "400px",
+export const DetailsImage = styled.img((props) => ({
+  maxWidth: "100%",
+  padding: "5px",
+  height: "100%",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
   objectFit: "cover",
-  overflow: "hidden",
+}));
+
+export const DetailsCarousel = styled(CarouselProvider)((props) => ({
+  padding: "5px",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+}));
+
+export const DetailsCarouselImage = styled(CarouselImage)(() => ({
+  maxHeight: "600px",
+  cursor: "initial",
+  maxWidth: "100%",
+  objectFit: "cover",
 }));
 
 export const DetailsContentContainer = styled.div(() => ({
