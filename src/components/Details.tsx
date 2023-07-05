@@ -6,9 +6,7 @@ import {
   ButtonFirst,
   ButtonLast,
   ButtonNext,
-  CarouselProvider,
   DotGroup,
-  Image,
   Slide,
   Slider
 } from 'pure-react-carousel';
@@ -25,6 +23,8 @@ import {
   HeaderDetailsH2,
   BackButton,
   DetailsImage,
+  DetailsCarousel,
+  DetailsCarouselImage,
   DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
@@ -85,8 +85,6 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
     mediaType = "mixedMedia"
   };
 
-  console.log(mediaType);
-
   switch (mediaType){
     case "video":
       mediaPlayer =
@@ -103,30 +101,40 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
       break;
     case "multipleImages":
       mediaPlayer =
-        <CarouselProvider
-        visibleSlides={2}
-        totalSlides={urlArray.length}
-        naturalSlideWidth={500}
-        naturalSlideHeight={400}
-        isIntrinsicHeight
+        <DetailsCarousel
+          visibleSlides={2}
+          totalSlides={urlArray.length}
+          naturalSlideWidth={300}
+          naturalSlideHeight={400}
+          isIntrinsicHeight
         >
           <Slider>
             {
               urlArray.map((urlObject, index) => {
                 return (
                   <Slide tag="a" index={index} key={index}>
-                    <Image src={urlObject.path} alt={urlObject.imageAlt} hasMasterSpinner={false} />
+                    <DetailsCarouselImage
+                      src={urlObject.path}
+                      alt={urlObject.imageAlt}
+                      hasMasterSpinner={true}
+                    />
                   </Slide>
                 )
               })
             }
           </Slider>
-          <ButtonFirst>First</ButtonFirst>
-          <ButtonBack>Back</ButtonBack>
-          <ButtonNext>Next</ButtonNext>
-          <ButtonLast>Last</ButtonLast>
-          <DotGroup dotNumbers />
-        </CarouselProvider>;
+          {
+            urlArray.length > 2
+            ? <>
+                <ButtonFirst>First</ButtonFirst>
+                <ButtonBack>Back</ButtonBack>
+                <ButtonNext>Next</ButtonNext>
+                <ButtonLast>Last</ButtonLast>
+                <DotGroup dotNumbers/>
+              </>
+            : null
+          }
+        </DetailsCarousel>;
       break;
     case "mixedMedia":
       // to be developed

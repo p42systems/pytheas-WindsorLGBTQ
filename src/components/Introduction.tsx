@@ -75,7 +75,14 @@ function Introduction() {
               About the Site
             </AboutAnchorHeader>
             <AboutParagraph>
-             Content goes here
+            The historical research and organizing impetus for this tour was provided by Walter Cassidy of the Windsor Essex Rainbow Alliance (WERA). The tour app was built using the Pytheas project. This open-source code was provided to the community by Parallel 42 Systems based on their work on the McDougall Corridor tour app built in partnership with the Essex County Black Historical Research Society, the The Windsor Law Centre For Cities, the School of Creative Arts (SOCA) and Leddy Library, with funding provided by Canada's federal government through the Canadian Urban Institute.<br/><br/>
+            The work of implementing Queer Walk was performed by Dana Teagle, Haley Tibbits and Zhenia Tomé with funding and support from Parallel 42 Systems and Windsor Hackforge.
+            <br/><br/><hr/><br/>
+            <strong>A statement from Walter Cassidy:</strong><br/><br/>
+            The key to this walking tour is basic. It is about local visibility of the 2SLGBTQAI community. Unfortunately, much of that visibility has been erased for various reasons. Some of those reasons are as simple as the suppression of our identities, the lack of interest in who we are, overall hate or ignorance, and our own lack of seeing the importance of our stories and struggles.<br/><br/>
+            When creating the tour some of the examples were difficult to prove if they “really” were queer/trans/gender non-conforming references, especially before the 1960s. I included them anyways because one could argue either way if the experience was trans/queer/gender non-conforming.<br/><br/>
+            I must acknowledge the hard work and dedication of the Windsor Essex Rainbow Alliance. The Windsor Essex Rainbow Alliance (WERA) is a group of individuals whose goals are to institute a method of collecting, preserving, and disseminating the local history of the 2SLGBTQIA community and to establish a permanent public monument that will showcase the struggles, achievements and celebrations of the local 2SLGBTQIA community for all in Windsor/Essex and beyond to visit, learn from and enjoy. There are still so many voices, stories and places that have not been told and may be lost forever. It is my goal to help change that reality.<br/><br/>
+            If you have any materials (newsletters, pictures, posters, buttons, shirts etc) you would like to have preserved or if you find any information that is not included in this and would like to make a request for an update or something changed, please contact me at wequeerhistory@mdirect.net.
             </AboutParagraph>
             
           </section>
