@@ -19,7 +19,7 @@ const ORSAPIKey = import.meta.env.VITE_ORS_API_KEY;
 const ORSAPIEndpoint = import.meta.env.VITE_ORS_API_ENDPOINT;
 
 const config = {
-  title: "Pytheas",
+  title: "Queer Walk: 2SLGBTQAI+ Windsor Walking Tour",
   logo: {
     src: "/Main_Logo.svg",
     alt: "Pytheas",
