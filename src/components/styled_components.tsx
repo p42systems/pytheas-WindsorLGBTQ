@@ -61,6 +61,7 @@ export const FirstParagraph = styled.p((props) => ({
 
 export const HomeParagraph = styled.p(() => ({
   margin: "1rem",
+  lineHeight: "1.5rem",
   "@media screen and (max-width: 600px)": {
     textAlign: "center",
   },
@@ -146,6 +147,7 @@ export const CardsContainer = styled.div(() => ({
 export const ListParagraph = styled.p(() => ({
   margin: "1rem",
   textAlign: "center",
+  lineHeight: "1.5rem",
 }));
 
 export const CardContainer = styled.article((props) => ({
@@ -285,9 +287,12 @@ export const AboutAnchorHeader = styled.h2((props) => ({
 
 export const HomeSubHeader = styled.h2((props) => ({
   padding: "0 0 0 1rem",
-  margin: "0.25rem 0 0.25rem 0",
+  margin: "2rem 0 0.25rem 0",
   fontSize: "1.25rem",
   color: props.theme.colors.headerBackground,
+  "@media screen and (max-width: 600px)": {
+    textAlign: "center",
+  },
 }));
 
 export const TourMainContainer = styled.main(() => ({
@@ -597,6 +602,7 @@ export const DetailsImage = styled.img(() => ({
 
 export const DetailsContentContainer = styled.div(() => ({
   margin: "1rem 0",
+  lineHeight: "1.5rem",
 }));
 
 export const DetailCheckboxContainer = styled.div(() => ({
@@ -648,8 +654,12 @@ export const FooterSubBarContainer = styled.div(() => ({
 }));
 
 export const CopyRightContainer = styled.span(() => ({
-  margin: "0 0 0 1rem",
-  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  "@media screen and (max-width: 1028px)": {
+    justifyContent: "flex-start",
+    margin: "0 0 0 1rem",
+  },
 }));
 
 export const SponsorPartnerContainer = styled.span(() => ({
