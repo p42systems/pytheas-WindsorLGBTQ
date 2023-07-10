@@ -1,5 +1,5 @@
 import makeMatcher from "wouter/matcher";
-import { atom } from "jotai";
+import { PrimitiveAtom, atom } from "jotai";
 import { atomWithStorage, loadable } from "jotai/utils";
 import { atomWithMachine } from "jotai/xstate";
 import { atomWithQuery } from "jotai/query";
@@ -15,6 +15,7 @@ import {
 } from "./services";
 import { IMarker, TourStates } from "./types";
 import { FeatureCollection } from "geojson";
+import { type } from "os";
 
 /*********************************
  * URL matcher
@@ -345,4 +346,14 @@ export const boundingBoxQueryAtom = atomWithQuery<
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {
   return get(boundingBoxQueryAtom).pad(0.5);
+});
+
+/*********************************
+ * Home Page Navigation Atoms
+ *********************************/
+
+export const isDropDownAtom: PrimitiveAtom<boolean> = atom(false);
+
+export const getDropDownAtom = atom(get => {
+  return get(isDropDownAtom) === true ? "flex" : "none"
 });
