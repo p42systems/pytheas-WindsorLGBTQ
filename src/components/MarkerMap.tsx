@@ -25,7 +25,7 @@ import {
   loadableDirectionQueryAtom,
   refetchDirectionQueryAtom,
   paddedBoundingBoxAtom,
-  getSavedUserLocationAtom,
+  getSavedUserLocationAtom
 } from "./../atoms";
 import {
   MapAppicationContainer,

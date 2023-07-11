@@ -9,6 +9,7 @@ import type { useMap } from "react-leaflet";
 import { viewControllerMachine } from "./machines/viewController";
 import {
   fetchBoundingBox,
+  fetchWalkingBoundingBox,
   fetchMarkerDetails,
   fetchMarkers,
   fetchRoute,
@@ -342,6 +343,14 @@ export const boundingBoxQueryAtom = atomWithQuery<
 >(() => ({
   queryKey: ["bounding_box"],
   queryFn: fetchBoundingBox,
+}));
+
+export const walkingBoundingBoxQueryAtom = atomWithQuery<
+  ReturnType<typeof fetchBoundingBox>,
+  unknown
+>(() => ({
+  queryKey: ["walking_bounding_box"],
+  queryFn: fetchWalkingBoundingBox,
 }));
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {

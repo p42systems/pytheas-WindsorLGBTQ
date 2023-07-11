@@ -13,6 +13,8 @@ import {
   baseIconConfigAtom,
   markersQueryAtom,
   boundingBoxQueryAtom,
+  tourPreferenceAtom,
+  walkingBoundingBoxQueryAtom
 } from "../atoms";
 import { SmallMapContainer } from "./styled_components";
 
@@ -28,15 +30,19 @@ const interactionOptions = {
 function BoundingBoxMap() {
   const { markers, order } = useAtomValue(markersQueryAtom);
   const boundingBox = useAtomValue(boundingBoxQueryAtom);
+  const walkingBoundingBox = useAtomValue(walkingBoundingBoxQueryAtom);
   const baseIconConfig = useAtomValue(baseIconConfigAtom);
+  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const theme = useTheme();
+
+  const preferredBounds = tourPreference === "full" ? boundingBox : walkingBoundingBox;
 
   return (
     <SmallMapContainer>
       <MapContainer
-        bounds={boundingBox}
-        center={boundingBox.getCenter()}
+        bounds={preferredBounds}
+        center={preferredBounds.getCenter()}
         style={{ width: "100%", height: "100%" }}
         zoomControl={false}
         {...interactionOptions}
@@ -47,7 +53,7 @@ function BoundingBoxMap() {
         />
         <Pane name="boundingBox" style={{ zIndex: 499 }}>
           <Rectangle
-            bounds={boundingBox}
+            bounds={preferredBounds}
             interactive={false}
             pathOptions={{ color: theme.colors.headerBackground }}
           />
@@ -56,6 +62,7 @@ function BoundingBoxMap() {
         <Pane name="markers" style={{ zIndex: 500 }}>
           {order
             .map((makerId) => markers[makerId])
+            .filter((marker) => tourPreference === "walking" ? (marker.sequence >= 31 && marker.sequence <= 39) : marker)
             .map((marker) => (
               <Marker
                 position={marker.point}
