@@ -349,7 +349,7 @@ export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {
 });
 
 /*********************************
- * Home Page Navigation Atoms
+ * Home Page & Tour Type Navigation Atoms
  *********************************/
 
 export const isDropDownAtom: PrimitiveAtom<boolean> = atom(false);
@@ -357,3 +357,5 @@ export const isDropDownAtom: PrimitiveAtom<boolean> = atom(false);
 export const getDropDownAtom = atom(get => {
   return get(isDropDownAtom) === true ? "flex" : "none"
 });
+
+export const tourPreferenceAtom: PrimitiveAtom<string> = atom("full");

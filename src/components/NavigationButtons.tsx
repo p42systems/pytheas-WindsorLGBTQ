@@ -1,6 +1,6 @@
 import { useLocation } from "wouter";
 import { useAtom } from "jotai";
-import { isDropDownAtom, getDropDownAtom} from "../atoms";
+import { isDropDownAtom, getDropDownAtom, tourPreferenceAtom} from "../atoms";
 
 import {
   NavigationButtonsContainer,
@@ -15,6 +15,13 @@ function NavigationButtons() {
   const [, setLocation] = useLocation();
   const [isDropDown, setIsDropDown] = useAtom(isDropDownAtom);
   const [dropDownVisibility] = useAtom(getDropDownAtom);
+  const [tourPreference, setTourPreference] = useAtom(tourPreferenceAtom);
+
+  const loadTour = (preference: string) => {
+    setTourPreference(preference);
+    console.log(preference);
+    setLocation("/tour");
+  };
   
   return (
     <NavigationButtonsContainer>
@@ -43,7 +50,7 @@ function NavigationButtons() {
             title="Full Tour"
             aria-label="Full Tour"
             onClick={() => {
-              setLocation("/tour");
+              loadTour("full");
             }}
           >
             Full Tour
@@ -52,7 +59,7 @@ function NavigationButtons() {
             title="Walking Tour"
             aria-label="Walking Tour"
             onClick={() => {
-              setLocation("/tour");
+              loadTour("walking");
             }}
           >
             Walking Tour
