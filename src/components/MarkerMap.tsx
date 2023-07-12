@@ -25,7 +25,8 @@ import {
   loadableDirectionQueryAtom,
   refetchDirectionQueryAtom,
   paddedBoundingBoxAtom,
-  getSavedUserLocationAtom
+  getSavedUserLocationAtom,
+  tourPreferenceAtom
 } from "./../atoms";
 import {
   MapAppicationContainer,
@@ -127,6 +128,7 @@ function MarkerMap() {
   const saveUserLocation = useAtomValue(getSavedUserLocationAtom);
   const setDetailsMarkerId = useSetAtom(setDetailsMarkerIdAtom);
   const boundingBox = useAtomValue(paddedBoundingBoxAtom);
+  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const markerProgressStates = useAtomValue(getAllMarkerProgressAtom);
 
@@ -153,12 +155,14 @@ function MarkerMap() {
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
   const navigateTo = useAtomValue(navigateToMarkerAtom);
 
+  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
+
   const cardState = buildCardState(tourState, suggestedMarker, selectedMarker);
 
   const defaultCenterPoint =
     selectedMarker?.point ??
     suggestedMarker?.point ??
-    markers[order[0]]?.point ??
+    markers[preferredOrder[0]]?.point ??
     boundingBox.getCenter();
 
   const centerBetweenUserAndMarker = saveUserLocation
@@ -246,7 +250,7 @@ function MarkerMap() {
               <ZoomControls minZoom={15} />
 
               <Pane name="markers" style={{ zIndex: 499 }}>
-                {order
+                {preferredOrder
                   .map((makerId) => markers[makerId])
                   .map((marker) => (
                     <Marker

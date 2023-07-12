@@ -199,9 +199,11 @@ export const selectedMarkerAtom = atom<IMarker | null>((get) => {
  *********************************/
 
 export const suggestedMarkerAtom = atom<IMarker | null>((get) => {
+  const tourPreference = get(tourPreferenceAtom);
   const { markers, order } = get(markersQueryAtom);
+  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
   const progress = get(getAllMarkerProgressAtom);
-  const markersId = order
+  const markersId = preferredOrder
     // Do not suggest extra markers
     .filter((id) => !markers[id].extra)
     .find((id) => !(progress[id] ?? false));
@@ -340,18 +342,15 @@ export const detailsQueryAtom = atomWithQuery<
 export const boundingBoxQueryAtom = atomWithQuery<
   ReturnType<typeof fetchBoundingBox>,
   unknown
->(() => ({
-  queryKey: ["bounding_box"],
-  queryFn: fetchBoundingBox,
-}));
-
-export const walkingBoundingBoxQueryAtom = atomWithQuery<
-  ReturnType<typeof fetchBoundingBox>,
-  unknown
->(() => ({
-  queryKey: ["walking_bounding_box"],
-  queryFn: fetchWalkingBoundingBox,
-}));
+>((get) => {
+  const tourPreference = get(tourPreferenceAtom);
+  const preferredQueryKey = tourPreference === "full" ? ["bounding_box"] : ["walking_bounding_box"];
+  const preferredQueryFn = tourPreference === "full" ? fetchBoundingBox : fetchWalkingBoundingBox;
+  return ({
+    queryKey: preferredQueryKey,
+    queryFn: preferredQueryFn,
+  })
+});
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {
   return get(boundingBoxQueryAtom).pad(0.5);
