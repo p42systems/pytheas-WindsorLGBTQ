@@ -1,5 +1,5 @@
 import makeMatcher from "wouter/matcher";
-import { atom } from "jotai";
+import { PrimitiveAtom, atom } from "jotai";
 import { atomWithStorage, loadable } from "jotai/utils";
 import { atomWithMachine } from "jotai/xstate";
 import { atomWithQuery } from "jotai/query";
@@ -9,12 +9,14 @@ import type { useMap } from "react-leaflet";
 import { viewControllerMachine } from "./machines/viewController";
 import {
   fetchBoundingBox,
+  fetchWalkingBoundingBox,
   fetchMarkerDetails,
   fetchMarkers,
   fetchRoute,
 } from "./services";
 import { IMarker, TourStates } from "./types";
 import { FeatureCollection } from "geojson";
+import { type } from "os";
 
 /*********************************
  * URL matcher
@@ -197,9 +199,11 @@ export const selectedMarkerAtom = atom<IMarker | null>((get) => {
  *********************************/
 
 export const suggestedMarkerAtom = atom<IMarker | null>((get) => {
+  const tourPreference = get(tourPreferenceAtom);
   const { markers, order } = get(markersQueryAtom);
+  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
   const progress = get(getAllMarkerProgressAtom);
-  const markersId = order
+  const markersId = preferredOrder
     // Do not suggest extra markers
     .filter((id) => !markers[id].extra)
     .find((id) => !(progress[id] ?? false));
@@ -338,11 +342,28 @@ export const detailsQueryAtom = atomWithQuery<
 export const boundingBoxQueryAtom = atomWithQuery<
   ReturnType<typeof fetchBoundingBox>,
   unknown
->(() => ({
-  queryKey: ["bounding_box"],
-  queryFn: fetchBoundingBox,
-}));
+>((get) => {
+  const tourPreference = get(tourPreferenceAtom);
+  const preferredQueryKey = tourPreference === "full" ? ["bounding_box"] : ["walking_bounding_box"];
+  const preferredQueryFn = tourPreference === "full" ? fetchBoundingBox : fetchWalkingBoundingBox;
+  return ({
+    queryKey: preferredQueryKey,
+    queryFn: preferredQueryFn,
+  })
+});
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {
   return get(boundingBoxQueryAtom).pad(0.5);
 });
+
+/*********************************
+ * Home Page & Tour Type Navigation Atoms
+ *********************************/
+
+export const isDropDownAtom: PrimitiveAtom<boolean> = atom(false);
+
+export const getDropDownAtom = atom(get => {
+  return get(isDropDownAtom) === true ? "flex" : "none"
+});
+
+export const tourPreferenceAtom: PrimitiveAtom<string> = atom("full");

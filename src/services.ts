@@ -25,6 +25,7 @@ export function checkForGeoLocationAPI(): Promise<void> {
 
 export async function fetchBoundingBox(): Promise<LatLngBounds> {
   const boundsUrl = `${window.location.origin}/data/bounds.json`;
+  console.log("bounding box fetching...");
 
   const res = await fetch(boundsUrl);
 
@@ -32,8 +33,22 @@ export async function fetchBoundingBox(): Promise<LatLngBounds> {
     throw new Error(res.statusText);
   }
 
-  const { north, east, south, west } = await res.json();
-  return new LatLngBounds([north, east], [south, west]);
+  const { full, walking } = await res.json();
+  return new LatLngBounds([full.north, full.east], [full.south, full.west]);
+}
+
+export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
+  const boundsUrl = `${window.location.origin}/data/bounds.json`;
+  console.log("bounding box fetching...");
+
+  const res = await fetch(boundsUrl);
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
+  const { full, walking } = await res.json();
+  return new LatLngBounds([walking.north, walking.east], [walking.south, walking.west]);
 }
 
 const requiredKeys = [
@@ -58,6 +73,8 @@ function isMarkerPoint(point: Feature): point is Feature<Point, IMarker> {
 
 export async function fetchMarkers(): Promise<MarkerPayload> {
   const markersUrl = `${window.location.origin}/data/markers.geojson`;
+  console.log("markers fetching...");
+
 
   const res = await fetch(markersUrl);
 

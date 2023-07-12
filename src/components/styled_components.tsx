@@ -939,17 +939,60 @@ export const NavigationButtonsContainer = styled.nav(() => ({
   minWidth: "375px",
 }));
 
+export const NavigationDropDownContainer = styled.div(() => ({
+  display: "flex",
+  rowGap: "1rem",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  flexGrow: 1,
+  minWidth: "275px",
+  maxWidth: "300px",
+  flexShrink: 1,
+}));
+
+export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(() => ({
+  display: "none",
+}));
+
 export const NavigationButton = styled(Button)(() => ({
   flexGrow: 1,
   minWidth: "275px",
   maxWidth: "300px",
   border: "2px solid #191919",
   flexShrink: 1,
+  alignSelf: "flex-start",
 }));
 
 export const NavigationContentButton = styled(NavigationButton)((props) => ({
   backgroundColor: props.theme.colors.contentButton,
 }));
+
+export const NavigationDropDownButton = styled(NavigationButton)((props) => ({
+  backgroundColor: props.theme.colors.contentButton,
+  width: '100%',
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  ":after": {
+    content: `""`,
+    transform: "rotate(-90deg)",
+    position: "absolute",
+    right: "0.5rem",
+    width: "0.9rem",
+    height: "0.9rem",
+    backgroundImage: `url("/icons/back.svg")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "contain",
+  },
+}));
+
+export const DropDownOptionButton = styled(NavigationButton)(() => ({
+  width: "100%",
+}));
+
+
 
 export const CenterAllContainer = styled.div(() => ({
   width: "100%",
