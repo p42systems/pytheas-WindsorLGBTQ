@@ -13,6 +13,8 @@ import {
   fetchMarkerDetails,
   fetchMarkers,
   fetchRoute,
+  fetchOrder,
+  fetchBusBoundingBox,
 } from "./services";
 import { IMarker, TourStates } from "./types";
 import { FeatureCollection } from "geojson";
@@ -201,7 +203,7 @@ export const selectedMarkerAtom = atom<IMarker | null>((get) => {
 export const suggestedMarkerAtom = atom<IMarker | null>((get) => {
   const tourPreference = get(tourPreferenceAtom);
   const { markers, order } = get(markersQueryAtom);
-  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
+  const preferredOrder = fetchOrder(tourPreference, order);
   const progress = get(getAllMarkerProgressAtom);
   const markersId = preferredOrder
     // Do not suggest extra markers
@@ -344,12 +346,25 @@ export const boundingBoxQueryAtom = atomWithQuery<
   unknown
 >((get) => {
   const tourPreference = get(tourPreferenceAtom);
-  const preferredQueryKey = tourPreference === "full" ? ["bounding_box"] : ["walking_bounding_box"];
-  const preferredQueryFn = tourPreference === "full" ? fetchBoundingBox : fetchWalkingBoundingBox;
-  return ({
-    queryKey: preferredQueryKey,
-    queryFn: preferredQueryFn,
-  })
+  let preferredQuery = {
+    queryKey: ["bounding_box"], 
+    queryFn: fetchBoundingBox
+  };
+
+  switch(tourPreference) {
+    case "walking": preferredQuery = {
+      queryKey: ["walking_bounding_box"], 
+      queryFn: fetchWalkingBoundingBox
+    };
+    break;
+    case "bus": preferredQuery = {
+      queryKey: ["bus_bounding_box"], 
+      queryFn: fetchBusBoundingBox
+    };
+    break;
+  }
+
+  return (preferredQuery);
 });
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {

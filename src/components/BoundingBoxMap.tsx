@@ -16,6 +16,7 @@ import {
   tourPreferenceAtom,
 } from "../atoms";
 import { SmallMapContainer } from "./styled_components";
+import { fetchOrder } from "../services";
 
 const interactionOptions = {
   doubleClickZoom: false,
@@ -34,7 +35,7 @@ function BoundingBoxMap() {
 
   const theme = useTheme();
 
-  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
+  const preferredOrder = fetchOrder(tourPreference, order);
 
   return (
     <SmallMapContainer>
@@ -60,7 +61,6 @@ function BoundingBoxMap() {
         <Pane name="markers" style={{ zIndex: 500 }}>
           {preferredOrder
             .map((makerId) => markers[makerId])
-            .filter((marker) => tourPreference === "walking" ? (marker.sequence >= 31 && marker.sequence <= 39) : marker)
             .map((marker) => (
               <Marker
                 position={marker.point}

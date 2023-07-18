@@ -55,6 +55,7 @@ import { IMarker, TourStates } from "../types";
 import CustomControls from "./CustomControls";
 import DirectionsToggle from "./DirectionsToggle";
 import ZoomControls from "./ZoomControls";
+import { fetchOrder } from "../services";
 
 type CardStates =
   | {
@@ -155,7 +156,7 @@ function MarkerMap() {
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
   const navigateTo = useAtomValue(navigateToMarkerAtom);
 
-  const preferredOrder = tourPreference === "full" ? order : order.slice(30, 39);
+  const preferredOrder = fetchOrder(tourPreference, order);
 
   const cardState = buildCardState(tourState, suggestedMarker, selectedMarker);
 
