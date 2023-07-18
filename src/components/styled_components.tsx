@@ -1028,13 +1028,20 @@ export const HelpLink = styled.a(() => ({
   },
 }));
 
-export const HeaderImage = styled.img((props) => ({
+export const HeaderImage = styled.img(() => ({
   position: "absolute",
   top: "50%",
   left: "50%",
+  width: "450px",
+  height: "180px",
   margin: 0,
   padding: 0,
-  transform: `translateY(calc(-${props.height} / 2)) translateX(calc(-${props.width} / 2))`,
+  transform: `translateY(calc(-180px / 2)) translateX(calc(-450px / 2))`,
+  "@media screen and (max-width: 1028px)": {
+    width: "300px",
+    height: "120px",
+    transform: `translateY(calc(-120px / 2)) translateX(calc(-300px / 2))`,
+  },
 }));
 
 export const AboutButtonsContainer = styled.div(() => ({
