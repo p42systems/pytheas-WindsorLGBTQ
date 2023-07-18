@@ -72,7 +72,7 @@ export const GeneralLink = styled(Link)((props) => ({
   color: props.theme.colors.headerBackground,
   transition: "all 100ms",
   "&:hover": {
-    color: props.theme.colors.suggestedMarker,
+    opacity: 0.5,
   },
   "&:visited": {},
 }));
@@ -270,6 +270,16 @@ export const TourCardButton = styled(CardButton)(() => ({
 export const AboutParagraph = styled.p((props) => ({
   padding: "0.25rem 0.75rem 0 0.75rem",
   color: props.theme.colors.headerBackground,
+  "a": {
+    color: props.theme.colors.headerBackground,
+    "&:hover": {
+      opacity: 0.5,
+    },
+    "&:visited": {},
+  },
+  "ul": {
+    margin: 0,
+  }
 }));
 
 export const AboutHeader = styled.h1((props) => ({
