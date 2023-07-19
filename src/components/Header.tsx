@@ -40,8 +40,6 @@ function Header({ size = "long", children }: HeaderProps) {
           }}
         >
           <HeaderImage
-            width="300px"
-            height="100px"
             src={config.logo.src}
             alt={config.logo.src}
           />

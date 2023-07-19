@@ -2,11 +2,6 @@ import { useAtomValue } from "jotai";
 import { icon } from "leaflet";
 import ReactPlayer from "react-player";
 import {
-  ButtonBack,
-  ButtonFirst,
-  ButtonLast,
-  ButtonNext,
-  DotGroup,
   Slide,
   Slider
 } from 'pure-react-carousel';
@@ -25,6 +20,11 @@ import {
   DetailsImage,
   DetailsCarousel,
   DetailsCarouselImage,
+  CarouselDotGroup,
+  CarouselButtonFirst,
+  CarouselButtonBack,
+  CarouselButtonNext,
+  CarouselButtonLast,
   DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
@@ -126,11 +126,11 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
           {
             urlArray.length > 2
             ? <>
-                <ButtonFirst>First</ButtonFirst>
-                <ButtonBack>Back</ButtonBack>
-                <ButtonNext>Next</ButtonNext>
-                <ButtonLast>Last</ButtonLast>
-                <DotGroup dotNumbers/>
+                <CarouselDotGroup/>
+                <CarouselButtonFirst>First</CarouselButtonFirst>
+                <CarouselButtonBack>Back</CarouselButtonBack>
+                <CarouselButtonNext>Next</CarouselButtonNext>
+                <CarouselButtonLast>Last</CarouselButtonLast>
               </>
             : null
           }

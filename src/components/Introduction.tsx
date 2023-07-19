@@ -56,40 +56,35 @@ function Introduction() {
           <AboutHeader>Information about the Tour</AboutHeader>
           <ul>
             <li>
+              <GeneralLink href="#how-to-take-the-tour">
+                How to Take the Tour
+              </GeneralLink>
+            </li>
+            <li>
               <GeneralLink href="#about">
                 About the Site
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#how-to-take-the-tour">
-                How to take the Tour
+              <GeneralLink href="#statement">
+                A Statement from Walter Cassidy
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#parking">Available Parking</GeneralLink>
+              <GeneralLink href="#references">
+                References
+              </GeneralLink>
+            </li>
+            <li>
+              <GeneralLink href="#parking">
+                Transit Access & Available Parking
+              </GeneralLink>
             </li>
           </ul>
 
           <section>
-            <AboutAnchorHeader id="about">
-              About the Site
-            </AboutAnchorHeader>
-            <AboutParagraph>
-            The historical research and organizing impetus for this tour was provided by Walter Cassidy of the Windsor Essex Rainbow Alliance (WERA). The tour app was built using the Pytheas project. This open-source code was provided to the community by Parallel 42 Systems based on their work on the McDougall Corridor tour app built in partnership with the Essex County Black Historical Research Society, the The Windsor Law Centre For Cities, the School of Creative Arts (SOCA) and Leddy Library, with funding provided by Canada's federal government through the Canadian Urban Institute.<br/><br/>
-            The work of implementing Queer Walk was performed by Dana Teagle, Haley Tibbits and Zhenia Tomé with funding and support from Parallel 42 Systems and Windsor Hackforge.
-            <br/><br/><hr/><br/>
-            <strong>A statement from Walter Cassidy:</strong><br/><br/>
-            The key to this walking tour is basic. It is about local visibility of the 2SLGBTQAI community. Unfortunately, much of that visibility has been erased for various reasons. Some of those reasons are as simple as the suppression of our identities, the lack of interest in who we are, overall hate or ignorance, and our own lack of seeing the importance of our stories and struggles.<br/><br/>
-            When creating the tour some of the examples were difficult to prove if they “really” were queer/trans/gender non-conforming references, especially before the 1960s. I included them anyways because one could argue either way if the experience was trans/queer/gender non-conforming.<br/><br/>
-            I must acknowledge the hard work and dedication of the Windsor Essex Rainbow Alliance. The Windsor Essex Rainbow Alliance (WERA) is a group of individuals whose goals are to institute a method of collecting, preserving, and disseminating the local history of the 2SLGBTQIA community and to establish a permanent public monument that will showcase the struggles, achievements and celebrations of the local 2SLGBTQIA community for all in Windsor/Essex and beyond to visit, learn from and enjoy. There are still so many voices, stories and places that have not been told and may be lost forever. It is my goal to help change that reality.<br/><br/>
-            If you have any materials (newsletters, pictures, posters, buttons, shirts etc) you would like to have preserved or if you find any information that is not included in this and would like to make a request for an update or something changed, please contact me at wequeerhistory@mdirect.net.
-            </AboutParagraph>
-            
-          </section>
-
-          <section>
             <AboutAnchorHeader id="how-to-take-the-tour">
-              How to take the Tour
+              How to Take the Tour
             </AboutAnchorHeader>
             <AboutParagraph>
               If you choose to take the tour, please allow yourself{" "}
@@ -119,6 +114,46 @@ function Introduction() {
               time, simply click the{" "}
               <StatictourButtonButton>Content</StatictourButtonButton> button to
               watch at your own pace.
+            </AboutParagraph>
+          </section>
+
+          <section>
+            <AboutAnchorHeader id="about">
+              About the Site
+            </AboutAnchorHeader>
+            <AboutParagraph>
+            The historical research and organizing impetus for this tour was provided by Walter Cassidy of the Windsor Essex Rainbow Alliance (WERA). The tour app was built using the Pytheas project. This open-source code was provided to the community by Parallel 42 Systems based on their work with the McDougall Corridor tour app, built in partnership with the Essex County Black Historical Research Society, the Windsor Law Centre for Cities, the School of Creative Arts (SOCA), and Leddy Library, with funding provided by Canada's federal government through the Canadian Urban Institute.<br/><br/>
+            The work of implementing Queer Walk was performed by Dana Teagle, Haley Tibbitts, and Zhenia Tomé, with funding and support from Parallel 42 Systems and Windsor Hackforge.
+            </AboutParagraph>
+          </section>
+
+          <section>
+            <AboutAnchorHeader id="statement">
+              A Statement from Walter Cassidy
+            </AboutAnchorHeader>
+            <AboutParagraph>
+              The key to this walking tour is basic. It is about local visibility of the 2SLGBTQAI community. Unfortunately, much of that visibility has been erased for various reasons. Some of those reasons are as simple as the suppression of our identities, the lack of interest in who we are, overall hate or ignorance, and our own lack of seeing the importance of our stories and struggles.<br/><br/>
+              When creating the tour, some of the examples were difficult to prove if they “really” were queer, trans, or gender non-conforming references, especially before the 1960s. I included them anyways because one could argue either way if the experience was queer, trans, or gender non-conforming.<br/><br/>
+              I must acknowledge the hard work and dedication of the Windsor Essex Rainbow Alliance (WERA). WERA is a group of individuals whose goals are to institute a method of collecting, preserving, and disseminating the local history of the 2SLGBTQIA+ community and to establish a permanent public monument that will showcase the struggles, achievements, and celebrations of the local 2SLGBTQIA+ community for all in Windsor/Essex and beyond to visit, learn from, and enjoy. There are still so many voices, stories, and places that have not been told and could be lost forever. It is my goal to help change that reality.<br/><br/>
+              If you have any materials (newsletters, pictures, posters, buttons, shirts, etc.) you would like to have preserved or if you find any information that is not included in this tour and would like to make a request for an update or something changed, please contact me <a href="mailto:wequeerhistory@mdirect.net">by email</a>.
+            </AboutParagraph>
+          </section>
+
+          <section>
+            <AboutAnchorHeader id="references">
+              References
+            </AboutAnchorHeader>
+            <AboutParagraph>
+              <ul>
+                <li>Voice of the Fugitive: 1851 Sandwich-Windsor by Henry and Mary Bibb</li>
+                <li>Windsor Star (And various other names by same publishing company)</li>
+                <li>Windsor Gay Unity Newsletter 1974-1979</li>
+                <li>International Justice Monthly: 1981-82 Publisher Jack Summer Editor: E. Leon Bushey</li>
+                <li>Outspoken: 1991 to 2005 Original Staff: Barry Adam, Gilles Brunet, Wayne Tennant Editor: Kenn Stanton</li>
+                <li>Out and Aging: Our Stories. Edited by Barbara Zarzosa:2010: Windsor Pride Community</li>
+                <li>The Body Politic 1971-1987. Toronto: Pink Triangle Press</li>
+                <li>Information was also collected by firsthand interviews or conversations with: Jim Monk, Beth Lyster, Robin Sherman, Julie Fraser, Dr. Kael Sharman, Neil Mens, Paulette Kupnicki, Peter Sonnberg Schmidt, Dennis A. Dowker, Joe McParland, Dani Bobb, Julie Leadbetter, Harold Desmarais, Barry Adam, Nancy Campana, Michael Venus, Amanda Gellman, Mary Lou Gelissen, and Steven Lough</li>
+              </ul>
             </AboutParagraph>
           </section>
 
@@ -155,15 +190,7 @@ function Introduction() {
               </MapContainer>
             </SmallMapContainer>
           </section>
-          <section>
-            <AboutAnchorHeader id="learn-more-contact">
-              Learn More & Contact information
-            </AboutAnchorHeader>
-            <AboutParagraph>
-              For technical inquiries about the tour or development process
-              please contact{" "}
-            </AboutParagraph>
-          </section>
+
         </article>
       </MainContainer>
       <Footer />

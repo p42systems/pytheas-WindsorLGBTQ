@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { TourStates } from "../types";
 import { Link } from "wouter";
-import { CarouselProvider, Image as CarouselImage } from 'pure-react-carousel';
+import { CarouselProvider, Image as CarouselImage, ButtonFirst, ButtonBack, ButtonNext, ButtonLast, Dot, DotGroup } from 'pure-react-carousel';
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -72,7 +72,7 @@ export const GeneralLink = styled(Link)((props) => ({
   color: props.theme.colors.headerBackground,
   transition: "all 100ms",
   "&:hover": {
-    color: props.theme.colors.suggestedMarker,
+    opacity: 0.5,
   },
   "&:visited": {},
 }));
@@ -270,6 +270,16 @@ export const TourCardButton = styled(CardButton)(() => ({
 export const AboutParagraph = styled.p((props) => ({
   padding: "0.25rem 0.75rem 0 0.75rem",
   color: props.theme.colors.headerBackground,
+  "a": {
+    color: props.theme.colors.headerBackground,
+    "&:hover": {
+      opacity: 0.5,
+    },
+    "&:visited": {},
+  },
+  "ul": {
+    margin: 0,
+  }
 }));
 
 export const AboutHeader = styled.h1((props) => ({
@@ -618,6 +628,135 @@ export const DetailsCarouselImage = styled(CarouselImage)(() => ({
   objectFit: "cover",
 }));
 
+export const CarouselButtonFirst = styled(ButtonFirst)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselButtonBack = styled(ButtonBack)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  marginRight: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselButtonNext = styled(ButtonNext)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  marginRight: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+
+export const CarouselButtonLast = styled(ButtonLast)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselDotGroup = styled(DotGroup)((props) => ({
+  "button": {
+    border: `2px solid ${props.theme.colors.headerBackground}`,
+    borderRadius: "10px",
+    padding: "5px",
+    marginRight: "5px",
+    "&:hover, &:active": {
+      backgroundColor: props.theme.colors.background,
+    },
+    "&:disabled": {
+      opacity: 0.5,
+      cursor: "initial",
+      "&:hover": {
+        backgroundColor: props.theme.colors.tourButton,
+      }
+    }
+  }
+}));
+
 export const DetailsContentContainer = styled.div(() => ({
   margin: "1rem 0",
   lineHeight: "1.5rem",
@@ -899,13 +1038,20 @@ export const HelpLink = styled.a(() => ({
   },
 }));
 
-export const HeaderImage = styled.img((props) => ({
+export const HeaderImage = styled.img(() => ({
   position: "absolute",
   top: "50%",
   left: "50%",
+  width: "450px",
+  height: "180px",
   margin: 0,
   padding: 0,
-  transform: `translateY(calc(-${props.height} / 2)) translateX(calc(-${props.width} / 2))`,
+  transform: `translateY(calc(-180px / 2)) translateX(calc(-450px / 2))`,
+  "@media screen and (max-width: 1028px)": {
+    width: "300px",
+    height: "120px",
+    transform: `translateY(calc(-120px / 2)) translateX(calc(-300px / 2))`,
+  },
 }));
 
 export const AboutButtonsContainer = styled.div(() => ({
