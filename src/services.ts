@@ -33,7 +33,7 @@ export async function fetchBoundingBox(): Promise<LatLngBounds> {
     throw new Error(res.statusText);
   }
 
-  const { full, walking } = await res.json();
+  const { full } = await res.json();
   return new LatLngBounds([full.north, full.east], [full.south, full.west]);
 }
 
@@ -49,6 +49,20 @@ export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
 
   const { full, walking } = await res.json();
   return new LatLngBounds([walking.north, walking.east], [walking.south, walking.west]);
+}
+
+export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
+  const boundsUrl = `${window.location.origin}/data/bounds.json`;
+  console.log("bounding box fetching...");
+
+  const res = await fetch(boundsUrl);
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
+  const { full, walking, bus } = await res.json();
+  return new LatLngBounds([bus.north, bus.east], [bus.south, bus.west]);
 }
 
 const requiredKeys = [
@@ -172,3 +186,19 @@ export async function fetchRoute(
 
   return await res.json();
 }
+
+export function fetchOrder(
+  tourPreference: string,
+  order: string[]
+): string[] {
+  const busStops: number[] = [2, 3, 32, 30, 34, 33, 39, 42, 44, 47, 8];
+
+  switch(tourPreference) {
+    case "walking": order = order.slice(30, 39);
+    break;
+    case "bus": order = busStops.map((stopNum) => order[stopNum - 1]);;
+    break;
+  }
+
+  return order;
+};
