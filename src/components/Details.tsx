@@ -17,6 +17,7 @@ import {
   HeaderDetails,
   HeaderDetailsH2,
   BackButton,
+  VideoPlayer,
   DetailsImage,
   DetailsCarousel,
   DetailsCarouselImage,
@@ -92,7 +93,7 @@ function checkMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
   function video(mediaArray: {path: string, type: string, imageAlt: string}[]) { 
     return <>
       {mediaArray.map((video) => (
-          <ReactPlayer
+          <VideoPlayer
           controls={true}
           height={"400px"}
           width={"100%"}

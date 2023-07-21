@@ -1,7 +1,8 @@
 import styled from "@emotion/styled";
 import { TourStates } from "../types";
 import { Link } from "wouter";
-import { CarouselProvider, Image as CarouselImage, ButtonFirst, ButtonBack, ButtonNext, ButtonLast, Dot, DotGroup } from 'pure-react-carousel';
+import ReactPlayer from "react-player";
+import { CarouselProvider, Image as CarouselImage, ButtonFirst, ButtonBack, ButtonNext, ButtonLast, DotGroup } from 'pure-react-carousel';
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -605,7 +606,7 @@ export const MapControlErrorMessage = styled.span((props) => ({
 }));
 
 export const DetailsImage = styled.img((props) => ({
-  maxWidth: "100%",
+  width: "100%",
   padding: "5px",
   height: "100%",
   backgroundColor: `${props.theme.colors.suggestedMarker}`,
@@ -614,7 +615,17 @@ export const DetailsImage = styled.img((props) => ({
   objectFit: "cover",
 }));
 
+export const VideoPlayer = styled(ReactPlayer)((props) => ({
+  maxWidth: "100%",
+  padding: "5px",
+  margin: "5px 0",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px"
+}));
+
 export const DetailsCarousel = styled(CarouselProvider)((props) => ({
+  width: "100%",
   padding: "5px",
   backgroundColor: `${props.theme.colors.suggestedMarker}`,
   border: `5px solid ${props.theme.colors.headerBackground}`,
