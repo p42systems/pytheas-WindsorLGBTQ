@@ -70,74 +70,88 @@ const isMultipleImages = (urlObject: {path: string, type: string, imageAlt: stri
 
 let mediaType: string;
 
+let urlVideo: {path: string, type: string, imageAlt: string}[];
+
+let urlImages: {path: string, type: string, imageAlt: string}[];
+
 let mediaPlayer;
 
-function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
+function checkMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
   if (!urlArray){
     mediaType = "";
   } else if (urlArray.length === 1 && urlArray[0].type === "video"){
     mediaType = "video";
-  } else if (urlArray.length === 1 && urlArray[0].type === "image"){
-    mediaType = "image";
-  } else if (urlArray.length > 1 && urlArray.every(isMultipleImages)){
-    mediaType = "multipleImages"
+  } else if (urlArray.every(isMultipleImages)){
+    mediaType = "images"
   } else if (urlArray.length > 1 && !urlArray.every(isMultipleImages)){
-    mediaType = "mixedMedia"
+    mediaType = "mixedMedia";
+    urlVideo = urlArray.filter(urlObject => urlObject.type === "video");
+    urlImages = urlArray.filter(urlObject => urlObject.type === "image");
   };
 
-  switch (mediaType){
-    case "video":
-      mediaPlayer =
-        <ReactPlayer
+  function video(mediaArray: {path: string, type: string, imageAlt: string}[]) { 
+    return <>
+      {mediaArray.map((video) => (
+          <ReactPlayer
           controls={true}
           height={"400px"}
           width={"100%"}
-          url={urlArray[0].path}
-        />
-      break;
-    case "image":
-      mediaPlayer = 
-        <DetailsImage src={urlArray[0].path} alt={urlArray[0].imageAlt} />;
-      break;
-    case "multipleImages":
-      mediaPlayer =
-        <DetailsCarousel
-          visibleSlides={2}
-          totalSlides={urlArray.length}
-          naturalSlideWidth={300}
-          naturalSlideHeight={400}
-          isIntrinsicHeight
-        >
-          <Slider>
-            {
-              urlArray.map((urlObject, index) => {
-                return (
-                  <Slide tag="a" index={index} key={index}>
-                    <DetailsCarouselImage
-                      src={urlObject.path}
-                      alt={urlObject.imageAlt}
-                      hasMasterSpinner={true}
-                    />
-                  </Slide>
-                )
-              })
-            }
-          </Slider>
+          url={video.path}
+          />
+      ))}
+      </>;
+  }
+
+  function images(mediaArray: {path: string, type: string, imageAlt: string}[]) {
+    if (mediaArray.length === 1) {
+      return <DetailsImage src={mediaArray[0].path} alt={mediaArray[0].imageAlt} />
+    } else {
+      return <DetailsCarousel
+      visibleSlides={2}
+      totalSlides={mediaArray.length}
+      naturalSlideWidth={300}
+      naturalSlideHeight={400}
+      isIntrinsicHeight
+      >
+        <Slider>
           {
-            urlArray.length > 2
-            ? <>
-                <CarouselDotGroup/>
-                <CarouselButtonFirst>First</CarouselButtonFirst>
-                <CarouselButtonBack>Back</CarouselButtonBack>
-                <CarouselButtonNext>Next</CarouselButtonNext>
-                <CarouselButtonLast>Last</CarouselButtonLast>
-              </>
-            : null
+            mediaArray.map((image, index) => {
+              return (
+                <Slide tag="a" index={index} key={index}>
+                  <DetailsCarouselImage
+                    src={image.path}
+                    alt={image.imageAlt}
+                    hasMasterSpinner={true}
+                  />
+                </Slide>
+              )
+            })
           }
-        </DetailsCarousel>;
+        </Slider>
+        {
+          mediaArray.length > 2
+          ? <>
+              <CarouselDotGroup/>
+              <CarouselButtonFirst>First</CarouselButtonFirst>
+              <CarouselButtonBack>Back</CarouselButtonBack>
+              <CarouselButtonNext>Next</CarouselButtonNext>
+              <CarouselButtonLast>Last</CarouselButtonLast>
+            </>
+          : null
+        }
+      </DetailsCarousel>
+    }
+  }
+
+  switch (mediaType){
+    case "video":
+      mediaPlayer = video(urlArray);
+      break;
+    case "images":
+      mediaPlayer = images(urlArray);
       break;
     case "mixedMedia":
-      // to be developed
+      mediaPlayer = <>{video(urlVideo)}{images(urlImages)}</>
       break;
     default:
       break;
@@ -145,7 +159,7 @@ function CheckMedia(urlArray: {path: string, type: string, imageAlt: string}[]){
 
 };
 
-CheckMedia(detail.url);
+checkMedia(detail.url);
 
   return (
     <>
