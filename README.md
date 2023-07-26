@@ -1,6 +1,6 @@
-# Pytheas
+# QueerWalk.ca: A Pytheas Application
 
-Pytheas is a React application that implements a guided walking tour, using Leaflet to visualize a map and Open Route Service to generate walking directions. The work was originally done through a grant funded by the Canadian Urban Institute to create a walking tour of the McDougall Corridor, a historic Black neighbourhood in Windsor, Ontario. You may find that visiting mcdougallcorridor.ca gives you some insight into the ways this code can be used in your own project.
+Pytheas is a React application that implements a guided walking tour, using Leaflet to visualize a map and Open Route Service to generate walking directions. The work was originally done through a grant funded by the Canadian Urban Institute to create a walking tour of the McDougall Corridor, a historic Black neighbourhood in Windsor, Ontario, and expanded for this implementation in partnership with Walter Cassidy of the Windsor Essex Rainbow Alliance (WERA). You may find that visiting queerwalk.ca gives you some insight into the ways this code can be used in your own project.
 
 Pytheas provides the following functionality:
 
@@ -10,10 +10,9 @@ Pytheas provides the following functionality:
     - Routing between markers
     - A toggleable "completed" state for markers, allowing users to revisit a partially-completed tour
 - A content experience collecting all point of interest pages for users outside the tour area 
-- Point of interest details which can embed a YouTube video, descriptive text and a map. This route is used by both the tour and content experiences
+- Point of interest details which can embed descriptive text, a map, and a wide range of media types with unlimited inclusion as per your requirements. This route is used by both the tour and content experiences
+- Support for multiple tour implementations
 - End-user documentation and information
-
-As an example, the application uses the locations of the Seven Wonders of the Ancient World. The Open Route Service will not provide directions if the route distance is greater than 6,000,000 meters, so if you're not in within 6,000 kilometers of a particular location routing will not work. Use local data (see below) for testing.
 
 To implement Pytheas for your own tour you will need to take several steps.
 
@@ -25,7 +24,7 @@ Data about the tour is stored in multiple places in the application.
 
 #### /public/data/bounds.json
 
-The bounding box for the tour is defined here. The value of the "north" and "south" keys should be set to the northern and southern latitude limits of the tour area, and the "east" and "west" keys should be set to the eastern and western longitude limits of the tour area. All coordinate values should be expressed as decimal numbers. It is a good idea to "pad" the tour area to allow people at a reasonable distance to see the walking tour and directions. Users outside the bounding box will be directed to the content page.
+The bounding boxes for the tours are defined here. Each top-level object represents a tour type, with the values inside representing the limits of the tour area for each cardinal direction. The value of the "north" and "south" keys should be set to the northern and southern latitude limits of the tour area, and the "east" and "west" keys should be set to the eastern and western longitude limits of the tour area. All coordinate values should be expressed as decimal numbers. It is a good idea to "pad" the tour area to allow people at a reasonable distance to see the walking tour and directions. Users outside the bounding box will be directed to the content page. You can add or remove tour type objects per your requirements, but there must always be at least one "full" tour type present.
 
 #### /public/data/markers.geojson
 
@@ -47,9 +46,26 @@ Note that the latitude and longitude of the point of interest must also be speci
 
 Each of these JSON files contains detailed information about a point of interest, used to display point of interest details. The keys in the JSON dictionary are used as follows:
 - *id* is the unique identifier for the point of interest, which should match the *id* for this point of interest in *markers.geojson*
-- *url* is the relevant YouTube URL for this point of interest
+- *url* is a collection of relevant metadata for each piece of media to be displayed for this point of interest.
+    - *path* points to the file destination of the media that is to be displayed
+    - *type* specifies what media type the object holds
+    - *imageAlt* is the alternative text that will accompany the given piece of media
 - *description* is the text to be displayed for this point of interest
 - *image* is the detail image to be displayed for this point of interest
+
+### Multiple Tour Type Implementation
+
+To implement more than one tour type within your application, you will need to edit and add to the source code depending on your requirements.
+
+#### /src/services.ts
+
+For each new tour type, you will have to create a new function that fetches a different set of bounds within bounds.json. To achieve this, you will need to copy and rename fetchBoundingBox() to correspond with your desired tour type. Within the function, add all of your tour types into the decontructed .json object and add the desired tour name as a prefix to each cardinal direction in the LatLngBounds query. See fetchWalkingBounds() in the source code for a demonstration.
+
+For each new tour type, you will also have to add the new marker sequence to the fetchOrder() function. If the sequence of the preferred tour type follows the exact sequence of a portion of the full tour, you can add a new case to the nested switch function that takes a slice of the original order. Tour case names must match the corresponding tour object name within bounds.json or else problems will persist. If the sequence is at odds with the full tour sequence, you can establish a manually curated array of tour stops that can be mapped over inside of the switch function. Examples of both methods are displayed in the source code.
+
+#### /src/atoms.ts
+
+Once your bounding box functions are complete, you must add them to the boundingBoxQueryAtom in order for Pytheas to access the right bounds. Within the nested switch function, add a new case for your tour that points to the appropriate function and query key. These tour case names must also match the corresponding tour object name within bounds.json or else problems will persist. 
 
 ### Theme and display details
 Set the application's colour scheme in */src/theme.ts*, and place the SVG image you want to serve as a logo for the tour in /public/Main_Logo.svg.
@@ -68,7 +84,3 @@ Do this by creating an .env file in the root folder of your project. For more in
 To test your project locally, install the latest Node.js and NPM from the [official source](https://nodejs.org/en/download/current/) and execute this command:
 
     $ npm run dev
-
-# Attribution
-
-Placeholder background image courtesy of Miguel Angel (https://www.vecteezy.com/members/miguelap)
