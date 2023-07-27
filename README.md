@@ -53,6 +53,18 @@ Each of these JSON files contains detailed information about a point of interest
 - *description* is the text to be displayed for this point of interest
 - *image* is the detail image to be displayed for this point of interest
 
+### Tour stop media
+
+This application has support for images and videos for each stop on the tour.
+
+#### /src/components/Details.tsx
+
+Based on the *type* given in each marker JSON file, the media will be sorted as either video, images, or a combination of both:
+
+- If there is more than one image object in the url field, the Details component will create an image carousel using Express Labs' [pure-react-carousel](https://express-labs.github.io/pure-react-carousel/), otherwise the single image will be rendered as is.
+- If there is a video in the url field, the Details component will create a video component using [react-player](https://www.npmjs.com/package/react-player).
+- Any combination of both will display the video above and the image (or images) immediately below.
+
 ### Multiple Tour Type Implementation
 
 To implement more than one tour type within your application, you will need to edit and add to the source code depending on your requirements.

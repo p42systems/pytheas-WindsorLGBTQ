@@ -38,6 +38,7 @@ root.render(
             background-color: ${theme.colors.background};
             font-family: "Roboto", sans-serif;
             height: 100%;
+            overflow-x: hidden;
           }
           h1,
           h2,

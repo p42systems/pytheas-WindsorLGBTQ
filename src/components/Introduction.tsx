@@ -1,38 +1,19 @@
-import { icon, LatLng } from "leaflet";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useLocation } from "wouter";
-import { useAtomValue } from "jotai";
-
-import { baseIconConfigAtom } from "../atoms";
 import {
   MainContainer,
   BackButton,
   AboutParagraph,
   AboutHeader,
-  SmallMapContainer,
   AboutAnchorHeader,
   StatictourButtonButton,
   StaticcontentButtonButton,
   StaticheaderBackgroundButton,
   GeneralLink,
 } from "./styled_components";
-import ZoomControls from "./ZoomControls";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const interactionOptions = {
-  doubleClickZoom: false,
-  closePopupOnClick: false,
-  dragging: false,
-  trackResize: true,
-  touchZoom: false,
-  scrollWheelZoom: false,
-};
-
-const PARKING_LATLNG = new LatLng(-83.03334838413619, 42.31617694568193);
-
 function Introduction() {
-  const baseIconConfig = useAtomValue(baseIconConfigAtom);
   const [, setLocation] = useLocation();
   return (
     <>
@@ -73,11 +54,6 @@ function Introduction() {
             <li>
               <GeneralLink href="#references">
                 References
-              </GeneralLink>
-            </li>
-            <li>
-              <GeneralLink href="#parking">
-                Transit Access & Available Parking
               </GeneralLink>
             </li>
           </ul>
@@ -155,40 +131,6 @@ function Introduction() {
                 <li>Information was also collected by firsthand interviews or conversations with: Jim Monk, Beth Lyster, Robin Sherman, Julie Fraser, Dr. Kael Sharman, Neil Mens, Paulette Kupnicki, Peter Sonnberg Schmidt, Dennis A. Dowker, Joe McParland, Dani Bobb, Julie Leadbetter, Harold Desmarais, Barry Adam, Nancy Campana, Michael Venus, Amanda Gellman, Mary Lou Gelissen, and Steven Lough</li>
               </ul>
             </AboutParagraph>
-          </section>
-
-          <section>
-            <AboutAnchorHeader id="parking">
-              Transit Access & Available Parking
-            </AboutAnchorHeader>
-            <AboutParagraph>
-              Looking for a place to park? 
-            </AboutParagraph>
-            <SmallMapContainer>
-              <MapContainer
-                center={[PARKING_LATLNG.lng, PARKING_LATLNG.lat]}
-                style={{ width: "100%", height: "100%" }}
-                zoom={16}
-                zoomControl={false}
-                {...interactionOptions}
-              >
-                <ZoomControls minZoom={14} maxZoom={18} />
-
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  minZoom={14}
-                  maxZoom={18}
-                />
-
-                <Marker
-                  position={[PARKING_LATLNG.lng, PARKING_LATLNG.lat]}
-                  key={"parking"}
-                  icon={icon(baseIconConfig)}
-                  interactive={false}
-                ></Marker>
-              </MapContainer>
-            </SmallMapContainer>
           </section>
 
         </article>
