@@ -25,8 +25,8 @@ export const MainContainer = styled.main(() => ({
   "@media screen and (min-width: 769px)": {
     width: "769px",
   },
-  "@media screen and (max-width: 600px)": {
-    width: "100vw",
+  "@media screen and (max-width: 769px)": {
+    width: "90vw",
     padding: "0px 10px",
     boxSizing: "border-box",
   },
@@ -606,9 +606,7 @@ export const MapControlErrorMessage = styled.span((props) => ({
 }));
 
 export const DetailsImage = styled.img((props) => ({
-  width: "100%",
   padding: "5px",
-  height: "100%",
   backgroundColor: `${props.theme.colors.suggestedMarker}`,
   border: `5px solid ${props.theme.colors.headerBackground}`,
   borderRadius: "5px",
@@ -625,7 +623,6 @@ export const VideoPlayer = styled(ReactPlayer)((props) => ({
 }));
 
 export const DetailsCarousel = styled(CarouselProvider)((props) => ({
-  width: "100%",
   padding: "5px",
   backgroundColor: `${props.theme.colors.suggestedMarker}`,
   border: `5px solid ${props.theme.colors.headerBackground}`,
@@ -908,12 +905,12 @@ export const HeaderSubBarContainer = styled.div(() => ({
   display: "flex",
   alignItems: "flex-start",
   "@media screen and (min-width: 1028px)": {
-    width: "1028px",
+    width: "90vw",
     flexDirection: "row-reverse",
     justifyContent: "space-between",
   },
   "@media screen and (max-width: 1028px)": {
-    width: "100vw",
+    width: "95vw",
     flexDirection: "column",
     justifyContent: "left",
   },
@@ -926,10 +923,10 @@ export const HeaderTopBar = styled.div(() => ({
   display: "flex",
   justifyContent: "flex-end",
   "@media screen and (min-width: 1028px)": {
-    width: "1028px",
+    width: "90vw",
   },
   "@media screen and (max-width: 1028px)": {
-    width: "100vw",
+    width: "95vw",
   },
   minWidth: "375px",
 }));
@@ -1082,17 +1079,10 @@ export const AboutButtonsContainer = styled.div(() => ({
 
 export const NavigationButtonsContainer = styled.nav(() => ({
   display: "flex",
-  rowGap: "1rem",
-  margin: "1rem 0 1rem 0",
+  gap: "25px",
+  margin: "0 25px",
   justifyContent: "space-evenly",
   flexWrap: "wrap",
-  "@media screen and (min-width: 769px)": {
-    width: "769px",
-    padding: "0 1rem 0 0",
-  },
-  "@media screen and (max-width: 769px)": {
-    width: "100vw",
-  },
   minWidth: "375px",
 }));
 
@@ -1101,10 +1091,7 @@ export const NavigationDropDownContainer = styled.div(() => ({
   rowGap: "1rem",
   flexDirection: "column",
   justifyContent: "space-evenly",
-  flexGrow: 1,
-  minWidth: "275px",
-  maxWidth: "300px",
-  flexShrink: 1,
+  width: "300px"
 }));
 
 export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(() => ({
@@ -1112,21 +1099,18 @@ export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(()
 }));
 
 export const NavigationButton = styled(Button)(() => ({
-  flexGrow: 1,
-  minWidth: "275px",
-  maxWidth: "300px",
+  width: "300px",
   border: "2px solid #191919",
-  flexShrink: 1,
   alignSelf: "flex-start",
 }));
 
 export const NavigationContentButton = styled(NavigationButton)((props) => ({
-  backgroundColor: props.theme.colors.contentButton,
+  backgroundColor: props.theme.colors.contentButton
 }));
 
 export const NavigationDropDownButton = styled(NavigationButton)((props) => ({
   backgroundColor: props.theme.colors.contentButton,
-  width: '100%',
+  width: "100%",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
