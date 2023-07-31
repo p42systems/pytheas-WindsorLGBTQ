@@ -13,6 +13,8 @@ import {
   HeaderHelpLinkContainer,
 } from "./styled_components";
 
+import bgImage from "/bg_main.jpg";
+
 interface HeaderProps {
   size?: "short" | "long";
   children?: React.ReactNode | React.ReactNode[];
@@ -23,7 +25,7 @@ function Header({ size = "long", children }: HeaderProps) {
   const [, setLocation] = useLocation();
   return (
     <HeaderContainer>
-      <HeaderBackgroundImage size={size} backgroundImage="/bg_main.jpg">
+      <HeaderBackgroundImage size={size} backgroundImage={bgImage}>
         <HeaderTopBar>
           <HeaderHelpLinkContainer>
             <HelpLink
