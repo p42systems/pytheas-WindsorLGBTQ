@@ -199,7 +199,7 @@ checkMedia(detail.url);
 
           <DetailsContentContainer>
             {typeof detail.description === "string"
-                ? <p></p>
+                ? <p>{detail.description}</p>
                 : detail.description.map(paragraph => <p>{paragraph}</p>)}
           </DetailsContentContainer>
 
