@@ -22,6 +22,9 @@ export const MainContainer = styled.main(() => ({
   flexGrow: 1,
   flexShrink: 1,
   flexBasis: "100%",
+  "@media screen and (min-height: 1106px)": {
+    minHeight: "calc(100vh - 325px)",
+  },
   "@media screen and (min-width: 769px)": {
     width: "769px",
   },
@@ -1083,7 +1086,6 @@ export const NavigationButtonsContainer = styled.nav(() => ({
   margin: "0 25px",
   justifyContent: "space-evenly",
   flexWrap: "wrap",
-  minWidth: "375px",
 }));
 
 export const NavigationDropDownContainer = styled.div(() => ({
