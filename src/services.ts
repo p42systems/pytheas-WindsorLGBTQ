@@ -12,7 +12,7 @@ export type MarkerPayload = {
 export type MarkerDetailPayload = {
   id: string;
   url: {path: string, type: string, imageAlt: string}[];
-  description: string;
+  description: string[] | string;
   image: string;
   imageAlt: string;
 };

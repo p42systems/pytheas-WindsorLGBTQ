@@ -198,7 +198,9 @@ checkMedia(detail.url);
           { mediaPlayer }
 
           <DetailsContentContainer>
-            <p>{detail.description}</p>
+            {typeof detail.description === "string"
+                ? <p></p>
+                : detail.description.map(paragraph => <p>{paragraph}</p>)}
           </DetailsContentContainer>
 
           <SmallMapContainer>
