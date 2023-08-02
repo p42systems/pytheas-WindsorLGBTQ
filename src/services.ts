@@ -13,6 +13,7 @@ export type MarkerDetailPayload = {
   id: string;
   url: {path: string, type: string, imageAlt: string}[];
   description: string[] | string;
+  timeline: {header: string, list: string[]};
   image: string;
   imageAlt: string;
 };
