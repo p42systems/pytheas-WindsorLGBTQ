@@ -65,6 +65,31 @@ function Home() {
               watch at your own pace.
             </HomeParagraph>
           </section>
+          <section>
+            <HomeSubHeader id="sponsor-partners">Sponsors &amp; Partners</HomeSubHeader>  
+            <HomeParagraph>
+              Tour content by Walter Cassidy of the Windsor/Essex Rainbow
+              Alliance. Code by Parallel 42 Systems. Support for this project
+              was provided by Windsor Hackforge.
+            </HomeParagraph>
+            <SponsorPartnerContainer>
+              <SponsorPartnerImg
+                large={true}
+                src="/logos/p42_logo.png"
+                alt="Parallel 42 Systems"
+                />
+              <SponsorPartnerImg
+                large={true}
+                src="/logos/hackforge_logo.png"
+                alt="Hackforge"
+                />
+              <SponsorPartnerImg
+                large={true}
+                src="/logos/wera_logo.png"
+                alt="Windsor/Essex Rainbow Alliance"
+                />
+                </SponsorPartnerContainer>
+          </section>
         </article>
       </MainContainer>
       <Footer />
