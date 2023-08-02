@@ -195,12 +195,17 @@ checkMedia(detail.url);
         <SectionContentContainer>
           <DetailCheckboxContainer></DetailCheckboxContainer>
 
-          { mediaPlayer }
+          {mediaPlayer}
 
           <DetailsContentContainer>
             {typeof detail.description === "string"
-                ? <p>{detail.description}</p>
-                : detail.description.map(paragraph => <p>{paragraph}</p>)}
+              ? <p>{detail.description}</p>
+              : detail.description.map(paragraph => <p>{paragraph}</p>)
+            }
+            {detail.timeline
+              ? <><hr/><h3>{detail.timeline.header}</h3><ul>{detail.timeline.list.map(listItem => <li>{listItem}</li>)}</ul></>
+              : null
+            }
           </DetailsContentContainer>
 
           <SmallMapContainer>
