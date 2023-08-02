@@ -192,7 +192,7 @@ export function fetchOrder(
   tourPreference: string,
   order: string[]
 ): string[] {
-  const busStops: number[] = [2, 3, 32, 30, 34, 33, 39, 42, 44, 47, 8];
+  const busStops: number[] = [8, 2, 3, 32, 30, 42, 44, 47];
 
   switch(tourPreference) {
     case "walking": order = order.slice(30, 39);
