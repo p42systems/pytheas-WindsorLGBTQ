@@ -1,8 +1,10 @@
 import { useLocation } from "wouter";
+import { useRef } from "react";
 import {
   MainContainer,
   BackButton,
   AboutParagraph,
+  AboutList,
   AboutHeader,
   AboutAnchorHeader,
   StatictourButtonButton,
@@ -10,11 +12,18 @@ import {
   StaticheaderBackgroundButton,
   GeneralLink,
 } from "./styled_components";
+import { scrollIntoView } from "../services";
 import Header from "./Header";
 import Footer from "./Footer";
 
 function Introduction() {
   const [, setLocation] = useLocation();
+  const howToRef = useRef<HTMLHeadingElement>(null);
+  const aboutRef = useRef<HTMLHeadingElement>(null);
+  const statementRef = useRef<HTMLHeadingElement>(null);
+  const referencesRef = useRef<HTMLHeadingElement>(null);
+  let relLinkCount = 0;
+
   return (
     <>
       <Header size="short">
@@ -23,7 +32,11 @@ function Introduction() {
           aria-label="Back"
           onClick={() => {
             if (window.history.length > 0) {
-              window.history.back();
+              if (relLinkCount) {
+                window.history.go(-relLinkCount - 1);
+              } else {
+                window.history.back();
+              }
             } else {
               setLocation("/");
             }
@@ -37,29 +50,29 @@ function Introduction() {
           <AboutHeader>Information about the Tour</AboutHeader>
           <ul>
             <li>
-              <GeneralLink href="#how-to-take-the-tour">
+              <GeneralLink href="#how-to-take-the-tour" onClick={() => {relLinkCount++; scrollIntoView(howToRef)}}>
                 How to Take the Tour
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#about">
+              <GeneralLink href="#about" onClick={() => {relLinkCount++; scrollIntoView(aboutRef)}}>
                 About the Site
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#statement">
+              <GeneralLink href="#statement" onClick={() => {relLinkCount++; scrollIntoView(statementRef)}}>
                 A Statement from Walter Cassidy
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#references">
+              <GeneralLink href="#references" onClick={() => {relLinkCount++; scrollIntoView(referencesRef)}}>
                 References
               </GeneralLink>
             </li>
           </ul>
 
           <section>
-            <AboutAnchorHeader id="how-to-take-the-tour">
+            <AboutAnchorHeader id="how-to-take-the-tour" ref={howToRef}>
               How to Take the Tour
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -94,7 +107,7 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="about">
+            <AboutAnchorHeader id="about" ref={aboutRef}>
               About the Site
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -104,7 +117,7 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="statement">
+            <AboutAnchorHeader id="statement" ref={statementRef}>
               A Statement from Walter Cassidy
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -116,11 +129,10 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="references">
+            <AboutAnchorHeader id="references" ref={referencesRef}>
               References
             </AboutAnchorHeader>
-            <AboutParagraph>
-              <ul>
+            <AboutList>
                 <li>Voice of the Fugitive (1851, Sandwich-Windsor publication by Henry and Mary Bibb)</li>
                 <li>Cruise Magazine (published by Tony Rome Enterprises)</li>
                 <li>Metra Magazine (published by Metra Inc.)</li>
@@ -134,8 +146,7 @@ function Introduction() {
                 <li>Out and Aging: Our Stories (2010: Windsor Pride Community, edited by Barbara Zarzosa)</li>
                 <li>The Body Politic (1971-1987, published by the Toronto-based Pink Triangle Press)</li>
                 <li>Information and artifacts were also collected by firsthand interviews, collections or correspondences with Jim Monk, Lorriane Sayell, Beth Lyster, Harold Desmarias, Robin Sherman, Jill Gamble, Julie Fraser, Dr. Kael Sharman, Neil Mens, Paulette Kupnicki, Ginny Lundgren, Peter Sonnberg Schmidt, Dennis A. Dowker, John Shelhorn, Anna Kovinsky, Jamie Pitts, Caroline Carnerie, Dion Carter, Diana Mady Kelly, Diana Flemming Luke Maddaford, Joe McParland, Dani Bobb, Julie Leadbetter, Harold Desmarais, Wayne Tennant, Barry Adam, Robert Katzman, Colleen Gallagher, Nancy Campana, Tom Marchell, Michael Venus, Camil Jacques, David M Lyons-Black, Amanda Gellman, Mary Lou Gelissen, Marie-France Jean, June Willier, and Steven Lough</li>
-              </ul>
-            </AboutParagraph>
+            </AboutList>
           </section>
 
         </article>

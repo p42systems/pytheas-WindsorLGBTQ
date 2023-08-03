@@ -26,7 +26,6 @@ export function checkForGeoLocationAPI(): Promise<void> {
 
 export async function fetchBoundingBox(): Promise<LatLngBounds> {
   const boundsUrl = `${window.location.origin}/data/bounds.json`;
-  console.log("bounding box fetching...");
 
   const res = await fetch(boundsUrl);
 
@@ -40,7 +39,6 @@ export async function fetchBoundingBox(): Promise<LatLngBounds> {
 
 export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
   const boundsUrl = `${window.location.origin}/data/bounds.json`;
-  console.log("bounding box fetching...");
 
   const res = await fetch(boundsUrl);
 
@@ -54,7 +52,6 @@ export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
 
 export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
   const boundsUrl = `${window.location.origin}/data/bounds.json`;
-  console.log("bounding box fetching...");
 
   const res = await fetch(boundsUrl);
 
@@ -88,8 +85,6 @@ function isMarkerPoint(point: Feature): point is Feature<Point, IMarker> {
 
 export async function fetchMarkers(): Promise<MarkerPayload> {
   const markersUrl = `${window.location.origin}/data/markers.geojson`;
-  console.log("markers fetching...");
-
 
   const res = await fetch(markersUrl);
 
@@ -203,3 +198,7 @@ export function fetchOrder(
 
   return order;
 };
+
+ export function scrollIntoView(props: React.RefObject<HTMLHeadingElement>) {
+    props.current?.scrollIntoView({behavior: "smooth"})
+}
