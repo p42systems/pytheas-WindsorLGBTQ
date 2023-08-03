@@ -1,4 +1,5 @@
 import { useLocation } from "wouter";
+import { useRef } from "react";
 import {
   MainContainer,
   BackButton,
@@ -10,11 +11,18 @@ import {
   StaticheaderBackgroundButton,
   GeneralLink,
 } from "./styled_components";
+import { scrollIntoView } from "../services";
 import Header from "./Header";
 import Footer from "./Footer";
 
 function Introduction() {
   const [, setLocation] = useLocation();
+  const howToRef = useRef<HTMLHeadingElement>(null);
+  const aboutRef = useRef<HTMLHeadingElement>(null);
+  const statementRef = useRef<HTMLHeadingElement>(null);
+  const referencesRef = useRef<HTMLHeadingElement>(null);
+  let relLinkCount = 0;
+
   return (
     <>
       <Header size="short">
@@ -23,7 +31,11 @@ function Introduction() {
           aria-label="Back"
           onClick={() => {
             if (window.history.length > 0) {
-              window.history.back();
+              if (relLinkCount) {
+                window.history.go(-relLinkCount - 1);
+              } else {
+                window.history.back();
+              }
             } else {
               setLocation("/");
             }
@@ -37,29 +49,29 @@ function Introduction() {
           <AboutHeader>Information about the Tour</AboutHeader>
           <ul>
             <li>
-              <GeneralLink href="#how-to-take-the-tour">
+              <GeneralLink href="#how-to-take-the-tour" onClick={() => {relLinkCount++; scrollIntoView(howToRef)}}>
                 How to Take the Tour
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#about">
+              <GeneralLink href="#about" onClick={() => {relLinkCount++; scrollIntoView(aboutRef)}}>
                 About the Site
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#statement">
+              <GeneralLink href="#statement" onClick={() => {relLinkCount++; scrollIntoView(statementRef)}}>
                 A Statement from Walter Cassidy
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#references">
+              <GeneralLink href="#references" onClick={() => {relLinkCount++; scrollIntoView(referencesRef)}}>
                 References
               </GeneralLink>
             </li>
           </ul>
 
           <section>
-            <AboutAnchorHeader id="how-to-take-the-tour">
+            <AboutAnchorHeader id="how-to-take-the-tour" ref={howToRef}>
               How to Take the Tour
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -94,7 +106,7 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="about">
+            <AboutAnchorHeader id="about" ref={aboutRef}>
               About the Site
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -104,7 +116,7 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="statement">
+            <AboutAnchorHeader id="statement" ref={statementRef}>
               A Statement from Walter Cassidy
             </AboutAnchorHeader>
             <AboutParagraph>
@@ -116,7 +128,7 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="references">
+            <AboutAnchorHeader id="references" ref={referencesRef}>
               References
             </AboutAnchorHeader>
             <AboutParagraph>
