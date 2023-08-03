@@ -74,17 +74,17 @@ function Home() {
             </HomeParagraph>
             <SponsorPartnerContainer>
               <SponsorPartnerImg
-                large={true}
+                large={false}
                 src="/logos/p42_logo.png"
                 alt="Parallel 42 Systems"
                 />
               <SponsorPartnerImg
-                large={true}
+                large={false}
                 src="/logos/hackforge_logo.png"
                 alt="Hackforge"
                 />
               <SponsorPartnerImg
-                large={true}
+                large={false}
                 src="/logos/wera_logo.png"
                 alt="Windsor/Essex Rainbow Alliance"
                 />
