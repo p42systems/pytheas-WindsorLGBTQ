@@ -200,10 +200,10 @@ checkMedia(detail.url);
           <DetailsContentContainer>
             {typeof detail.description === "string"
               ? <p>{detail.description}</p>
-              : detail.description.map(paragraph => <p>{paragraph}</p>)
+              : detail.description.map((paragraph, index) => <p key={index}>{paragraph}</p>)
             }
             {detail.timeline
-              ? <><hr/><h3>{detail.timeline.header}:</h3><ul>{detail.timeline.list.map(listItem => <li>{listItem}</li>)}</ul></>
+              ? <><hr/><h3>{detail.timeline.header}:</h3><ul>{detail.timeline.list.map((listItem, index) => <li key={index}>{listItem}</li>)}</ul></>
               : null
             }
           </DetailsContentContainer>
