@@ -23,7 +23,7 @@ import {
 
 import type { IMarker } from "./../types";
 
-import placeholder from "/bg_main.jpg";
+import placeholder from "/stop_placeholder.png";
 
 interface MarkerListItemProps {
   marker: IMarker;
