@@ -281,9 +281,18 @@ export const AboutParagraph = styled.p((props) => ({
     },
     "&:visited": {},
   },
-  "ul": {
-    margin: 0,
-  }
+}));
+
+export const AboutList = styled.ul((props) => ({
+  padding: "0.25rem 0.75rem 0 3rem",
+  color: props.theme.colors.headerBackground,
+  "a": {
+    color: props.theme.colors.headerBackground,
+    "&:hover": {
+      opacity: 0.5,
+    },
+    "&:visited": {},
+  },
 }));
 
 export const AboutHeader = styled.h1((props) => ({
