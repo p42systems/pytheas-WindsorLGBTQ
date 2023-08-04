@@ -11,8 +11,9 @@ export type MarkerPayload = {
 
 export type MarkerDetailPayload = {
   id: string;
-  url: string;
-  description: string;
+  url: {path: string, type: string, imageAlt: string}[];
+  description: string[] | string;
+  timeline: {header: string, list: string[]};
   image: string;
   imageAlt: string;
 };
@@ -32,8 +33,34 @@ export async function fetchBoundingBox(): Promise<LatLngBounds> {
     throw new Error(res.statusText);
   }
 
-  const { north, east, south, west } = await res.json();
-  return new LatLngBounds([north, east], [south, west]);
+  const { full } = await res.json();
+  return new LatLngBounds([full.north, full.east], [full.south, full.west]);
+}
+
+export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
+  const boundsUrl = `${window.location.origin}/data/bounds.json`;
+
+  const res = await fetch(boundsUrl);
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
+  const { full, walking } = await res.json();
+  return new LatLngBounds([walking.north, walking.east], [walking.south, walking.west]);
+}
+
+export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
+  const boundsUrl = `${window.location.origin}/data/bounds.json`;
+
+  const res = await fetch(boundsUrl);
+
+  if (!res.ok) {
+    throw new Error(res.statusText);
+  }
+
+  const { full, walking, bus } = await res.json();
+  return new LatLngBounds([bus.north, bus.east], [bus.south, bus.west]);
 }
 
 const requiredKeys = [
@@ -154,4 +181,24 @@ export async function fetchRoute(
   }
 
   return await res.json();
+}
+
+export function fetchOrder(
+  tourPreference: string,
+  order: string[]
+): string[] {
+  const busStops: number[] = [8, 2, 3, 32, 30, 42, 44, 47];
+
+  switch(tourPreference) {
+    case "walking": order = order.slice(30, 39);
+    break;
+    case "bus": order = busStops.map((stopNum) => order[stopNum - 1]);;
+    break;
+  }
+
+  return order;
+};
+
+ export function scrollIntoView(props: React.RefObject<HTMLHeadingElement>) {
+    props.current?.scrollIntoView({behavior: "smooth"})
 }

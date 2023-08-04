@@ -23,6 +23,8 @@ import {
 
 import type { IMarker } from "./../types";
 
+import placeholder from "/stop_placeholder.png";
+
 interface MarkerListItemProps {
   marker: IMarker;
   selected: boolean;
@@ -85,7 +87,7 @@ function MarkerCard({ marker, selected, shouldScroll }: MarkerListItemProps) {
           }
         />
       </CardState>
-      <CardImage src={marker.image} alt={marker.imageAlt} />
+      <CardImage src={marker.image ? marker.image : placeholder} alt={marker.imageAlt} />
       <CardContent>
         <CardHeader>{marker.name}</CardHeader>
         <CardAddress>{marker.address}</CardAddress>

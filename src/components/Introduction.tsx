@@ -1,39 +1,29 @@
-import { icon, LatLng } from "leaflet";
-import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { useLocation } from "wouter";
-import { useAtomValue } from "jotai";
-
-import { baseIconConfigAtom } from "../atoms";
+import { useRef } from "react";
 import {
   MainContainer,
   BackButton,
   AboutParagraph,
+  AboutList,
   AboutHeader,
-  SmallMapContainer,
   AboutAnchorHeader,
   StatictourButtonButton,
   StaticcontentButtonButton,
   StaticheaderBackgroundButton,
   GeneralLink,
 } from "./styled_components";
-import ZoomControls from "./ZoomControls";
+import { scrollIntoView } from "../services";
 import Header from "./Header";
 import Footer from "./Footer";
 
-const interactionOptions = {
-  doubleClickZoom: false,
-  closePopupOnClick: false,
-  dragging: false,
-  trackResize: true,
-  touchZoom: false,
-  scrollWheelZoom: false,
-};
-
-const PARKING_LATLNG = new LatLng(-83.03334838413619, 42.31617694568193);
-
 function Introduction() {
-  const baseIconConfig = useAtomValue(baseIconConfigAtom);
   const [, setLocation] = useLocation();
+  const howToRef = useRef<HTMLHeadingElement>(null);
+  const aboutRef = useRef<HTMLHeadingElement>(null);
+  const statementRef = useRef<HTMLHeadingElement>(null);
+  const referencesRef = useRef<HTMLHeadingElement>(null);
+  let relLinkCount = 0;
+
   return (
     <>
       <Header size="short">
@@ -42,7 +32,11 @@ function Introduction() {
           aria-label="Back"
           onClick={() => {
             if (window.history.length > 0) {
-              window.history.back();
+              if (relLinkCount) {
+                window.history.go(-relLinkCount - 1);
+              } else {
+                window.history.back();
+              }
             } else {
               setLocation("/");
             }
@@ -56,33 +50,30 @@ function Introduction() {
           <AboutHeader>Information about the Tour</AboutHeader>
           <ul>
             <li>
-              <GeneralLink href="#about">
+              <GeneralLink href="#how-to-take-the-tour" onClick={() => {relLinkCount++; scrollIntoView(howToRef)}}>
+                How to Take the Tour
+              </GeneralLink>
+            </li>
+            <li>
+              <GeneralLink href="#about" onClick={() => {relLinkCount++; scrollIntoView(aboutRef)}}>
                 About the Site
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#how-to-take-the-tour">
-                How to take the Tour
+              <GeneralLink href="#statement" onClick={() => {relLinkCount++; scrollIntoView(statementRef)}}>
+                A Statement from Walter Cassidy
               </GeneralLink>
             </li>
             <li>
-              <GeneralLink href="#parking">Available Parking</GeneralLink>
+              <GeneralLink href="#references" onClick={() => {relLinkCount++; scrollIntoView(referencesRef)}}>
+                References
+              </GeneralLink>
             </li>
           </ul>
 
           <section>
-            <AboutAnchorHeader id="about">
-              About the Site
-            </AboutAnchorHeader>
-            <AboutParagraph>
-             Content goes here
-            </AboutParagraph>
-            
-          </section>
-
-          <section>
-            <AboutAnchorHeader id="how-to-take-the-tour">
-              How to take the Tour
+            <AboutAnchorHeader id="how-to-take-the-tour" ref={howToRef}>
+              How to Take the Tour
             </AboutAnchorHeader>
             <AboutParagraph>
               If you choose to take the tour, please allow yourself{" "}
@@ -116,47 +107,48 @@ function Introduction() {
           </section>
 
           <section>
-            <AboutAnchorHeader id="parking">
-              Transit Access & Available Parking
+            <AboutAnchorHeader id="about" ref={aboutRef}>
+              About the Site
             </AboutAnchorHeader>
             <AboutParagraph>
-              Looking for a place to park? 
+            The historical research and organizing impetus for this tour was provided by Walter Cassidy of the Windsor Essex Rainbow Alliance (WERA). The tour app was built using the Pytheas project. This open-source code was provided to the community by Parallel 42 Systems based on their work with the McDougall Corridor tour app, built in partnership with the Essex County Black Historical Research Society, the Windsor Law Centre for Cities, the School of Creative Arts (SOCA), and Leddy Library, with funding provided by Canada's federal government through the Canadian Urban Institute.<br/><br/>
+            The work of implementing Queer Walk was performed by Dana Teagle, Haley Tibbitts, and Zhenia Tomé, with funding and support from Parallel 42 Systems and Windsor Hackforge.
             </AboutParagraph>
-            <SmallMapContainer>
-              <MapContainer
-                center={[PARKING_LATLNG.lng, PARKING_LATLNG.lat]}
-                style={{ width: "100%", height: "100%" }}
-                zoom={16}
-                zoomControl={false}
-                {...interactionOptions}
-              >
-                <ZoomControls minZoom={14} maxZoom={18} />
-
-                <TileLayer
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  minZoom={14}
-                  maxZoom={18}
-                />
-
-                <Marker
-                  position={[PARKING_LATLNG.lng, PARKING_LATLNG.lat]}
-                  key={"parking"}
-                  icon={icon(baseIconConfig)}
-                  interactive={false}
-                ></Marker>
-              </MapContainer>
-            </SmallMapContainer>
           </section>
+
           <section>
-            <AboutAnchorHeader id="learn-more-contact">
-              Learn More & Contact information
+            <AboutAnchorHeader id="statement" ref={statementRef}>
+              A Statement from Walter Cassidy
             </AboutAnchorHeader>
             <AboutParagraph>
-              For technical inquiries about the tour or development process
-              please contact{" "}
+              The key to this walking tour is basic. It is about local visibility of the 2SLGBTQAI community. Unfortunately, much of that visibility has been erased for various reasons. Some of those reasons are as simple as the suppression of our identities, the lack of interest in who we are, overall hate or ignorance, and our own lack of seeing the importance of our stories and struggles.<br/><br/>
+              When creating the tour, some of the examples were difficult to prove if they “really” were queer, trans, or gender non-conforming references, especially before the 1960s. I included them anyways because one could argue either way if the experience was queer, trans, or gender non-conforming.<br/><br/>
+              I must acknowledge the hard work and dedication of the Windsor Essex Rainbow Alliance (WERA). WERA is a group of individuals whose goals are to institute a method of collecting, preserving, and disseminating the local history of the 2SLGBTQIA+ community and to establish a permanent public monument that will showcase the struggles, achievements, and celebrations of the local 2SLGBTQIA+ community for all in Windsor/Essex and beyond to visit, learn from, and enjoy. There are still so many voices, stories, and places that have not been told and could be lost forever. It is my goal to help change that reality.<br/><br/>
+              If you have any materials (newsletters, pictures, posters, buttons, shirts, etc.) you would like to have preserved or if you find any information that is not included in this tour and would like to make a request for an update or something changed, please contact me <a href="mailto:wequeerhistory@mdirect.net">by email</a>.
             </AboutParagraph>
           </section>
+
+          <section>
+            <AboutAnchorHeader id="references" ref={referencesRef}>
+              References
+            </AboutAnchorHeader>
+            <AboutList>
+                <li>Voice of the Fugitive (1851, Sandwich-Windsor publication by Henry and Mary Bibb)</li>
+                <li>Cruise Magazine (published by Tony Rome Enterprises)</li>
+                <li>Metra Magazine (published by Metra Inc.)</li>
+                <li>Windsor Star (and various other publications by same publisher)</li>
+                <li>Detroit Free Press</li>
+                <li>Toronto Telegram</li>
+                <li>Globe and Mail</li>
+                <li>Windsor Gay Unity Newsletter (1974-1979)</li>
+                <li>International Justice Monthly (1981-1982, published by Jack Summer, and edited by E. Leon Bushey)</li>
+                <li>Outspoken (1991-2005, contributions from Barry Adam, Gilles Brunet, and Wayne Tennant, and edited by Kenn Stanton)</li>
+                <li>Out and Aging: Our Stories (2010: Windsor Pride Community, edited by Barbara Zarzosa)</li>
+                <li>The Body Politic (1971-1987, published by the Toronto-based Pink Triangle Press)</li>
+                <li>Information and artifacts were also collected by firsthand interviews, collections or correspondences with Jim Monk, Lorriane Sayell, Beth Lyster, Harold Desmarias, Robin Sherman, Jill Gamble, Julie Fraser, Dr. Kael Sharman, Neil Mens, Paulette Kupnicki, Ginny Lundgren, Peter Sonnberg Schmidt, Dennis A. Dowker, John Shelhorn, Anna Kovinsky, Jamie Pitts, Caroline Carnerie, Dion Carter, Diana Mady Kelly, Diana Flemming Luke Maddaford, Joe McParland, Dani Bobb, Julie Leadbetter, Harold Desmarais, Wayne Tennant, Barry Adam, Robert Katzman, Colleen Gallagher, Nancy Campana, Tom Marchell, Michael Venus, Camil Jacques, David M Lyons-Black, Amanda Gellman, Mary Lou Gelissen, Marie-France Jean, June Willier, and Steven Lough</li>
+            </AboutList>
+          </section>
+
         </article>
       </MainContainer>
       <Footer />

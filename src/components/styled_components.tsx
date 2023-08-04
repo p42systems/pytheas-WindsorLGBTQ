@@ -1,6 +1,8 @@
 import styled from "@emotion/styled";
 import { TourStates } from "../types";
 import { Link } from "wouter";
+import ReactPlayer from "react-player";
+import { CarouselProvider, Image as CarouselImage, ButtonFirst, ButtonBack, ButtonNext, ButtonLast, DotGroup } from 'pure-react-carousel';
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -20,11 +22,14 @@ export const MainContainer = styled.main(() => ({
   flexGrow: 1,
   flexShrink: 1,
   flexBasis: "100%",
+  "@media screen and (min-height: 1106px)": {
+    minHeight: "calc(100vh - 325px)",
+  },
   "@media screen and (min-width: 769px)": {
     width: "769px",
   },
-  "@media screen and (max-width: 600px)": {
-    width: "100vw",
+  "@media screen and (max-width: 769px)": {
+    width: "90vw",
     padding: "0px 10px",
     boxSizing: "border-box",
   },
@@ -61,6 +66,7 @@ export const FirstParagraph = styled.p((props) => ({
 
 export const HomeParagraph = styled.p(() => ({
   margin: "1rem",
+  lineHeight: "1.5rem",
   "@media screen and (max-width: 600px)": {
     textAlign: "center",
   },
@@ -70,7 +76,7 @@ export const GeneralLink = styled(Link)((props) => ({
   color: props.theme.colors.headerBackground,
   transition: "all 100ms",
   "&:hover": {
-    color: props.theme.colors.suggestedMarker,
+    opacity: 0.5,
   },
   "&:visited": {},
 }));
@@ -146,6 +152,7 @@ export const CardsContainer = styled.div(() => ({
 export const ListParagraph = styled.p(() => ({
   margin: "1rem",
   textAlign: "center",
+  lineHeight: "1.5rem",
 }));
 
 export const CardContainer = styled.article((props) => ({
@@ -267,6 +274,25 @@ export const TourCardButton = styled(CardButton)(() => ({
 export const AboutParagraph = styled.p((props) => ({
   padding: "0.25rem 0.75rem 0 0.75rem",
   color: props.theme.colors.headerBackground,
+  "a": {
+    color: props.theme.colors.headerBackground,
+    "&:hover": {
+      opacity: 0.5,
+    },
+    "&:visited": {},
+  },
+}));
+
+export const AboutList = styled.ul((props) => ({
+  padding: "0.25rem 0.75rem 0 3rem",
+  color: props.theme.colors.headerBackground,
+  "a": {
+    color: props.theme.colors.headerBackground,
+    "&:hover": {
+      opacity: 0.5,
+    },
+    "&:visited": {},
+  },
 }));
 
 export const AboutHeader = styled.h1((props) => ({
@@ -285,9 +311,12 @@ export const AboutAnchorHeader = styled.h2((props) => ({
 
 export const HomeSubHeader = styled.h2((props) => ({
   padding: "0 0 0 1rem",
-  margin: "0.25rem 0 0.25rem 0",
+  margin: "2rem 0 0.25rem 0",
   fontSize: "1.25rem",
   color: props.theme.colors.headerBackground,
+  "@media screen and (max-width: 600px)": {
+    textAlign: "center",
+  },
 }));
 
 export const TourMainContainer = styled.main(() => ({
@@ -588,8 +617,169 @@ export const MapControlErrorMessage = styled.span((props) => ({
   padding: "2px",
 }));
 
+export const DetailsImage = styled.img((props) => ({
+  padding: "5px",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  objectFit: "cover",
+}));
+
+export const VideoPlayer = styled(ReactPlayer)((props) => ({
+  maxWidth: "100%",
+  padding: "5px",
+  margin: "5px 0",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px"
+}));
+
+export const DetailsCarousel = styled(CarouselProvider)((props) => ({
+  padding: "5px",
+  backgroundColor: `${props.theme.colors.suggestedMarker}`,
+  border: `5px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+}));
+
+export const DetailsCarouselImage = styled(CarouselImage)(() => ({
+  maxHeight: "600px",
+  cursor: "initial",
+  maxWidth: "100%",
+  objectFit: "cover",
+}));
+
+export const CarouselButtonFirst = styled(ButtonFirst)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselButtonBack = styled(ButtonBack)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  marginRight: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselButtonNext = styled(ButtonNext)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  marginRight: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+
+export const CarouselButtonLast = styled(ButtonLast)((props) => ({
+  backgroundColor: props.theme.colors.tourButton,
+  color: props.theme.colors.headerBackground,
+  textTransform: "uppercase",
+  cursor: "pointer",
+  fontWeight: 700,
+  border: `2px solid ${props.theme.colors.headerBackground}`,
+  borderRadius: "5px",
+  minHeight: "2rem",
+  marginTop: "5px",
+  marginLeft: "5px",
+  paddingLeft: "0.75rem",
+  paddingRight: "0.75rem",
+  transition: "all 200ms",
+  "&:hover, &:active": {
+    color: props.theme.colors.headerBackground,
+    backgroundColor: props.theme.colors.background,
+  },
+  "&:disabled": {
+    opacity: 0.5,
+    cursor: "initial",
+    "&:hover": {
+      backgroundColor: props.theme.colors.tourButton,
+    }
+  }
+}));
+
+export const CarouselDotGroup = styled(DotGroup)((props) => ({
+  "button": {
+    border: `2px solid ${props.theme.colors.headerBackground}`,
+    borderRadius: "10px",
+    padding: "5px",
+    marginRight: "5px",
+    "&:hover, &:active": {
+      backgroundColor: props.theme.colors.background,
+    },
+    "&:disabled": {
+      opacity: 0.5,
+      cursor: "initial",
+      "&:hover": {
+        backgroundColor: props.theme.colors.tourButton,
+      }
+    }
+  }
+}));
+
 export const DetailsContentContainer = styled.div(() => ({
   margin: "1rem 0",
+  lineHeight: "1.5rem",
 }));
 
 export const DetailCheckboxContainer = styled.div(() => ({
@@ -641,8 +831,12 @@ export const FooterSubBarContainer = styled.div(() => ({
 }));
 
 export const CopyRightContainer = styled.span(() => ({
-  margin: "0 0 0 1rem",
-  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  "@media screen and (max-width: 1028px)": {
+    justifyContent: "flex-start",
+    margin: "0 0 0 1rem",
+  },
 }));
 
 export const SponsorPartnerContainer = styled.span(() => ({
@@ -723,12 +917,12 @@ export const HeaderSubBarContainer = styled.div(() => ({
   display: "flex",
   alignItems: "flex-start",
   "@media screen and (min-width: 1028px)": {
-    width: "1028px",
+    width: "90vw",
     flexDirection: "row-reverse",
     justifyContent: "space-between",
   },
   "@media screen and (max-width: 1028px)": {
-    width: "100vw",
+    width: "95vw",
     flexDirection: "column",
     justifyContent: "left",
   },
@@ -741,10 +935,10 @@ export const HeaderTopBar = styled.div(() => ({
   display: "flex",
   justifyContent: "flex-end",
   "@media screen and (min-width: 1028px)": {
-    width: "1028px",
+    width: "90vw",
   },
   "@media screen and (max-width: 1028px)": {
-    width: "100vw",
+    width: "95vw",
   },
   minWidth: "375px",
 }));
@@ -864,13 +1058,20 @@ export const HelpLink = styled.a(() => ({
   },
 }));
 
-export const HeaderImage = styled.img((props) => ({
+export const HeaderImage = styled.img(() => ({
   position: "absolute",
   top: "50%",
   left: "50%",
+  width: "450px",
+  height: "180px",
   margin: 0,
   padding: 0,
-  transform: `translateY(calc(-${props.height} / 2)) translateX(calc(-${props.width} / 2))`,
+  transform: `translateY(calc(-180px / 2)) translateX(calc(-450px / 2))`,
+  "@media screen and (max-width: 1028px)": {
+    width: "300px",
+    height: "120px",
+    transform: `translateY(calc(-120px / 2)) translateX(calc(-300px / 2))`,
+  },
 }));
 
 export const AboutButtonsContainer = styled.div(() => ({
@@ -890,31 +1091,60 @@ export const AboutButtonsContainer = styled.div(() => ({
 
 export const NavigationButtonsContainer = styled.nav(() => ({
   display: "flex",
-  rowGap: "1rem",
-  margin: "1rem 0 1rem 0",
+  gap: "25px",
+  margin: "0 25px",
   justifyContent: "space-evenly",
   flexWrap: "wrap",
-  "@media screen and (min-width: 769px)": {
-    width: "769px",
-    padding: "0 1rem 0 0",
-  },
-  "@media screen and (max-width: 769px)": {
-    width: "100vw",
-  },
-  minWidth: "375px",
+}));
+
+export const NavigationDropDownContainer = styled.div(() => ({
+  display: "flex",
+  rowGap: "1rem",
+  flexDirection: "column",
+  justifyContent: "space-evenly",
+  width: "300px"
+}));
+
+export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(() => ({
+  display: "none",
 }));
 
 export const NavigationButton = styled(Button)(() => ({
-  flexGrow: 1,
-  minWidth: "275px",
-  maxWidth: "300px",
+  width: "300px",
   border: "2px solid #191919",
-  flexShrink: 1,
+  alignSelf: "flex-start",
 }));
 
 export const NavigationContentButton = styled(NavigationButton)((props) => ({
-  backgroundColor: props.theme.colors.contentButton,
+  backgroundColor: props.theme.colors.contentButton
 }));
+
+export const NavigationDropDownButton = styled(NavigationButton)((props) => ({
+  backgroundColor: props.theme.colors.contentButton,
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+  ":after": {
+    content: `""`,
+    transform: "rotate(-90deg)",
+    position: "absolute",
+    right: "0.5rem",
+    width: "0.9rem",
+    height: "0.9rem",
+    backgroundImage: `url("/icons/back.svg")`,
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+    backgroundSize: "contain",
+  },
+}));
+
+export const DropDownOptionButton = styled(NavigationButton)(() => ({
+  width: "100%",
+}));
+
+
 
 export const CenterAllContainer = styled.div(() => ({
   width: "100%",

@@ -13,8 +13,10 @@ import {
   baseIconConfigAtom,
   markersQueryAtom,
   boundingBoxQueryAtom,
+  tourPreferenceAtom,
 } from "../atoms";
 import { SmallMapContainer } from "./styled_components";
+import { fetchOrder } from "../services";
 
 const interactionOptions = {
   doubleClickZoom: false,
@@ -29,8 +31,11 @@ function BoundingBoxMap() {
   const { markers, order } = useAtomValue(markersQueryAtom);
   const boundingBox = useAtomValue(boundingBoxQueryAtom);
   const baseIconConfig = useAtomValue(baseIconConfigAtom);
+  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const theme = useTheme();
+
+  const preferredOrder = fetchOrder(tourPreference, order);
 
   return (
     <SmallMapContainer>
@@ -54,7 +59,7 @@ function BoundingBoxMap() {
         </Pane>
 
         <Pane name="markers" style={{ zIndex: 500 }}>
-          {order
+          {preferredOrder
             .map((makerId) => markers[makerId])
             .map((marker) => (
               <Marker

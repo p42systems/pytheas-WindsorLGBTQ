@@ -26,6 +26,7 @@ import {
   refetchDirectionQueryAtom,
   paddedBoundingBoxAtom,
   getSavedUserLocationAtom,
+  tourPreferenceAtom
 } from "./../atoms";
 import {
   MapAppicationContainer,
@@ -54,6 +55,7 @@ import { IMarker, TourStates } from "../types";
 import CustomControls from "./CustomControls";
 import DirectionsToggle from "./DirectionsToggle";
 import ZoomControls from "./ZoomControls";
+import { fetchOrder } from "../services";
 
 type CardStates =
   | {
@@ -127,6 +129,7 @@ function MarkerMap() {
   const saveUserLocation = useAtomValue(getSavedUserLocationAtom);
   const setDetailsMarkerId = useSetAtom(setDetailsMarkerIdAtom);
   const boundingBox = useAtomValue(paddedBoundingBoxAtom);
+  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const markerProgressStates = useAtomValue(getAllMarkerProgressAtom);
 
@@ -153,12 +156,14 @@ function MarkerMap() {
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
   const navigateTo = useAtomValue(navigateToMarkerAtom);
 
+  const preferredOrder = fetchOrder(tourPreference, order);
+
   const cardState = buildCardState(tourState, suggestedMarker, selectedMarker);
 
   const defaultCenterPoint =
     selectedMarker?.point ??
     suggestedMarker?.point ??
-    markers[order[0]]?.point ??
+    markers[preferredOrder[0]]?.point ??
     boundingBox.getCenter();
 
   const centerBetweenUserAndMarker = saveUserLocation
@@ -246,7 +251,7 @@ function MarkerMap() {
               <ZoomControls minZoom={15} />
 
               <Pane name="markers" style={{ zIndex: 499 }}>
-                {order
+                {preferredOrder
                   .map((makerId) => markers[makerId])
                   .map((marker) => (
                     <Marker
