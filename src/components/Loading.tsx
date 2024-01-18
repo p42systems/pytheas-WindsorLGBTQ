@@ -4,7 +4,7 @@ function Loading() {
   return (
     <CenterAllContainer>
       <CenterImgContainer>
-        <img width="100%" src="/loading.gif" alt="The tour is loading" />
+        <img width="100%" src="/loading.png" alt="The tour is loading" />
       </CenterImgContainer>
     </CenterAllContainer>
   );

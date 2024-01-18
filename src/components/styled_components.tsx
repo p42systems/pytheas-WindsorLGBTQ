@@ -2,7 +2,15 @@ import styled from "@emotion/styled";
 import { TourStates } from "../types";
 import { Link } from "wouter";
 import ReactPlayer from "react-player";
-import { CarouselProvider, Image as CarouselImage, ButtonFirst, ButtonBack, ButtonNext, ButtonLast, DotGroup } from 'pure-react-carousel';
+import {
+  CarouselProvider,
+  Image as CarouselImage,
+  ButtonFirst,
+  ButtonBack,
+  ButtonNext,
+  ButtonLast,
+  DotGroup,
+} from "pure-react-carousel";
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -274,7 +282,7 @@ export const TourCardButton = styled(CardButton)(() => ({
 export const AboutParagraph = styled.p((props) => ({
   padding: "0.25rem 0.75rem 0 0.75rem",
   color: props.theme.colors.headerBackground,
-  "a": {
+  a: {
     color: props.theme.colors.headerBackground,
     "&:hover": {
       opacity: 0.5,
@@ -286,7 +294,7 @@ export const AboutParagraph = styled.p((props) => ({
 export const AboutList = styled.ul((props) => ({
   padding: "0.25rem 0.75rem 0 3rem",
   color: props.theme.colors.headerBackground,
-  "a": {
+  a: {
     color: props.theme.colors.headerBackground,
     "&:hover": {
       opacity: 0.5,
@@ -542,6 +550,7 @@ export const MarkerButton = styled(Button)<{
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center",
     backgroundSize: "contain",
+    transform: "rotate(180deg)",
   },
   "&:hover, &:active": {
     color: props.theme.colors.headerBackground,
@@ -631,7 +640,7 @@ export const VideoPlayer = styled(ReactPlayer)((props) => ({
   margin: "5px 0",
   backgroundColor: `${props.theme.colors.suggestedMarker}`,
   border: `5px solid ${props.theme.colors.headerBackground}`,
-  borderRadius: "5px"
+  borderRadius: "5px",
 }));
 
 export const DetailsCarousel = styled(CarouselProvider)((props) => ({
@@ -670,8 +679,8 @@ export const CarouselButtonFirst = styled(ButtonFirst)((props) => ({
     cursor: "initial",
     "&:hover": {
       backgroundColor: props.theme.colors.tourButton,
-    }
-  }
+    },
+  },
 }));
 
 export const CarouselButtonBack = styled(ButtonBack)((props) => ({
@@ -698,8 +707,8 @@ export const CarouselButtonBack = styled(ButtonBack)((props) => ({
     cursor: "initial",
     "&:hover": {
       backgroundColor: props.theme.colors.tourButton,
-    }
-  }
+    },
+  },
 }));
 
 export const CarouselButtonNext = styled(ButtonNext)((props) => ({
@@ -726,10 +735,9 @@ export const CarouselButtonNext = styled(ButtonNext)((props) => ({
     cursor: "initial",
     "&:hover": {
       backgroundColor: props.theme.colors.tourButton,
-    }
-  }
+    },
+  },
 }));
-
 
 export const CarouselButtonLast = styled(ButtonLast)((props) => ({
   backgroundColor: props.theme.colors.tourButton,
@@ -754,12 +762,12 @@ export const CarouselButtonLast = styled(ButtonLast)((props) => ({
     cursor: "initial",
     "&:hover": {
       backgroundColor: props.theme.colors.tourButton,
-    }
-  }
+    },
+  },
 }));
 
 export const CarouselDotGroup = styled(DotGroup)((props) => ({
-  "button": {
+  button: {
     border: `2px solid ${props.theme.colors.headerBackground}`,
     borderRadius: "10px",
     padding: "5px",
@@ -772,9 +780,9 @@ export const CarouselDotGroup = styled(DotGroup)((props) => ({
       cursor: "initial",
       "&:hover": {
         backgroundColor: props.theme.colors.tourButton,
-      }
-    }
-  }
+      },
+    },
+  },
 }));
 
 export const DetailsContentContainer = styled.div(() => ({
@@ -1102,12 +1110,14 @@ export const NavigationDropDownContainer = styled.div(() => ({
   rowGap: "1rem",
   flexDirection: "column",
   justifyContent: "space-evenly",
-  width: "300px"
+  width: "300px",
 }));
 
-export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(() => ({
-  display: "none",
-}));
+export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(
+  () => ({
+    display: "none",
+  })
+);
 
 export const NavigationButton = styled(Button)(() => ({
   width: "300px",
@@ -1116,7 +1126,7 @@ export const NavigationButton = styled(Button)(() => ({
 }));
 
 export const NavigationContentButton = styled(NavigationButton)((props) => ({
-  backgroundColor: props.theme.colors.contentButton
+  backgroundColor: props.theme.colors.contentButton,
 }));
 
 export const NavigationDropDownButton = styled(NavigationButton)((props) => ({
@@ -1144,8 +1154,6 @@ export const DropDownOptionButton = styled(NavigationButton)(() => ({
   width: "100%",
 }));
 
-
-
 export const CenterAllContainer = styled.div(() => ({
   width: "100%",
   height: "100%",
@@ -1164,6 +1172,7 @@ export const CenterImgContainer = styled.div(() => ({
     width: "50vw",
   },
   minWidth: "365px",
+  maxWidth: "500px",
   margin: "0 0 2rem 0",
 }));
 
