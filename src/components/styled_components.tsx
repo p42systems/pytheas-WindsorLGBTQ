@@ -1172,6 +1172,7 @@ export const CenterImgContainer = styled.div(() => ({
     width: "50vw",
   },
   minWidth: "365px",
+  maxWidth: "500px",
   margin: "0 0 2rem 0",
 }));
 
