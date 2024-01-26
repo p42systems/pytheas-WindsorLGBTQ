@@ -5,17 +5,13 @@ import {
   BackButton,
   AboutParagraph,
   AboutList,
-  AboutHeader,
   AboutAnchorHeader,
-  StatictourButtonButton,
-  StaticcontentButtonButton,
-  StaticheaderBackgroundButton,
-  GeneralLink,
 } from "./styled_components";
-import { scrollIntoView } from "../services";
 import Header from "./Header";
 import Footer from "./Footer";
 import TourInstructionsIntro from "./TourInstructionsIntro";
+import IntroNav from "./IntroNav";
+import { intro } from "../services";
 
 function Introduction() {
   const [, setLocation] = useLocation();
@@ -23,7 +19,6 @@ function Introduction() {
   const aboutRef = useRef<HTMLHeadingElement>(null);
   const statementRef = useRef<HTMLHeadingElement>(null);
   const referencesRef = useRef<HTMLHeadingElement>(null);
-  let relLinkCount = 0;
 
   return (
     <>
@@ -32,15 +27,7 @@ function Introduction() {
           title="Back"
           aria-label="Back"
           onClick={() => {
-            if (window.history.length > 0) {
-              if (relLinkCount) {
-                window.history.go(-relLinkCount - 1);
-              } else {
-                window.history.back();
-              }
-            } else {
-              setLocation("/");
-            }
+            intro.back(setLocation);
           }}
         >
           Back
@@ -48,57 +35,14 @@ function Introduction() {
       </Header>
       <MainContainer>
         <article>
-          <AboutHeader>Information about the Tour</AboutHeader>
-          <ul>
-            <li>
-              <GeneralLink
-                href="#how-to-take-the-tour"
-                onClick={() => {
-                  relLinkCount++;
-                  scrollIntoView(howToRef);
-                }}
-              >
-                How to Take the Tour
-              </GeneralLink>
-            </li>
-            <li>
-              <GeneralLink
-                href="#about"
-                onClick={() => {
-                  relLinkCount++;
-                  scrollIntoView(aboutRef);
-                }}
-              >
-                About the Site
-              </GeneralLink>
-            </li>
-            <li>
-              <GeneralLink
-                href="#statement"
-                onClick={() => {
-                  relLinkCount++;
-                  scrollIntoView(statementRef);
-                }}
-              >
-                A Statement from Walter Cassidy
-              </GeneralLink>
-            </li>
-            <li>
-              <GeneralLink
-                href="#references"
-                onClick={() => {
-                  relLinkCount++;
-                  scrollIntoView(referencesRef);
-                }}
-              >
-                References
-              </GeneralLink>
-            </li>
-          </ul>
+          <IntroNav
+            howToRef={howToRef}
+            aboutRef={aboutRef}
+            statementRef={statementRef}
+            referencesRef={referencesRef}
+          />
 
-          <section>
-            <TourInstructionsIntro howToRef={howToRef} />
-          </section>
+          <TourInstructionsIntro howToRef={howToRef} />
 
           <section>
             <AboutAnchorHeader id="about" ref={aboutRef}>

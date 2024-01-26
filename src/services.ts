@@ -11,9 +11,9 @@ export type MarkerPayload = {
 
 export type MarkerDetailPayload = {
   id: string;
-  url: {path: string, type: string, imageAlt: string}[];
+  url: { path: string; type: string; imageAlt: string }[];
   description: string[] | string;
-  timeline: {header: string, list: string[]};
+  timeline: { header: string; list: string[] };
   image: string;
   imageAlt: string;
 };
@@ -47,7 +47,10 @@ export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
   }
 
   const { full, walking } = await res.json();
-  return new LatLngBounds([walking.north, walking.east], [walking.south, walking.west]);
+  return new LatLngBounds(
+    [walking.north, walking.east],
+    [walking.south, walking.west]
+  );
 }
 
 export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
@@ -183,22 +186,44 @@ export async function fetchRoute(
   return await res.json();
 }
 
-export function fetchOrder(
-  tourPreference: string,
-  order: string[]
-): string[] {
+export function fetchOrder(tourPreference: string, order: string[]): string[] {
   const busStops: number[] = [8, 2, 3, 32, 30, 42, 44, 47];
 
-  switch(tourPreference) {
-    case "walking": order = order.slice(30, 39);
-    break;
-    case "bus": order = busStops.map((stopNum) => order[stopNum - 1]);;
-    break;
+  switch (tourPreference) {
+    case "walking":
+      order = order.slice(30, 39);
+      break;
+    case "bus":
+      order = busStops.map((stopNum) => order[stopNum - 1]);
+      break;
   }
 
   return order;
-};
-
- export function scrollIntoView(props: React.RefObject<HTMLHeadingElement>) {
-    props.current?.scrollIntoView({behavior: "smooth"})
 }
+
+class IntroServices {
+  relLinkCount = 0;
+
+  scrollIntoView(props: React.RefObject<HTMLHeadingElement>) {
+    props.current?.scrollIntoView({ behavior: "smooth" });
+  }
+
+  clickLink(ref: React.RefObject<HTMLHeadingElement>) {
+    this.relLinkCount++;
+    this.scrollIntoView(ref);
+  }
+
+  back(setLocation: any) {
+    if (window.history.length > 0) {
+      if (this.relLinkCount) {
+        window.history.go(-this.relLinkCount - 1);
+      } else {
+        window.history.back();
+      }
+    } else {
+      setLocation("/");
+    }
+  }
+}
+
+export const intro = new IntroServices();
