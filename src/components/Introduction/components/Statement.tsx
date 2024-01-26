@@ -1,5 +1,5 @@
 import { RefObject } from "react";
-import { AboutParagraph, AboutAnchorHeader } from "./styled_components";
+import { AboutParagraph, AboutAnchorHeader } from "../../styled_components";
 
 function Statement(props: { statementRef: RefObject<HTMLHeadingElement> }) {
   return (

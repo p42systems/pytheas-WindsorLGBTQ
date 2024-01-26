@@ -1,6 +1,10 @@
 import { useLocation } from "wouter";
-import { useAtom, useAtomValue, useSetAtom} from "jotai";
-import { isDropDownAtom, getDropDownAtom, tourPreferenceAtom} from "../atoms";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import {
+  isDropDownAtom,
+  getDropDownAtom,
+  tourPreferenceAtom,
+} from "../../../atoms";
 
 import {
   NavigationButtonsContainer,
@@ -9,7 +13,7 @@ import {
   NavigationContentButton,
   NavigationDropDownButton,
   DropDownOptionButton,
-} from "./styled_components";
+} from "../../styled_components";
 
 function NavigationButtons() {
   const [, setLocation] = useLocation();
@@ -20,7 +24,7 @@ function NavigationButtons() {
     setTourPreference(preference);
     setLocation("/tour");
   };
-  
+
   return (
     <NavigationButtonsContainer>
       <NavigationContentButton
@@ -32,18 +36,17 @@ function NavigationButtons() {
       >
         Content
       </NavigationContentButton>
-      <NavigationDropDownContainer 
+      <NavigationDropDownContainer
         onClick={() => {
           setIsDropDown(!isDropDown);
         }}
       >
-        <NavigationDropDownButton
-          title="Choose Tour"
-          aria-label="Choose Tour"
-        >
+        <NavigationDropDownButton title="Choose Tour" aria-label="Choose Tour">
           Choose Tour
         </NavigationDropDownButton>
-        <NavigationOptionsContainer style={{display: useAtomValue(getDropDownAtom)}}>
+        <NavigationOptionsContainer
+          style={{ display: useAtomValue(getDropDownAtom) }}
+        >
           <DropDownOptionButton
             title="Full Tour"
             aria-label="Full Tour"

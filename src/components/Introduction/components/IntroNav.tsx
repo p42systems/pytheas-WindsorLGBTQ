@@ -1,8 +1,8 @@
 import { RefObject } from "react";
 
-import { AboutHeader, GeneralLink } from "./styled_components";
+import { AboutHeader, GeneralLink } from "../../styled_components";
 
-import { intro } from "../services";
+import { intro } from "../../../services";
 
 function IntroNav(props: {
   howToRef: RefObject<HTMLHeadingElement>;

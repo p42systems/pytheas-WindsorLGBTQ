@@ -2,9 +2,9 @@ import { Suspense } from "react";
 import { Route, Switch } from "wouter";
 import { ErrorBoundary } from "react-error-boundary";
 
-import Introduction from "./Introduction";
+import Introduction from "./Introduction/Introduction";
 import MarkerList from "./MarkerList";
-import Home from "./Home";
+import Home from "./Home/Home";
 import Tour from "./Tour";
 import Loading from "./Loading";
 import GenericError from "./GenericError";

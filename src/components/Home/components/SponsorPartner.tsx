@@ -3,7 +3,7 @@ import {
   HomeParagraph,
   SponsorPartnerContainer,
   SponsorPartnerImg,
-} from "./styled_components";
+} from "../../styled_components";
 
 function SponsorPartner() {
   return (

@@ -1,5 +1,5 @@
 import { RefObject } from "react";
-import { AboutList, AboutAnchorHeader } from "./styled_components";
+import { AboutList, AboutAnchorHeader } from "../../styled_components";
 
 function References(props: { referencesRef: RefObject<HTMLHeadingElement> }) {
   return (

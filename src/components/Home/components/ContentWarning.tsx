@@ -1,4 +1,4 @@
-import { HomeSubHeader, HomeParagraph } from "./styled_components";
+import { HomeSubHeader, HomeParagraph } from "../../styled_components";
 
 function ContentWarning() {
   return (
