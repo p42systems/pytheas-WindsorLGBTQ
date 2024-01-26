@@ -11,7 +11,7 @@ function TourInstructionsIntro(props: {
   howToRef: RefObject<HTMLHeadingElement>;
 }) {
   return (
-    <>
+    <section>
       <AboutAnchorHeader id="how-to-take-the-tour" ref={props.howToRef}>
         How to Take the Tour
       </AboutAnchorHeader>
@@ -42,7 +42,7 @@ function TourInstructionsIntro(props: {
         <StatictourButtonButton>Content</StatictourButtonButton> button to watch
         at your own pace.
       </AboutParagraph>
-    </>
+    </section>
   );
 }
 
