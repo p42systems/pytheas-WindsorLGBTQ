@@ -12,7 +12,6 @@ import {
   HeaderDetails,
   HeaderDetailsH2,
   BackButton,
-  DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
   DetailsPageBackButtonContainer,
@@ -29,6 +28,7 @@ import Footer from "../Footer";
 import ZoomControls from "../ZoomControls";
 import { back } from "../../services";
 import Media from "./components/Media/Media";
+import DetailDescription from "./components/DetailDescription";
 
 const interactionOptions = {
   doubleClickZoom: false,
@@ -82,26 +82,7 @@ function Details() {
 
           <Media />
 
-          <DetailsContentContainer>
-            {typeof detail.description === "string" ? (
-              <p>{detail.description}</p>
-            ) : (
-              detail.description.map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))
-            )}
-            {detail.timeline ? (
-              <>
-                <hr />
-                <h3>{detail.timeline.header}:</h3>
-                <ul>
-                  {detail.timeline.list.map((listItem, index) => (
-                    <li key={index}>{listItem}</li>
-                  ))}
-                </ul>
-              </>
-            ) : null}
-          </DetailsContentContainer>
+          <DetailDescription />
 
           <SmallMapContainer>
             <MapContainer
