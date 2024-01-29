@@ -3,7 +3,7 @@ import { Route, Switch } from "wouter";
 import { ErrorBoundary } from "react-error-boundary";
 
 import Introduction from "./Introduction/Introduction";
-import MarkerList from "./MarkerList";
+import Content from "./Content/Content";
 import Home from "./Home/Home";
 import Tour from "./Tour";
 import Loading from "./Loading";
@@ -18,7 +18,7 @@ function Routes() {
       <Route path="/list">
         <ErrorBoundary FallbackComponent={GenericError}>
           <Suspense fallback={<Loading />}>
-            <MarkerList />
+            <Content />
           </Suspense>
         </ErrorBoundary>
       </Route>

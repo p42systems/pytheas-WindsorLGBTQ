@@ -27,7 +27,7 @@ function Introduction() {
           title="Back"
           aria-label="Back"
           onClick={() => {
-            intro.back(setLocation);
+            intro.backCheck(setLocation);
           }}
         >
           Back

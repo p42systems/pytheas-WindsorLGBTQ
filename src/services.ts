@@ -213,15 +213,11 @@ class IntroServices {
     this.scrollIntoView(ref);
   }
 
-  back(setLocation: any) {
-    if (window.history.length > 0) {
-      if (this.relLinkCount) {
-        window.history.go(-this.relLinkCount - 1);
-      } else {
-        window.history.back();
-      }
+  backCheck(setLocation: any) {
+    if (this.relLinkCount && window.history.length > 0) {
+      window.history.go(-this.relLinkCount - 1);
     } else {
-      setLocation("/");
+      back(setLocation);
     }
   }
 }
@@ -235,4 +231,12 @@ export const loadTour = (
 ) => {
   setTourPreference(preference);
   setLocation("/tour");
+};
+
+export const back = (setLocation: any) => {
+  if (window.history.length > 0) {
+    window.history.back();
+  } else {
+    setLocation("/");
+  }
 };
