@@ -1,7 +1,5 @@
 import { useAtomValue } from "jotai";
 import { icon } from "leaflet";
-import ReactPlayer from "react-player";
-import { Slide, Slider } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { Redirect, useLocation } from "wouter";
@@ -14,31 +12,23 @@ import {
   HeaderDetails,
   HeaderDetailsH2,
   BackButton,
-  VideoPlayer,
-  DetailsImage,
-  DetailsCarousel,
-  DetailsCarouselImage,
-  CarouselDotGroup,
-  CarouselButtonFirst,
-  CarouselButtonBack,
-  CarouselButtonNext,
-  CarouselButtonLast,
   DetailsContentContainer,
   DetailCheckboxContainer,
   DetailsPageButtonsContainer,
   DetailsPageBackButtonContainer,
-} from "./styled_components";
-import CompleteCheckBox from "./CompleteCheckbox";
+} from "../styled_components";
+import CompleteCheckBox from "../CompleteCheckbox";
 import {
   detailsQueryAtom,
   getAllMarkerProgressAtom,
   markersQueryAtom,
   baseIconConfigAtom,
-} from "./../atoms";
-import Header from "./Header";
-import Footer from "./Footer";
-import ZoomControls from "./ZoomControls";
-import { back } from "../services";
+} from "../../atoms";
+import Header from "../Header";
+import Footer from "../Footer";
+import ZoomControls from "../ZoomControls";
+import { back } from "../../services";
+import Media from "./components/Media/Media";
 
 const interactionOptions = {
   doubleClickZoom: false,
@@ -62,119 +52,6 @@ function Details() {
   if (!marker) {
     return <Redirect to="/notfound" />;
   }
-
-  // Conditional detail.url rendering
-
-  const isMultipleImages = (urlObject: {
-    path: string;
-    type: string;
-    imageAlt: string;
-  }) => urlObject.type === "image";
-
-  let mediaType: string;
-
-  let urlVideo: { path: string; type: string; imageAlt: string }[];
-
-  let urlImages: { path: string; type: string; imageAlt: string }[];
-
-  let mediaPlayer;
-
-  function checkMedia(
-    urlArray: { path: string; type: string; imageAlt: string }[]
-  ) {
-    if (!urlArray) {
-      mediaType = "";
-    } else if (urlArray.length === 1 && urlArray[0].type === "video") {
-      mediaType = "video";
-    } else if (urlArray.every(isMultipleImages)) {
-      mediaType = "images";
-    } else if (urlArray.length > 1 && !urlArray.every(isMultipleImages)) {
-      mediaType = "mixedMedia";
-      urlVideo = urlArray.filter((urlObject) => urlObject.type === "video");
-      urlImages = urlArray.filter((urlObject) => urlObject.type === "image");
-    }
-
-    function video(
-      mediaArray: { path: string; type: string; imageAlt: string }[]
-    ) {
-      return (
-        <>
-          {mediaArray.map((video) => (
-            <VideoPlayer
-              controls={true}
-              height={"400px"}
-              width={"100%"}
-              url={video.path}
-            />
-          ))}
-        </>
-      );
-    }
-
-    function images(
-      mediaArray: { path: string; type: string; imageAlt: string }[]
-    ) {
-      if (mediaArray.length === 1) {
-        return (
-          <DetailsImage src={mediaArray[0].path} alt={mediaArray[0].imageAlt} />
-        );
-      } else {
-        return (
-          <DetailsCarousel
-            visibleSlides={2}
-            totalSlides={mediaArray.length}
-            naturalSlideWidth={300}
-            naturalSlideHeight={400}
-            isIntrinsicHeight
-          >
-            <Slider>
-              {mediaArray.map((image, index) => {
-                return (
-                  <Slide tag="a" index={index} key={index}>
-                    <DetailsCarouselImage
-                      src={image.path}
-                      alt={image.imageAlt}
-                      hasMasterSpinner={true}
-                    />
-                  </Slide>
-                );
-              })}
-            </Slider>
-            {mediaArray.length > 2 ? (
-              <>
-                <CarouselDotGroup />
-                <CarouselButtonFirst>First</CarouselButtonFirst>
-                <CarouselButtonBack>Back</CarouselButtonBack>
-                <CarouselButtonNext>Next</CarouselButtonNext>
-                <CarouselButtonLast>Last</CarouselButtonLast>
-              </>
-            ) : null}
-          </DetailsCarousel>
-        );
-      }
-    }
-
-    switch (mediaType) {
-      case "video":
-        mediaPlayer = video(urlArray);
-        break;
-      case "images":
-        mediaPlayer = images(urlArray);
-        break;
-      case "mixedMedia":
-        mediaPlayer = (
-          <>
-            {video(urlVideo)}
-            {images(urlImages)}
-          </>
-        );
-        break;
-      default:
-        break;
-    }
-  }
-
-  checkMedia(detail.url);
 
   return (
     <>
@@ -203,7 +80,7 @@ function Details() {
         <SectionContentContainer>
           <DetailCheckboxContainer></DetailCheckboxContainer>
 
-          {mediaPlayer}
+          <Media />
 
           <DetailsContentContainer>
             {typeof detail.description === "string" ? (

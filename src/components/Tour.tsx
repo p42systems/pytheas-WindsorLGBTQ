@@ -7,7 +7,7 @@ import { getViewControllerStateAtom } from "./../atoms";
 import GenericError from "./GenericError";
 import TourError from "./TourError";
 import MarkerMap from "./MarkerMap";
-import Details from "./Details";
+import Details from "./Details/Details";
 import {
   AppContainer,
   ContentButton,
