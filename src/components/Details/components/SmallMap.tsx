@@ -8,21 +8,13 @@ import {
   markersQueryAtom,
 } from "../../../atoms";
 import { icon } from "leaflet";
+import { interactionOptions } from "../../../services";
 
 function SmallMap() {
   const detail = useAtomValue(detailsQueryAtom);
   const { markers } = useAtomValue(markersQueryAtom);
 
   const marker = markers[detail.id];
-
-  const interactionOptions = {
-    doubleClickZoom: false,
-    closePopupOnClick: false,
-    dragging: false,
-    trackResize: true,
-    touchZoom: false,
-    scrollWheelZoom: false,
-  };
 
   const baseIconConfig = useAtomValue(baseIconConfigAtom);
 

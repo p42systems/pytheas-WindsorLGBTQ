@@ -2,7 +2,7 @@ import { LatLngBounds } from "leaflet";
 import fetch from "cross-fetch";
 import { Feature, FeatureCollection, Point } from "geojson";
 
-import type { IMarker, UserLocation } from "./types";
+import type { IMarker, UserLocation, TourStates, CardStates } from "./types";
 
 export type MarkerPayload = {
   markers: Record<string, IMarker>;
@@ -240,3 +240,52 @@ export const back = (setLocation: any) => {
     setLocation("/");
   }
 };
+
+export const interactionOptions = {
+  doubleClickZoom: false,
+  closePopupOnClick: false,
+  dragging: false,
+  trackResize: false,
+  touchZoom: false,
+  scrollWheelZoom: false,
+};
+
+export function buildCardState(
+  tourState: TourStates | "finished",
+  suggestedMarker: IMarker | null,
+  selectedMarker: IMarker | null
+): CardStates {
+  if (tourState === "welcome" && suggestedMarker != null) {
+    return {
+      state: "welcome",
+      stateText: "SUGGESTED STARTING LOCATION",
+      marker: suggestedMarker,
+    };
+  } else if (tourState === "suggested" && suggestedMarker != null) {
+    return {
+      state: "suggested",
+      stateText: "SUGGESTED NEXT LOCATION",
+      marker: suggestedMarker,
+    };
+  } else if (tourState === "selected" && selectedMarker != null) {
+    return {
+      state: "selected",
+      stateText: "LOCATION",
+      marker: selectedMarker,
+    };
+  } else if (tourState === "completed" && selectedMarker != null) {
+    return {
+      state: "completed",
+      stateText: "COMPLETED",
+      marker: selectedMarker,
+    };
+  } else if (tourState === "suggested" && suggestedMarker == null) {
+    return {
+      state: "finished",
+      stateText: "FINISHED",
+      marker: null,
+    };
+  } else {
+    throw Error("State mismatch has occured");
+  }
+}

@@ -1,4 +1,7 @@
-import { WarningImageContainer, CenterAllContainer } from "./styled_components";
+import {
+  WarningImageContainer,
+  CenterAllContainer,
+} from "../../styled_components";
 
 interface TourErrorProps {
   size?: "short" | "long";

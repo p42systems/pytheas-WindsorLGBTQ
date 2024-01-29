@@ -1,4 +1,3 @@
-import { icon } from "leaflet";
 import { useTheme } from "@emotion/react";
 import { useAtomValue } from "jotai";
 import {
@@ -9,33 +8,15 @@ import {
   Rectangle,
 } from "react-leaflet";
 
-import {
-  baseIconConfigAtom,
-  markersQueryAtom,
-  boundingBoxQueryAtom,
-  tourPreferenceAtom,
-} from "../atoms";
-import { SmallMapContainer } from "./styled_components";
-import { fetchOrder } from "../services";
-
-const interactionOptions = {
-  doubleClickZoom: false,
-  closePopupOnClick: false,
-  dragging: false,
-  trackResize: false,
-  touchZoom: false,
-  scrollWheelZoom: false,
-};
+import { boundingBoxQueryAtom } from "../../../../atoms";
+import { SmallMapContainer } from "../../../styled_components";
+import { interactionOptions } from "../../../../services";
+import BoundingBoxOrder from "./components/BoundingBoxOrder";
 
 function BoundingBoxMap() {
-  const { markers, order } = useAtomValue(markersQueryAtom);
   const boundingBox = useAtomValue(boundingBoxQueryAtom);
-  const baseIconConfig = useAtomValue(baseIconConfigAtom);
-  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const theme = useTheme();
-
-  const preferredOrder = fetchOrder(tourPreference, order);
 
   return (
     <SmallMapContainer>
@@ -59,20 +40,7 @@ function BoundingBoxMap() {
         </Pane>
 
         <Pane name="markers" style={{ zIndex: 500 }}>
-          {preferredOrder
-            .map((makerId) => markers[makerId])
-            .map((marker) => (
-              <Marker
-                position={marker.point}
-                key={marker.id}
-                interactive={false}
-                icon={icon({
-                  ...baseIconConfig,
-                  iconSize: [18, 25],
-                  iconAnchor: [9, 25],
-                })}
-              ></Marker>
-            ))}
+          <BoundingBoxOrder />
         </Pane>
       </MapContainer>
     </SmallMapContainer>

@@ -25,3 +25,30 @@ export type UserLocation = {
 };
 
 export type TourStates = "suggested" | "selected" | "completed" | "welcome";
+
+export type CardStates =
+  | {
+      state: "suggested";
+      stateText: string;
+      marker: IMarker;
+    }
+  | {
+      state: "selected";
+      stateText: string;
+      marker: IMarker;
+    }
+  | {
+      state: "completed";
+      stateText: string;
+      marker: IMarker;
+    }
+  | {
+      state: "welcome";
+      stateText: string;
+      marker: IMarker;
+    }
+  | {
+      state: "finished";
+      stateText: string;
+      marker: null;
+    };

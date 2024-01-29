@@ -5,7 +5,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import Introduction from "./Introduction/Introduction";
 import Content from "./Content/Content";
 import Home from "./Home/Home";
-import Tour from "./Tour";
+import Tour from "./Tour/Tour";
 import Loading from "./Loading";
 import GenericError from "./GenericError";
 

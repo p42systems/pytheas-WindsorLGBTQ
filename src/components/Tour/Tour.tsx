@@ -3,19 +3,19 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { useLocation, Redirect, Route, Switch } from "wouter";
 
-import { getViewControllerStateAtom } from "./../atoms";
-import GenericError from "./GenericError";
-import TourError from "./TourError";
-import MarkerMap from "./MarkerMap";
-import Details from "./Details/Details";
+import { getViewControllerStateAtom } from "../../atoms";
+import GenericError from "../GenericError";
+import TourError from "./components/TourError";
+import MarkerMap from "./components/MarkerMap/MarkerMap";
+import Details from "../Details/Details";
 import {
   AppContainer,
   ContentButton,
   ErrorMessage,
   StaticContentButton,
-} from "./styled_components";
-import Loading from "./Loading";
-import BoundingBoxMap from "./BoundingBoxMap";
+} from "../styled_components";
+import Loading from "../Loading";
+import BoundingBoxMap from "./components/BoundingBoxMap/BoundingBoxMap";
 
 function Tour() {
   const [, setLocation] = useLocation();
