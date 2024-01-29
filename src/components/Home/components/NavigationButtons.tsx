@@ -15,15 +15,12 @@ import {
   DropDownOptionButton,
 } from "../../styled_components";
 
+import { loadTour } from "../../../services";
+
 function NavigationButtons() {
   const [, setLocation] = useLocation();
   const [isDropDown, setIsDropDown] = useAtom(isDropDownAtom);
   const setTourPreference = useSetAtom(tourPreferenceAtom);
-
-  const loadTour = (preference: string) => {
-    setTourPreference(preference);
-    setLocation("/tour");
-  };
 
   return (
     <NavigationButtonsContainer>
@@ -51,7 +48,7 @@ function NavigationButtons() {
             title="Full Tour"
             aria-label="Full Tour"
             onClick={() => {
-              loadTour("full");
+              loadTour("full", setTourPreference, setLocation);
             }}
           >
             Full Tour
@@ -60,7 +57,7 @@ function NavigationButtons() {
             title="Walking Tour"
             aria-label="Walking Tour"
             onClick={() => {
-              loadTour("walking");
+              loadTour("walking", setTourPreference, setLocation);
             }}
           >
             Walking Tour
@@ -69,7 +66,7 @@ function NavigationButtons() {
             title="Guided Bus Tour"
             aria-label="Guided Bus Tour"
             onClick={() => {
-              loadTour("bus");
+              loadTour("bus", setTourPreference, setLocation);
             }}
           >
             Guided Bus Tour

@@ -227,3 +227,12 @@ class IntroServices {
 }
 
 export const intro = new IntroServices();
+
+export const loadTour = (
+  preference: string,
+  setTourPreference: any,
+  setLocation: any
+) => {
+  setTourPreference(preference);
+  setLocation("/tour");
+};
