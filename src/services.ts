@@ -1,8 +1,14 @@
-import { LatLngBounds, divIcon } from "leaflet";
+import { LatLngBounds, divIcon, Control, DomUtil } from "leaflet";
 import fetch from "cross-fetch";
 import { Feature, LineString, FeatureCollection, Point } from "geojson";
 
-import type { IMarker, UserLocation, TourStates, CardStates } from "./types";
+import type {
+  IMarker,
+  UserLocation,
+  TourStates,
+  CardStates,
+  ControlProps,
+} from "./types";
 
 export type MarkerPayload = {
   markers: Record<string, IMarker>;
@@ -310,4 +316,23 @@ export function headingMarkerFactory() {
     iconSize: [40, 40],
     iconAnchor: [20, 20],
   });
+}
+
+export function createControlContainer({
+  useLeafletStyles = true,
+  ...props
+}: ControlProps): Control {
+  // Any here becuase the types for leaflet have not been updated.
+  // It's a work around until v1.8 is released
+  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+  const CenterMarkerControl = Control.extend<any>({
+    onAdd() {
+      const container = DomUtil.create("div", "");
+      if (useLeafletStyles) {
+        DomUtil.addClass(container, "leaflet-bar leaflet-control");
+      }
+      return container;
+    },
+  });
+  return new CenterMarkerControl({ ...props });
 }

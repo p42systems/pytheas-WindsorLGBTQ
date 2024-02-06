@@ -1,4 +1,9 @@
-import type { LatLngTuple, LatLng, LatLngBounds } from "leaflet";
+import type {
+  LatLngTuple,
+  LatLng,
+  LatLngBounds,
+  ControlOptions,
+} from "leaflet";
 
 export type IMarker = {
   id: string;
@@ -52,3 +57,7 @@ export type CardStates =
       stateText: string;
       marker: null;
     };
+
+export type ControlProps = ControlOptions & { useLeafletStyles?: boolean };
+
+export type ChildrenProp = { children: React.ReactNode } & ControlProps;

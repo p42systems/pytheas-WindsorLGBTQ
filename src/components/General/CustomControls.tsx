@@ -1,31 +1,9 @@
 import { createPortal } from "react-dom";
 import { useEffect, useRef, forwardRef } from "react";
 import { createControlComponent } from "@react-leaflet/core";
-import { Control, DomUtil } from "leaflet";
-import type { ControlOptions } from "leaflet";
-
-type ControlProps = ControlOptions & { useLeafletStyles?: boolean };
-
-type ChildrenProp = { children: React.ReactNode } & ControlProps;
-
-function createControlContainer({
-  useLeafletStyles = true,
-  ...props
-}: ControlProps): Control {
-  // Any here becuase the types for leaflet have not been updated.
-  // It's a work around until v1.8 is released
-  /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-  const CenterMarkerControl = Control.extend<any>({
-    onAdd() {
-      const container = DomUtil.create("div", "");
-      if (useLeafletStyles) {
-        DomUtil.addClass(container, "leaflet-bar leaflet-control");
-      }
-      return container;
-    },
-  });
-  return new CenterMarkerControl({ ...props });
-}
+import { Control } from "leaflet";
+import { createControlContainer } from "../../services";
+import { ControlProps, ChildrenProp } from "../../types";
 
 const ControlContainer = createControlComponent<Control, ControlProps>(
   createControlContainer
