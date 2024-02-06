@@ -6,8 +6,8 @@ import {
   BackButton,
   ListMainContainer,
 } from "../styled_components";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../General/Header";
+import Footer from "../General/Footer";
 import { back } from "../../services";
 import MarkerList from "./components/MarkerList";
 

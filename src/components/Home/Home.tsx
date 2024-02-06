@@ -1,5 +1,5 @@
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../General/Header";
+import Footer from "../General/Footer";
 import NavigationButtons from "./components/NavigationButtons";
 import SponsorPartner from "./components/SponsorPartner";
 import ContentWarning from "./components/ContentWarning";

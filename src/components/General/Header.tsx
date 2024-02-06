@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useLocation } from "wouter";
 
-import { ConfigContext } from "../configContext";
+import { ConfigContext } from "../../configContext";
 import {
   HeaderBackgroundImage,
   HeaderContainer,
@@ -11,7 +11,7 @@ import {
   HeaderTopBar,
   HeaderSubBarContainer,
   HeaderHelpLinkContainer,
-} from "./styled_components";
+} from "../styled_components";
 
 import bgImage from "/bg_main.jpg";
 
@@ -41,10 +41,7 @@ function Header({ size = "long", children }: HeaderProps) {
             setLocation("/");
           }}
         >
-          <HeaderImage
-            src={config.logo.src}
-            alt={config.logo.src}
-          />
+          <HeaderImage src={config.logo.src} alt={config.logo.src} />
         </a>
       </HeaderBackgroundImage>
       <HeaderSubBar>

@@ -14,10 +14,10 @@ import {
   tourPreferenceAtom,
 } from "../../../../../../atoms";
 import { HelpLink } from "../../../../../styled_components";
-import UserLocation from "../../../../../UserLocation";
+import UserLocation from "./components/UserLocation";
 import DirectionLine from "./components/DirectionLine";
-import CustomControls from "../../../../../CustomControls";
-import ZoomControls from "../../../../../ZoomControls";
+import CustomControls from "../../../../../General/CustomControls";
+import ZoomControls from "../../../../../General/ZoomControls";
 import { buildCardState, fetchOrder } from "../../../../../../services";
 import TourOrder from "./components/TourOrder";
 

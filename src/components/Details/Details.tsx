@@ -3,8 +3,8 @@ import { Redirect } from "wouter";
 
 import { MainContainer, SectionContentContainer } from "../styled_components";
 import { detailsQueryAtom, markersQueryAtom } from "../../atoms";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../General/Header";
+import Footer from "../General/Footer";
 import Media from "./components/Media/Media";
 import DetailDescription from "./components/DetailDescription";
 import SmallMap from "./components/SmallMap";

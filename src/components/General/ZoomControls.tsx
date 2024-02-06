@@ -6,7 +6,7 @@ import {
   ZoomControlContainer,
   ZoomIn,
   ZoomOut,
-} from "./styled_components";
+} from "../styled_components";
 
 interface ZoomControlsProps {
   minZoom?: number;

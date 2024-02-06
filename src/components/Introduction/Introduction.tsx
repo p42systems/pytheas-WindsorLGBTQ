@@ -1,8 +1,8 @@
 import { useLocation } from "wouter";
 import { useRef } from "react";
 
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../General/Header";
+import Footer from "../General/Footer";
 import TourInstructionsIntro from "./components/TourInstructionsIntro";
 import IntroNav from "./components/IntroNav";
 import About from "./components/About";

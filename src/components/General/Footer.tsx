@@ -3,7 +3,7 @@ import {
   FooterContainer,
   FooterSubBar,
   FooterSubBarContainer,
-} from "./styled_components";
+} from "../styled_components";
 
 function Footer() {
   return (

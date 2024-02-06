@@ -1,4 +1,4 @@
-import { CenterAllContainer, CenterImgContainer } from "./styled_components";
+import { CenterAllContainer, CenterImgContainer } from "../styled_components";
 
 function Loading() {
   return (

@@ -6,8 +6,8 @@ import Introduction from "./Introduction/Introduction";
 import Content from "./Content/Content";
 import Home from "./Home/Home";
 import Tour from "./Tour/Tour";
-import Loading from "./Loading";
-import GenericError from "./GenericError";
+import Loading from "./General/Loading";
+import GenericError from "./General/GenericError";
 
 function Routes() {
   return (

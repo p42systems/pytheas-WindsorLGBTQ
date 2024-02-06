@@ -4,7 +4,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { useLocation, Redirect, Route, Switch } from "wouter";
 
 import { getViewControllerStateAtom } from "../../atoms";
-import GenericError from "../GenericError";
+import GenericError from "../General/GenericError";
 import TourError from "./components/TourError";
 import MarkerMap from "./components/MarkerMap/MarkerMap";
 import Details from "../Details/Details";
@@ -14,7 +14,7 @@ import {
   ErrorMessage,
   StaticContentButton,
 } from "../styled_components";
-import Loading from "../Loading";
+import Loading from "../General/Loading";
 import BoundingBoxMap from "./components/BoundingBoxMap/BoundingBoxMap";
 
 function Tour() {

@@ -1,4 +1,4 @@
-import { LatLngBounds } from "leaflet";
+import { LatLngBounds, divIcon } from "leaflet";
 import fetch from "cross-fetch";
 import { Feature, LineString, FeatureCollection, Point } from "geojson";
 
@@ -298,4 +298,16 @@ export function isLineString(
     lineString.type === "Feature" &&
     lineString.geometry.type === "LineString"
   );
+}
+
+export function headingMarkerFactory() {
+  const img = document.createElement("img");
+  img.setAttribute("src", "/icons/user_location.svg");
+
+  return divIcon({
+    html: img,
+    className: "",
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
+  });
 }

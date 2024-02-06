@@ -6,7 +6,7 @@ import {
   WarningImageContainer,
   CenterAllContainer,
   CenterImgContainer,
-} from "./styled_components";
+} from "../styled_components";
 
 function GenericError() {
   const [, setLocation] = useLocation();

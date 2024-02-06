@@ -1,5 +1,5 @@
 import { MapContainer, Marker, TileLayer } from "react-leaflet";
-import ZoomControls from "../../ZoomControls";
+import ZoomControls from "../../General/ZoomControls";
 import { SmallMapContainer } from "../../styled_components";
 import { useAtomValue } from "jotai";
 import {
