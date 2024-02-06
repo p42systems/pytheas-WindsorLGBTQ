@@ -9,19 +9,17 @@ import {
   markersQueryAtom,
   selectedMarkerAtom,
   suggestedMarkerAtom,
-  navigateToMarkerAtom,
-  getEnableDirectionsAtom,
   paddedBoundingBoxAtom,
   getSavedUserLocationAtom,
   tourPreferenceAtom,
-} from "../../../../../atoms";
-import { HelpLink } from "../../../../styled_components";
-import UserLocation from "../../../../UserLocation";
-import DirectionLine from "../../../../DirectionLine";
-import CustomControls from "../../../../CustomControls";
-import ZoomControls from "../../../../ZoomControls";
-import { buildCardState, fetchOrder } from "../../../../../services";
-import TourOrder from ".././components/TourOrder";
+} from "../../../../../../atoms";
+import { HelpLink } from "../../../../../styled_components";
+import UserLocation from "../../../../../UserLocation";
+import DirectionLine from "./components/DirectionLine";
+import CustomControls from "../../../../../CustomControls";
+import ZoomControls from "../../../../../ZoomControls";
+import { buildCardState, fetchOrder } from "../../../../../../services";
+import TourOrder from "./components/TourOrder";
 
 function MainMap() {
   const [, setLocation] = useLocation();
@@ -33,12 +31,9 @@ function MainMap() {
 
   const tourState = useAtomValue(tourStateAtom);
 
-  const enableDirections = useAtomValue(getEnableDirectionsAtom);
-
   const { markers, order } = useAtomValue(markersQueryAtom);
   const selectedMarker = useAtomValue(selectedMarkerAtom);
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
-  const navigateTo = useAtomValue(navigateToMarkerAtom);
 
   const preferredOrder = fetchOrder(tourPreference, order);
 
@@ -81,12 +76,7 @@ function MainMap() {
 
       <UserLocation />
 
-      {enableDirections &&
-      navigateTo &&
-      cardState.state !== "welcome" &&
-      cardState.state !== "finished" ? (
-        <DirectionLine />
-      ) : null}
+      <DirectionLine />
 
       <CustomControls useLeafletStyles={false} position="topright">
         <HelpLink

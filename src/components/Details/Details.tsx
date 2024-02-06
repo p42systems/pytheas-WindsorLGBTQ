@@ -8,7 +8,7 @@ import Footer from "../Footer";
 import Media from "./components/Media/Media";
 import DetailDescription from "./components/DetailDescription";
 import SmallMap from "./components/SmallMap";
-import DetailsSubHeader from "./components/DetailsSubHeader";
+import DetailsSubHeader from "./components/DetailsSubHeader/DetailsSubHeader";
 
 function Details() {
   const detail = useAtomValue(detailsQueryAtom);

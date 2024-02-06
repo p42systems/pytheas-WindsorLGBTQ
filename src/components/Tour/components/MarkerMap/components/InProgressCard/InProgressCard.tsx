@@ -2,16 +2,12 @@ import { useAtomValue, useSetAtom } from "jotai";
 import { useLocation } from "wouter";
 
 import {
-  sendSaveUserLocationAtom,
   tourStateAtom,
   setTourToStartedAtom,
   setDetailsMarkerIdAtom,
   selectedMarkerAtom,
   suggestedMarkerAtom,
-  getEnableDirectionsAtom,
-  loadableDirectionQueryAtom,
-  refetchDirectionQueryAtom,
-} from "../../../../../atoms";
+} from "../../../../../../atoms";
 import {
   MarkerButton,
   MarkerCardText,
@@ -23,12 +19,9 @@ import {
   MarkerButtonContainer,
   MarkerCardTextContainer,
   StaticMakerButton,
-  DirectionControlsContainer,
-  RefreshDirectionButton,
-  DirectionParagraph,
-} from "../../../../styled_components";
-import DirectionsToggle from "../../../../DirectionsToggle";
-import { buildCardState } from "../../../../../services";
+} from "../../../../../styled_components";
+import { buildCardState } from "../../../../../../services";
+import DirectionControls from "./components/DirectionControls";
 
 function InProgressCard() {
   const [, setLocation] = useLocation();
@@ -36,11 +29,7 @@ function InProgressCard() {
 
   const tourState = useAtomValue(tourStateAtom);
 
-  const sendSaveUserLocation = useSetAtom(sendSaveUserLocationAtom);
   const setTourToStarted = useSetAtom(setTourToStartedAtom);
-  const enableDirections = useAtomValue(getEnableDirectionsAtom);
-  const refetchDirection = useSetAtom(refetchDirectionQueryAtom);
-  const directions = useAtomValue(loadableDirectionQueryAtom);
 
   const selectedMarker = useAtomValue(selectedMarkerAtom);
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
@@ -107,30 +96,7 @@ function InProgressCard() {
           </MarkerButtonContainer>
         </MarkerNavigation>
       )}
-      <DirectionControlsContainer>
-        {enableDirections ? (
-          <RefreshDirectionButton
-            title="Reload route"
-            aria-label="Reload route"
-            onClick={(e) => {
-              e.preventDefault();
-              sendSaveUserLocation();
-              refetchDirection();
-            }}
-          ></RefreshDirectionButton>
-        ) : null}
-        {enableDirections && directions.state === "loading" ? (
-          <DirectionParagraph>Calculating route</DirectionParagraph>
-        ) : null}
-        {enableDirections && directions.state === "hasError" ? (
-          <DirectionParagraph>
-            Routing is unavailable at this time
-          </DirectionParagraph>
-        ) : null}
-        {directions.state === "hasData" || !enableDirections ? (
-          <DirectionsToggle />
-        ) : null}
-      </DirectionControlsContainer>
+      <DirectionControls />
     </MapOverlay>
   );
 }

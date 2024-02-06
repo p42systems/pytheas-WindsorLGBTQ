@@ -1,10 +1,13 @@
 import { useSetAtom } from "jotai";
-import { toggleMarkerProgressAtom, updateSelectedMarkerAtom } from "./../atoms";
+import {
+  toggleMarkerProgressAtom,
+  updateSelectedMarkerAtom,
+} from "../../../../../atoms";
 import {
   Checkbox,
   CheckboxLabel,
   CheckboxLabelText,
-} from "./styled_components";
+} from "../../../../styled_components";
 
 interface CompleteCheckBoxProps {
   id: string;

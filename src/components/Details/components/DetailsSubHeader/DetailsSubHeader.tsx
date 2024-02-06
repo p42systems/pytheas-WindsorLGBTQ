@@ -5,18 +5,18 @@ import {
   BackButton,
   DetailsPageButtonsContainer,
   DetailsPageBackButtonContainer,
-} from "../../styled_components";
+} from "../../../styled_components";
 
-import CompleteCheckBox from "../../CompleteCheckbox";
+import CompleteCheckBox from "./components/CompleteCheckbox";
 
-import { back } from "../../../services";
+import { back } from "../../../../services";
 import { useAtomValue } from "jotai";
 import { useLocation } from "wouter";
 import {
   detailsQueryAtom,
   getAllMarkerProgressAtom,
   markersQueryAtom,
-} from "../../../atoms";
+} from "../../../../atoms";
 
 function DetailsSubHeader() {
   const [, setLocation] = useLocation();

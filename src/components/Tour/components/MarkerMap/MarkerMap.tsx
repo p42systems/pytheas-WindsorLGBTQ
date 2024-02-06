@@ -12,10 +12,10 @@ import {
   LargeMapContainer,
   TourMainContainer,
 } from "../../../styled_components";
-import MainMap from "./components/MainMap";
+import MainMap from "./components/MainMap/MainMap";
 import { buildCardState } from "../../../../services";
 import CompletedCard from "./components/CompletedCard";
-import InProgressCard from "./components/InProgressCard";
+import InProgressCard from "./components/InProgressCard/InProgressCard";
 
 function MarkerMap() {
   const tourState = useAtomValue(tourStateAtom);

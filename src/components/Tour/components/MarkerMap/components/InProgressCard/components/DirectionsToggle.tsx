@@ -4,12 +4,12 @@ import {
   getEnableDirectionsAtom,
   sendSaveUserLocationAtom,
   toggleEnableDirectionsAtom,
-} from "./../atoms";
+} from "../../../../../../../atoms";
 import {
   ToggleCheckbox,
   CheckboxLabelText,
   ToggleCheckboxLabel,
-} from "./styled_components";
+} from "../../../../../../styled_components";
 
 function DirectionsToggle() {
   const toggleDirections = useSetAtom(toggleEnableDirectionsAtom);

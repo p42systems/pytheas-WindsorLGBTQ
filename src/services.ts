@@ -1,6 +1,6 @@
 import { LatLngBounds } from "leaflet";
 import fetch from "cross-fetch";
-import { Feature, FeatureCollection, Point } from "geojson";
+import { Feature, LineString, FeatureCollection, Point } from "geojson";
 
 import type { IMarker, UserLocation, TourStates, CardStates } from "./types";
 
@@ -288,4 +288,14 @@ export function buildCardState(
   } else {
     throw Error("State mismatch has occured");
   }
+}
+
+export function isLineString(
+  lineString: Feature
+): lineString is Feature<LineString> {
+  return (
+    lineString != null &&
+    lineString.type === "Feature" &&
+    lineString.geometry.type === "LineString"
+  );
 }
