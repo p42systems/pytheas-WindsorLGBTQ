@@ -11,7 +11,10 @@ import {
   suggestedMarkerAtom,
   tourStateAtom,
 } from "../../../../../../../atoms";
-import { buildCardState, isLineString } from "../../../../../../../services";
+import {
+  buildCardState,
+  isLineString,
+} from "../../../../../../../services/cards";
 
 function DirectionLine() {
   const directions = useAtomValue(loadableDirectionQueryAtom);

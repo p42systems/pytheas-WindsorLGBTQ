@@ -13,7 +13,7 @@ import {
   TourMainContainer,
 } from "../../../styled_components";
 import MainMap from "./components/MainMap/MainMap";
-import { buildCardState } from "../../../../services";
+import { buildCardState } from "../../../../services/cards";
 import CompletedCard from "./components/CompletedCard";
 import InProgressCard from "./components/InProgressCard/InProgressCard";
 

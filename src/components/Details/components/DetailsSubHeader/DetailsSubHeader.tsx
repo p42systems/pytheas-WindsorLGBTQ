@@ -9,7 +9,7 @@ import {
 
 import CompleteCheckBox from "./components/CompleteCheckbox";
 
-import { back } from "../../../../services";
+import { back } from "../../../../services/navigation";
 import { useAtomValue } from "jotai";
 import { useLocation } from "wouter";
 import {

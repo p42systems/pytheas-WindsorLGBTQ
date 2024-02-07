@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useLocation } from "wouter";
 
-import { ConfigContext } from "../../configContext";
+import { ConfigContext } from "../../services/configContext";
 import {
   HeaderBackgroundImage,
   HeaderContainer,

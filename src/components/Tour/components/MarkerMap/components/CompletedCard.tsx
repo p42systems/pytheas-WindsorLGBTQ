@@ -10,7 +10,7 @@ import {
   MarkerNavigation,
   StaticMakerButton,
 } from "../../../../styled_components";
-import { buildCardState } from "../../../../../services";
+import { buildCardState } from "../../../../../services/cards";
 import { useAtomValue } from "jotai";
 import {
   selectedMarkerAtom,

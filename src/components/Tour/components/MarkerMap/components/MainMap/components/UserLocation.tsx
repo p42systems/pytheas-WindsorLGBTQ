@@ -2,7 +2,7 @@ import { useAtomValue } from "jotai";
 import { Marker, Pane } from "react-leaflet";
 
 import { getUserLocationAtom } from "../../../../../../../atoms";
-import { headingMarkerFactory } from "../../../../../../../services";
+import { headingMarkerFactory } from "../../../../../../../services/markers";
 
 function UserLocation() {
   const userLocation = useAtomValue(getUserLocationAtom);

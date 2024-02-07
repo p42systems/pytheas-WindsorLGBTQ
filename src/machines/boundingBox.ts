@@ -4,10 +4,10 @@ import { LatLngBounds } from "leaflet";
 import {
   checkForGeoLocationAPI,
   checkWithinBounds,
-  fetchBoundingBox,
   customSendParent,
-} from "./../services";
-import { watchLocationFactory } from "../watchLocation";
+  fetchBoundingBox,
+} from "../services/boundingBoxServices";
+import { watchLocationFactory } from "../services/watchLocation";
 import {
   BoundingBoxContext,
   BoundingBoxEvents,

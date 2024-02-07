@@ -10,7 +10,7 @@ import {
 
 import { boundingBoxQueryAtom } from "../../../../atoms";
 import { SmallMapContainer } from "../../../styled_components";
-import { interactionOptions } from "../../../../services";
+import { interactionOptions } from "../../../../services/cards";
 import BoundingBoxOrder from "./components/BoundingBoxOrder";
 
 function BoundingBoxMap() {

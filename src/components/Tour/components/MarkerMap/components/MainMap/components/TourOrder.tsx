@@ -16,7 +16,7 @@ import {
   tourStateAtom,
   updateSelectedMarkerAtom,
 } from "../../../../../../../atoms";
-import { fetchOrder } from "../../../../../../../services";
+import { fetchOrder } from "../../../../../../../services/route";
 import { Marker } from "react-leaflet";
 import { type Icon, type DivIcon, icon, LatLngBounds } from "leaflet";
 

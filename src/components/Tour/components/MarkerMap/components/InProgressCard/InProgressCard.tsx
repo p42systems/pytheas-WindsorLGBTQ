@@ -20,7 +20,7 @@ import {
   MarkerCardTextContainer,
   StaticMakerButton,
 } from "../../../../../styled_components";
-import { buildCardState } from "../../../../../../services";
+import { buildCardState } from "../../../../../../services/cards";
 import DirectionControls from "./components/DirectionControls";
 
 function InProgressCard() {

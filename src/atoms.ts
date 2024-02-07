@@ -7,17 +7,15 @@ import { IconOptions, LatLngBounds } from "leaflet";
 import type { useMap } from "react-leaflet";
 
 import { viewControllerMachine } from "./machines/viewController";
-import {
-  fetchBoundingBox,
-  fetchWalkingBoundingBox,
-  fetchMarkerDetails,
-  fetchMarkers,
-  fetchRoute,
-  fetchOrder,
-  fetchBusBoundingBox,
-} from "./services";
 import { IMarker, TourStates, MarkerProgress } from "./types";
 import { FeatureCollection } from "geojson";
+import { fetchOrder, fetchRoute } from "./services/route";
+import { fetchMarkerDetails, fetchMarkers } from "./services/markers";
+import {
+  fetchBoundingBox,
+  fetchBusBoundingBox,
+  fetchWalkingBoundingBox,
+} from "./services/boundingBoxServices";
 
 /*********************************
  * URL matcher

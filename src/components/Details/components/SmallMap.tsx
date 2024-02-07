@@ -8,7 +8,7 @@ import {
   markersQueryAtom,
 } from "../../../atoms";
 import { icon } from "leaflet";
-import { interactionOptions } from "../../../services";
+import { interactionOptions } from "../../../services/cards";
 
 function SmallMap() {
   const detail = useAtomValue(detailsQueryAtom);

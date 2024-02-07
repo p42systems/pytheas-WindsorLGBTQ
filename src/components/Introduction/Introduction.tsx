@@ -11,7 +11,7 @@ import References from "./components/References";
 
 import { MainContainer, BackButton } from "../styled_components";
 
-import { intro } from "../../services";
+import { intro } from "../../services/navigation";
 
 function Introduction() {
   const [, setLocation] = useLocation();

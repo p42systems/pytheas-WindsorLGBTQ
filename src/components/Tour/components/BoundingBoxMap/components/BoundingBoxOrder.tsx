@@ -4,9 +4,9 @@ import {
   markersQueryAtom,
   tourPreferenceAtom,
 } from "../../../../../atoms";
-import { fetchOrder } from "../../../../../services";
 import { Marker } from "react-leaflet";
 import { icon } from "leaflet";
+import { fetchOrder } from "../../../../../services/route";
 
 function BoundingBoxOrder() {
   const { markers, order } = useAtomValue(markersQueryAtom);

@@ -18,7 +18,8 @@ import UserLocation from "./components/UserLocation";
 import DirectionLine from "./components/DirectionLine";
 import CustomControls from "../../../../../General/CustomControls";
 import ZoomControls from "../../../../../General/ZoomControls";
-import { buildCardState, fetchOrder } from "../../../../../../services";
+import { buildCardState } from "../../../../../../services/cards";
+import { fetchOrder } from "../../../../../../services/route";
 import TourOrder from "./components/TourOrder";
 
 function MainMap() {

@@ -1,6 +1,6 @@
 import { LatLng } from "leaflet";
 import { Sender } from "xstate";
-import { WatchLocationEvents } from "./types";
+import { WatchLocationEvents } from "../types";
 
 function watchLocation<TEvents extends WatchLocationEvents>(
   enableHighAccuracy: boolean,

@@ -8,8 +8,8 @@ import {
 } from "../styled_components";
 import Header from "../General/Header";
 import Footer from "../General/Footer";
-import { back } from "../../services";
 import MarkerList from "./components/MarkerList";
+import { back } from "../../services/navigation";
 
 function Content() {
   const [, setLocation] = useLocation();

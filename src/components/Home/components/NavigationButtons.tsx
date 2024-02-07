@@ -15,7 +15,7 @@ import {
   DropDownOptionButton,
 } from "../../styled_components";
 
-import { loadTour } from "../../../services";
+import { loadTour } from "../../../services/navigation";
 
 function NavigationButtons() {
   const [, setLocation] = useLocation();
