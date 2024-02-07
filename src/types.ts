@@ -44,7 +44,12 @@ export type BoundingBoxEvents =
   | { type: "TOGGLE_HIGH_ACCURACY" }
   | { type: "CHECK_BOUNDS" };
 
-export type TourStates = "suggested" | "selected" | "completed" | "welcome";
+export type TourStates =
+  | "suggested"
+  | "selected"
+  | "completed"
+  | "welcome"
+  | "finished";
 
 export type CardStates =
   | {

@@ -419,7 +419,7 @@ export const MapOverlay = styled.div((props) => ({
 }));
 
 export const MarkerCardHeader = styled.h2<{
-  extra: boolean;
+  extra: boolean | undefined;
   color: TourStates;
 }>((props) => ({
   minHeight: "1rem",

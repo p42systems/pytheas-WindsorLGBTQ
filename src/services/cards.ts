@@ -12,7 +12,7 @@ export const interactionOptions = {
 };
 
 export function buildCardState(
-  tourState: TourStates | "finished",
+  tourState: TourStates,
   suggestedMarker: IMarker | null,
   selectedMarker: IMarker | null
 ): CardStates {

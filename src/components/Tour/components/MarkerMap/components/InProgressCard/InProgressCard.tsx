@@ -41,11 +41,11 @@ function InProgressCard() {
       <MarkerCardState color={cardState.state}>
         {cardState.stateText}
       </MarkerCardState>
-      <MarkerCardHeader color={cardState.state} extra={cardState.marker.extra}>
-        {cardState.marker.name}
+      <MarkerCardHeader color={cardState.state} extra={cardState.marker?.extra}>
+        {cardState.marker?.name}
       </MarkerCardHeader>
       <MarkerCardAddress color={cardState.state}>
-        {cardState.marker.address}
+        {cardState.marker?.address}
       </MarkerCardAddress>
 
       {cardState.state === "welcome" ? (
@@ -87,8 +87,8 @@ function InProgressCard() {
               title="Continue"
               color={cardState.state}
               onClick={() => {
-                setDetailsMarkerId(cardState.marker.id);
-                setLocation(`/tour/details/${cardState.marker.id}`);
+                setDetailsMarkerId(cardState.marker!.id);
+                setLocation(`/tour/details/${cardState.marker!.id}`);
               }}
             >
               CONTINUE
