@@ -1,6 +1,7 @@
 import { LatLngBounds, divIcon, Control, DomUtil } from "leaflet";
 import fetch from "cross-fetch";
 import { Feature, LineString, FeatureCollection, Point } from "geojson";
+import { sendParent } from "xstate";
 
 import type {
   IMarker,
@@ -8,21 +9,14 @@ import type {
   TourStates,
   CardStates,
   ControlProps,
+  MarkerPayload,
+  MarkerDetailPayload,
+  ParentEvent,
 } from "./types";
 
-export type MarkerPayload = {
-  markers: Record<string, IMarker>;
-  order: string[];
-};
-
-export type MarkerDetailPayload = {
-  id: string;
-  url: { path: string; type: string; imageAlt: string }[];
-  description: string[] | string;
-  timeline: { header: string; list: string[] };
-  image: string;
-  imageAlt: string;
-};
+/***************************************
+ * Bounding Box Services
+ ***************************************/
 
 export function checkForGeoLocationAPI(): Promise<void> {
   return new Promise((resolve, reject) => {
@@ -72,6 +66,34 @@ export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
   return new LatLngBounds([bus.north, bus.east], [bus.south, bus.west]);
 }
 
+export function checkWithinBounds(
+  userLocation: UserLocation | null,
+  boxBounds: LatLngBounds | null
+): Promise<boolean> {
+  return new Promise((resolve, reject) => {
+    if (!userLocation || !boxBounds) {
+      reject();
+    } else {
+      resolve(userLocation.bounds.intersects(boxBounds));
+    }
+  });
+}
+
+function createSendParent<TParentEvent extends { type: string }>() {
+  return function <TContext, TEvent extends { type: string }>(
+    event: Parameters<typeof sendParent<TContext, TEvent, TParentEvent>>[0],
+    options?: Parameters<typeof sendParent<TContext, TEvent, TParentEvent>>[1]
+  ) {
+    return sendParent<TContext, TEvent, TParentEvent>(event, options);
+  };
+}
+
+export const customSendParent = createSendParent<ParentEvent>();
+
+/***************************************
+ * Marker Services
+ ***************************************/
+
 const requiredKeys = [
   "id",
   "name",
@@ -81,6 +103,7 @@ const requiredKeys = [
   "image",
   "imageAlt",
 ];
+
 function isMarkerPoint(point: Feature): point is Feature<Point, IMarker> {
   const properties = point.properties ? point.properties : null;
   return (
@@ -149,18 +172,21 @@ export async function fetchMarkerDetails(
   return await res.json();
 }
 
-export function checkWithinBounds(
-  userLocation: UserLocation | null,
-  boxBounds: LatLngBounds | null
-): Promise<boolean> {
-  return new Promise((resolve, reject) => {
-    if (!userLocation || !boxBounds) {
-      reject();
-    } else {
-      resolve(userLocation.bounds.intersects(boxBounds));
-    }
+export function headingMarkerFactory() {
+  const img = document.createElement("img");
+  img.setAttribute("src", "/icons/user_location.svg");
+
+  return divIcon({
+    html: img,
+    className: "",
+    iconSize: [40, 40],
+    iconAnchor: [20, 20],
   });
 }
+
+/***************************************
+ * Routing Services
+ ***************************************/
 
 export async function fetchRoute(
   coordinates: [number, number][],
@@ -207,6 +233,10 @@ export function fetchOrder(tourPreference: string, order: string[]): string[] {
   return order;
 }
 
+/***************************************
+ * Navigation Services
+ ***************************************/
+
 class IntroServices {
   relLinkCount = 0;
 
@@ -246,6 +276,10 @@ export const back = (setLocation: any) => {
     setLocation("/");
   }
 };
+
+/***************************************
+ * Card Services
+ ***************************************/
 
 export const interactionOptions = {
   doubleClickZoom: false,
@@ -304,18 +338,6 @@ export function isLineString(
     lineString.type === "Feature" &&
     lineString.geometry.type === "LineString"
   );
-}
-
-export function headingMarkerFactory() {
-  const img = document.createElement("img");
-  img.setAttribute("src", "/icons/user_location.svg");
-
-  return divIcon({
-    html: img,
-    className: "",
-    iconSize: [40, 40],
-    iconAnchor: [20, 20],
-  });
 }
 
 export function createControlContainer({

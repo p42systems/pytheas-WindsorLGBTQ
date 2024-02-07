@@ -1,13 +1,6 @@
 import { LatLng } from "leaflet";
 import { Sender } from "xstate";
-import { UserLocation } from "./types";
-
-export type WatchLocationEvents = SetLocationEvent | ErrorEvent;
-export type SetLocationEvent = {
-  type: "SET_LOCATION";
-  userLocation: UserLocation;
-};
-export type ErrorEvent = { type: "ERROR"; error: string };
+import { WatchLocationEvents } from "./types";
 
 function watchLocation<TEvents extends WatchLocationEvents>(
   enableHighAccuracy: boolean,
