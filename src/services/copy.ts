@@ -26,3 +26,5 @@ class copyComponent {
 export const contentWarning = new copyComponent("contentWarning");
 
 export const tourInstructions = new copyComponent("tourInstructions");
+
+export const sponsors = new copyComponent("sponsors");

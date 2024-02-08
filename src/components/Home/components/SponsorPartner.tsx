@@ -1,21 +1,20 @@
+import { useAtomValue } from "jotai";
 import {
   HomeSubHeader,
   HomeParagraph,
   SponsorPartnerContainer,
   SponsorPartnerImg,
 } from "../../styled_components";
+import { sponsorsCopyQueryAtom } from "../../../atoms";
+import BodyParagraphs from "../../General/BodyParagraphs";
 
 function SponsorPartner() {
+  const { header, body } = useAtomValue(sponsorsCopyQueryAtom);
+
   return (
     <>
-      <HomeSubHeader id="sponsor-partners">
-        Sponsors &amp; Partners
-      </HomeSubHeader>
-      <HomeParagraph>
-        Tour content by Walter Cassidy of the Windsor/Essex Rainbow Alliance.
-        Code by Parallel 42 Systems. Support for this project was provided by
-        Windsor Hackforge.
-      </HomeParagraph>
+      <HomeSubHeader id="sponsor-partners">{header}</HomeSubHeader>
+      <BodyParagraphs body={body} />
       <SponsorPartnerContainer>
         <SponsorPartnerImg
           large={false}
