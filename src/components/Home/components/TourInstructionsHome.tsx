@@ -9,7 +9,7 @@ function TourInstructionsHome() {
   return (
     <>
       <HomeSubHeader id="how-to-take-the-tour">{header}</HomeSubHeader>
-      <BodyParagraphs body={body} />
+      <BodyParagraphs body={body} view={"home"} />
     </>
   );
 }

@@ -9,7 +9,7 @@ function ContentWarning() {
   return (
     <>
       <HomeSubHeader id="content-warning">{header}</HomeSubHeader>
-      <BodyParagraphs body={body} />
+      <BodyParagraphs body={body} view={"home"} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 import { useAtomValue } from "jotai";
 import {
   HomeSubHeader,
-  HomeParagraph,
   SponsorPartnerContainer,
   SponsorPartnerImg,
 } from "../../styled_components";
@@ -14,7 +13,7 @@ function SponsorPartner() {
   return (
     <>
       <HomeSubHeader id="sponsor-partners">{header}</HomeSubHeader>
-      <BodyParagraphs body={body} />
+      <BodyParagraphs body={body} view={"home"} />
       <SponsorPartnerContainer>
         <SponsorPartnerImg
           large={false}

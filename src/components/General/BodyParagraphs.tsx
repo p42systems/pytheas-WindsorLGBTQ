@@ -1,12 +1,13 @@
 import {
+  AboutParagraph,
   HomeParagraph,
   StaticcontentButtonButton,
   StaticheaderBackgroundButton,
   StatictourButtonButton,
 } from "../styled_components";
 
-function BodyParagraphs(props: { body: string[] | null }) {
-  const { body } = props;
+function BodyParagraphs(props: { body: string[] | null; view: string }) {
+  const { body, view } = props;
 
   if (!body) {
     return null;
@@ -45,7 +46,15 @@ function BodyParagraphs(props: { body: string[] | null }) {
               return content;
             }
           });
-          return <HomeParagraph key={index}>{paragraphContent}</HomeParagraph>;
+          if (view === "home") {
+            return (
+              <HomeParagraph key={index}>{paragraphContent}</HomeParagraph>
+            );
+          } else if (view === "introduction") {
+            return (
+              <AboutParagraph key={index}>{paragraphContent}</AboutParagraph>
+            );
+          }
         })}
       </>
     );
