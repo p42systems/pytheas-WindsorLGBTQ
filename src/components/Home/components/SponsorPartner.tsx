@@ -8,12 +8,12 @@ import { sponsorsCopyQueryAtom } from "../../../atoms";
 import BodyParagraphs from "../../General/BodyParagraphs";
 
 function SponsorPartner() {
-  const { header, body } = useAtomValue(sponsorsCopyQueryAtom);
+  const { header, body, links } = useAtomValue(sponsorsCopyQueryAtom);
 
   return (
     <>
       <HomeSubHeader id="sponsor-partners">{header}</HomeSubHeader>
-      <BodyParagraphs body={body} view={"home"} />
+      <BodyParagraphs body={body} view={"home"} links={links} />
       <SponsorPartnerContainer>
         <SponsorPartnerImg
           large={false}

@@ -155,4 +155,5 @@ export type SetLocationEvent = {
 export type CopyPayload = {
   header: string | null;
   body: string[] | null;
+  links: [key: string] | null;
 };

@@ -6,8 +6,12 @@ import {
   StatictourButtonButton,
 } from "../styled_components";
 
-function BodyParagraphs(props: { body: string[] | null; view: string }) {
-  const { body, view } = props;
+function BodyParagraphs(props: {
+  body: string[] | null;
+  view: string;
+  links: [key: string] | null;
+}) {
+  const { body, view, links } = props;
 
   if (!body) {
     return null;
@@ -15,7 +19,9 @@ function BodyParagraphs(props: { body: string[] | null; view: string }) {
     return (
       <>
         {body.map((paragraph: string, index: number) => {
-          const paragraphArray = paragraph.split(/(?=\*\*)|(?<=\*\*)|{{|}}/g);
+          const paragraphArray = paragraph.split(
+            /(?=\*\*)|(?<=\*\*)|{{|}}|<a>/g
+          );
           const paragraphContent = paragraphArray.map((content, index) => {
             if (
               paragraphArray[index - 1] === "**" &&
@@ -42,6 +48,14 @@ function BodyParagraphs(props: { body: string[] | null; view: string }) {
                   Content
                 </StatictourButtonButton>
               );
+            } else if (
+              links &&
+              Object.keys(links).some((match) => content.includes(match))
+            ) {
+              const match = Object.keys(links)
+                .filter((match) => content.includes(match))
+                .join("");
+              return <a href={links[match as any]}>{match}</a>;
             } else {
               return content;
             }

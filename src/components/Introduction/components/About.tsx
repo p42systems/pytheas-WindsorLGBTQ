@@ -5,14 +5,14 @@ import { aboutCopyQueryAtom } from "../../../atoms";
 import BodyParagraphs from "../../General/BodyParagraphs";
 
 function About(props: { aboutRef: RefObject<HTMLHeadingElement> }) {
-  const { header, body } = useAtomValue(aboutCopyQueryAtom);
+  const { header, body, links } = useAtomValue(aboutCopyQueryAtom);
 
   return (
     <section>
       <AboutAnchorHeader id="about" ref={props.aboutRef}>
         {header}
       </AboutAnchorHeader>
-      <BodyParagraphs body={body} view={"introduction"} />
+      <BodyParagraphs body={body} view={"introduction"} links={links} />
     </section>
   );
 }

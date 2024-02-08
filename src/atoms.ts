@@ -21,6 +21,7 @@ import {
   tourInstructions,
   sponsors,
   about,
+  statement,
 } from "./services/copy";
 
 /*********************************
@@ -424,4 +425,13 @@ export const aboutCopyQueryAtom = atomWithQuery<
   queryKey: ["about_copy"],
   copyComponent: about,
   queryFn: about.fetchCopy,
+}));
+
+export const statementCopyQueryAtom = atomWithQuery<
+  ReturnType<typeof about.fetchCopy>,
+  unknown
+>((get) => ({
+  queryKey: ["statement_copy"],
+  copyComponent: statement,
+  queryFn: statement.fetchCopy,
 }));
