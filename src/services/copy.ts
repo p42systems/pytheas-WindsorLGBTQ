@@ -9,7 +9,6 @@ class copyComponent {
   }
 
   async fetchCopy(): Promise<CopyPayload> {
-    console.log(this);
     const copyUrl = `${window.location.origin}/data/copy/${this.copyComponent.component}.json`;
 
     const res = await fetch(copyUrl);
@@ -25,3 +24,5 @@ class copyComponent {
 }
 
 export const contentWarning = new copyComponent("contentWarning");
+
+export const tourInstructions = new copyComponent("tourInstructions");

@@ -16,7 +16,7 @@ import {
   fetchBusBoundingBox,
   fetchWalkingBoundingBox,
 } from "./services/boundingBoxServices";
-import { contentWarning } from "./services/copy";
+import { contentWarning, tourInstructions } from "./services/copy";
 
 /*********************************
  * URL matcher
@@ -392,4 +392,13 @@ export const contentWarningCopyQueryAtom = atomWithQuery<
   queryKey: ["content_warning_copy"],
   copyComponent: contentWarning,
   queryFn: contentWarning.fetchCopy,
+}));
+
+export const tourInstructionsCopyQueryAtom = atomWithQuery<
+  ReturnType<typeof tourInstructions.fetchCopy>,
+  unknown
+>((get) => ({
+  queryKey: ["tour_instructions_copy"],
+  copyComponent: tourInstructions,
+  queryFn: tourInstructions.fetchCopy,
 }));

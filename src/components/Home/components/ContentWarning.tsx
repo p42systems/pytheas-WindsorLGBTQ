@@ -1,6 +1,7 @@
 import { useAtomValue } from "jotai";
 import { contentWarningCopyQueryAtom } from "../../../atoms";
-import { HomeSubHeader, HomeParagraph } from "../../styled_components";
+import { HomeSubHeader } from "../../styled_components";
+import BodyParagraphs from "../../General/BodyParagraphs";
 
 function ContentWarning() {
   const { header, body } = useAtomValue(contentWarningCopyQueryAtom);
@@ -8,7 +9,7 @@ function ContentWarning() {
   return (
     <>
       <HomeSubHeader id="content-warning">{header}</HomeSubHeader>
-      <HomeParagraph>{body}</HomeParagraph>
+      <BodyParagraphs body={body} />
     </>
   );
 }
