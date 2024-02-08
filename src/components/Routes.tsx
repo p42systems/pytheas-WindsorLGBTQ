@@ -23,10 +23,18 @@ function Routes() {
         </ErrorBoundary>
       </Route>
       <Route path="/">
-        <Home />
+        <ErrorBoundary FallbackComponent={GenericError}>
+          <Suspense fallback={<Loading />}>
+            <Home />
+          </Suspense>
+        </ErrorBoundary>
       </Route>
       <Route path="/about">
-        <Introduction />
+        <ErrorBoundary FallbackComponent={GenericError}>
+          <Suspense fallback={<Loading />}>
+            <Introduction />
+          </Suspense>
+        </ErrorBoundary>
       </Route>
       <Route path="/tour/:rest*">
         <Tour />
