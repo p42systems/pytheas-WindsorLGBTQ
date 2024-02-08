@@ -16,6 +16,7 @@ import {
   fetchBusBoundingBox,
   fetchWalkingBoundingBox,
 } from "./services/boundingBoxServices";
+import { contentWarning } from "./services/copy";
 
 /*********************************
  * URL matcher
@@ -379,3 +380,16 @@ export const getDropDownAtom = atom((get) => {
 });
 
 export const tourPreferenceAtom: PrimitiveAtom<string> = atom("full");
+
+/*********************************
+ * Copy Query / Atoms
+ *********************************/
+
+export const contentWarningCopyQueryAtom = atomWithQuery<
+  ReturnType<typeof contentWarning.fetchCopy>,
+  unknown
+>((get) => ({
+  queryKey: ["content_warning_copy"],
+  copyComponent: contentWarning,
+  queryFn: contentWarning.fetchCopy,
+}));

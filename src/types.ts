@@ -151,3 +151,10 @@ export type SetLocationEvent = {
   type: "SET_LOCATION";
   userLocation: UserLocation;
 };
+
+type CWPayload = {
+  header: string;
+  body: string;
+};
+
+export type CopyPayload = CWPayload;
