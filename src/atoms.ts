@@ -22,6 +22,7 @@ import {
   sponsors,
   about,
   statement,
+  references,
 } from "./services/copy";
 
 /*********************************
@@ -434,4 +435,13 @@ export const statementCopyQueryAtom = atomWithQuery<
   queryKey: ["statement_copy"],
   copyComponent: statement,
   queryFn: statement.fetchCopy,
+}));
+
+export const referencesCopyQueryAtom = atomWithQuery<
+  ReturnType<typeof references.fetchCopy>,
+  unknown
+>((get) => ({
+  queryKey: ["references_copy"],
+  copyComponent: references,
+  queryFn: references.fetchCopy,
 }));
