@@ -89,7 +89,7 @@ function Media() {
 
   checkMedia(detail.url);
 
-  return mediaPlayer;
+  return <>{mediaPlayer}</>;
 }
 
 export default Media;
