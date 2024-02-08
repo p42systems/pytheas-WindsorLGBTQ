@@ -1,5 +1,5 @@
 import { RefObject } from "react";
-import { AboutParagraph, AboutAnchorHeader } from "../../styled_components";
+import { AboutAnchorHeader } from "../../styled_components";
 import { statementCopyQueryAtom } from "../../../atoms";
 import { useAtomValue } from "jotai";
 import BodyParagraphs from "../../General/BodyParagraphs";
