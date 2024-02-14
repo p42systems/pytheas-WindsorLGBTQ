@@ -9,7 +9,7 @@ import "leaflet/dist/leaflet.css";
 import { theme } from "./theme";
 import App from "./components/App";
 import { ORSAPIEndpointAtom, ORSAPIKeyAtom } from "./atoms";
-import { ConfigContext } from "./configContext";
+import { ConfigContext } from "./services/configContext";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

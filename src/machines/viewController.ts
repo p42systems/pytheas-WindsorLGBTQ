@@ -1,36 +1,13 @@
-import { ActorRefFrom, assign, createMachine, send, spawn } from "xstate";
+import { assign, createMachine, send, spawn } from "xstate";
 import { stop } from "xstate/lib/actions";
-import { UserLocation } from "../types";
+import {
+  ViewControllerContext,
+  NewLocationEvent,
+  InitialLocationEvent,
+  SetHighAccuracyEvent,
+  ViewControllerEvents,
+} from "../types";
 import { boundingBoxMachine } from "./boundingBox";
-
-type ViewControllerContext = {
-  boundingBoxRef: ActorRefFrom<typeof boundingBoxMachine> | null;
-  userLocation: UserLocation | null;
-  savedUserLocation: UserLocation | null;
-  enableHighAccuracy: boolean;
-};
-
-type NewLocationEvent = { type: "NEW_LOCATION"; userLocation: UserLocation };
-type InitialLocationEvent = {
-  type: "INITIAL_LOCATION";
-  userLocation: UserLocation;
-};
-type SetHighAccuracyEvent = {
-  type: "SET_HIGH_ACCURACY";
-  highAccuracy: boolean;
-};
-type ViewControllerEvents =
-  | NewLocationEvent
-  | InitialLocationEvent
-  | SetHighAccuracyEvent
-  | { type: "CHECK_BOUNDS" }
-  | { type: "NO_GEO_SUPPORT" }
-  | { type: "UNKNOWN_LOCATION" }
-  | { type: "NO_BOUNDING_BOX" }
-  | { type: "INSIDE_OF_BOUNDS" }
-  | { type: "TOGGLE_HIGH_ACCURACY" }
-  | { type: "SAVE_USER_LOCATION" }
-  | { type: "OUT_OF_BOUNDS" };
 
 export const viewControllerMachine = createMachine(
   {

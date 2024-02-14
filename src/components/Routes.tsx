@@ -2,12 +2,12 @@ import { Suspense } from "react";
 import { Route, Switch } from "wouter";
 import { ErrorBoundary } from "react-error-boundary";
 
-import Introduction from "./Introduction";
-import MarkerList from "./MarkerList";
-import Home from "./Home";
-import Tour from "./Tour";
-import Loading from "./Loading";
-import GenericError from "./GenericError";
+import Introduction from "./Introduction/Introduction";
+import Content from "./Content/Content";
+import Home from "./Home/Home";
+import Tour from "./Tour/Tour";
+import Loading from "./General/Loading";
+import GenericError from "./General/GenericError";
 
 function Routes() {
   return (
@@ -18,15 +18,23 @@ function Routes() {
       <Route path="/list">
         <ErrorBoundary FallbackComponent={GenericError}>
           <Suspense fallback={<Loading />}>
-            <MarkerList />
+            <Content />
           </Suspense>
         </ErrorBoundary>
       </Route>
       <Route path="/">
-        <Home />
+        <ErrorBoundary FallbackComponent={GenericError}>
+          <Suspense fallback={<Loading />}>
+            <Home />
+          </Suspense>
+        </ErrorBoundary>
       </Route>
       <Route path="/about">
-        <Introduction />
+        <ErrorBoundary FallbackComponent={GenericError}>
+          <Suspense fallback={<Loading />}>
+            <Introduction />
+          </Suspense>
+        </ErrorBoundary>
       </Route>
       <Route path="/tour/:rest*">
         <Tour />

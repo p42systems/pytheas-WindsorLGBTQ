@@ -1,60 +1,19 @@
-import {
-  ActorRef,
-  assign,
-  createMachine,
-  DoneInvokeEvent,
-  EventObject,
-  sendParent,
-  spawn,
-} from "xstate";
+import { assign, createMachine, DoneInvokeEvent, spawn } from "xstate";
 import { stop } from "xstate/lib/actions";
 import { LatLngBounds } from "leaflet";
 import {
   checkForGeoLocationAPI,
   checkWithinBounds,
+  customSendParent,
   fetchBoundingBox,
-} from "./../services";
+} from "../services/boundingBoxServices";
+import { watchLocationFactory } from "../services/watchLocation";
 import {
-  watchLocationFactory,
-  WatchLocationEvents,
+  BoundingBoxContext,
+  BoundingBoxEvents,
   SetLocationEvent,
   ErrorEvent,
-} from "../watchLocation";
-import { UserLocation } from "../types";
-
-type ParentEvent =
-  | { type: "UNKNOWN_LOCATION" }
-  | { type: "OUT_OF_BOUNDS" }
-  | { type: "INSIDE_OF_BOUNDS" }
-  | { type: "NO_BOUNDING_BOX" }
-  | { type: "NEW_LOCATION"; userLocation: UserLocation }
-  | { type: "INITIAL_LOCATION"; userLocation: UserLocation }
-  | { type: "SET_HIGH_ACCURACY"; highAccuracy: boolean }
-  | { type: "NO_GEO_SUPPORT" };
-
-function createSendParent<TParentEvent extends { type: string }>() {
-  return function <TContext, TEvent extends { type: string }>(
-    event: Parameters<typeof sendParent<TContext, TEvent, TParentEvent>>[0],
-    options?: Parameters<typeof sendParent<TContext, TEvent, TParentEvent>>[1]
-  ) {
-    return sendParent<TContext, TEvent, TParentEvent>(event, options);
-  };
-}
-
-type BoundingBoxContext = {
-  watchLocationRef: ActorRef<EventObject, WatchLocationEvents> | null;
-  enableHighAccuracy: boolean;
-  boundingBox: LatLngBounds | null;
-  userLocation: UserLocation | null;
-};
-
-const customSendParent = createSendParent<ParentEvent>();
-
-type BoundingBoxEvents =
-  | SetLocationEvent
-  | ErrorEvent
-  | { type: "TOGGLE_HIGH_ACCURACY" }
-  | { type: "CHECK_BOUNDS" };
+} from "../types";
 
 export const boundingBoxMachine = createMachine(
   {
