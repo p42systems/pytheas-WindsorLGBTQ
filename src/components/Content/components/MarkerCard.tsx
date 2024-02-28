@@ -21,15 +21,9 @@ import {
   getAllMarkerProgressAtom,
 } from "../../../atoms";
 
-import type { IMarker } from "../../../types";
+import { MarkerListItemProps } from "../../../types";
 
 import placeholder from "/stop_placeholder.png";
-
-interface MarkerListItemProps {
-  marker: IMarker;
-  selected: boolean;
-  shouldScroll: (top: number, bottom: number) => boolean;
-}
 
 function MarkerCard({ marker, selected, shouldScroll }: MarkerListItemProps) {
   const [, setLocation] = useLocation();

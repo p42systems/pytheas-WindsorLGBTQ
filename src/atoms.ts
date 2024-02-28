@@ -3,11 +3,11 @@ import { PrimitiveAtom, atom } from "jotai";
 import { atomWithStorage, loadable } from "jotai/utils";
 import { atomWithMachine } from "jotai/xstate";
 import { atomWithQuery } from "jotai/query";
-import { IconOptions, LatLngBounds } from "leaflet";
+import { LatLngBounds } from "leaflet";
 import type { useMap } from "react-leaflet";
 
 import { viewControllerMachine } from "./machines/viewController";
-import { IMarker, TourStates, MarkerProgress } from "./types";
+import { IMarker, TourStates, MarkerProgress, IMapIcons } from "./types";
 import { FeatureCollection } from "geojson";
 import { fetchOrder, fetchRoute } from "./services/route";
 import { fetchMarkerDetails, fetchMarkers } from "./services/markers";
@@ -67,13 +67,6 @@ export const getAllMarkerProgressAtom = atom((get) => get(markerProgress));
 /*********************************
  * Icon Config Atoms
  *********************************/
-
-interface IMapIcons {
-  base: IconOptions;
-  selected: IconOptions;
-  completed: IconOptions;
-  suggested: IconOptions;
-}
 
 export const iconsAtom = atom<IMapIcons>({
   base: {

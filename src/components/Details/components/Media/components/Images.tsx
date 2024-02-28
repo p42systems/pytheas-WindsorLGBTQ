@@ -12,9 +12,7 @@ import {
   CarouselButtonLast,
 } from "../../../../styled_components";
 
-interface MediaArrayProps {
-  mediaArray: { path: string; type: string; imageAlt: string }[];
-}
+import { MediaArrayProps } from "../../../../../types";
 
 function Images({ mediaArray }: MediaArrayProps) {
   return (

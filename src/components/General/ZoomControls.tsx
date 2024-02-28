@@ -7,11 +7,7 @@ import {
   ZoomIn,
   ZoomOut,
 } from "../styled_components";
-
-interface ZoomControlsProps {
-  minZoom?: number;
-  maxZoom?: number;
-}
+import { ZoomControlsProps } from "../../types";
 
 function ZoomControls({ maxZoom = 18, minZoom = 16 }: ZoomControlsProps) {
   const map = useMap();

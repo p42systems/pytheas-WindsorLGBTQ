@@ -2,11 +2,7 @@ import {
   WarningImageContainer,
   CenterAllContainer,
 } from "../../styled_components";
-
-interface TourErrorProps {
-  size?: "short" | "long";
-  children?: React.ReactNode | React.ReactNode[];
-}
+import { TourErrorProps } from "../../../types";
 
 function TourError({ children }: TourErrorProps) {
   return (
