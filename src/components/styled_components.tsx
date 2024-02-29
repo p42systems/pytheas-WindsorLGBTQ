@@ -11,6 +11,7 @@ import {
   ButtonLast,
   DotGroup,
 } from "pure-react-carousel";
+import { keyframes } from "@emotion/react";
 
 // This should always be the first style component
 export const AppContainer = styled.div((props) => ({
@@ -1174,6 +1175,7 @@ export const CenterImgContainer = styled.div(() => ({
   minWidth: "365px",
   maxWidth: "500px",
   margin: "0 0 2rem 0",
+  position: "fixed",
 }));
 
 export const WarningImageContainer = styled.div(() => ({
@@ -1419,4 +1421,58 @@ export const Checkbox = styled.input((props) => ({
     top: "4px",
     left: "1px",
   },
+}));
+
+const loadingAnimation = keyframes`
+0% {
+  transform-origin: left bottom;
+  transform: scaleX(1) scaleY(0);
+  opacity: 1;
+}
+
+20% {
+  transform-origin: left bottom;
+  transform: scaleX(1) scaleY(1);
+  opacity: 1;
+}
+40% {
+  transform-origin: left bottom;
+  transform: scaleX(1) scaleY(2.3);
+  opacity: 1;
+}
+
+60% {
+  transform-origin: left bottom;
+  transform: scaleX(1) scaleY(3.8);
+  opacity: 1;
+}
+
+80% {
+  transform-origin: left bottom;
+  transform: scaleX(2.2) scaleY(4);
+  opacity: 1;
+}
+
+99% {
+  transform-origin: left bottom;
+  transform: scaleX(2.2) scaleY(4);
+  opacity: 1;
+}
+
+100% {
+  transform-origin: left bottom;
+  transform: scaleX(2.2) scaleY(4);
+  opacity: 0;
+}
+`;
+
+export const LoaderAnimation = styled.div((props) => ({
+  width: "20.5%",
+  height: "18%",
+  backgroundColor: props.theme.colors.accent,
+  position: "absolute",
+  top: "66%",
+  left: "25%",
+  zIndex: -1,
+  animation: `${loadingAnimation} 3s ease-in-out infinite`,
 }));
