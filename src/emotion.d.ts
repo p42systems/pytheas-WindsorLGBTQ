@@ -3,13 +3,13 @@ import "@emotion/react";
 declare module "@emotion/react" {
   export interface Theme {
     colors: {
-      headerBackground: string;
-      background: string;
-      contentButton: string;
-      tourButton: string;
-      accent: string;
-      suggestedMarker: string;
-      darkAccent: string;
+      primary: string;
+      secondary: string;
+      tertiary: string;
+      quaternary: string;
+      quinary: string;
+      senary: string;
+      septenary: string;
     };
   }
 }

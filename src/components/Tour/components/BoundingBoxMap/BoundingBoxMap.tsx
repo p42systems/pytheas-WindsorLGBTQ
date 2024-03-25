@@ -35,7 +35,7 @@ function BoundingBoxMap() {
           <Rectangle
             bounds={boundingBox}
             interactive={false}
-            pathOptions={{ color: theme.colors.headerBackground }}
+            pathOptions={{ color: theme.colors.primary }}
           />
         </Pane>
 

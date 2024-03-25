@@ -35,7 +35,7 @@ root.render(
         css`
           body {
             margin: 0;
-            background-color: ${theme.colors.background};
+            background-color: ${theme.colors.secondary};
             font-family: "Roboto", sans-serif;
             height: 100%;
             overflow-x: hidden;
