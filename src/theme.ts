@@ -6,6 +6,7 @@ export const theme = {
     quaternary: "#CECFDF",
     quinary: "#6870CD",
     senary: "#DDD9E8",
-    septenary: "#757BBD",
+    septenary: "#CCC",
+    octonary: "#000",
   },
 };

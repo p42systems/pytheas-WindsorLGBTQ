@@ -10,6 +10,7 @@ declare module "@emotion/react" {
       quinary: string;
       senary: string;
       septenary: string;
+      octonary: string;
     };
   }
 }

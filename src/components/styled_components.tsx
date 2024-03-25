@@ -604,22 +604,22 @@ export const ToggleText = styled.span<{ enabled: boolean }>((props) => ({
   fontWeight: "bolder",
 }));
 
-export const ControlLoadingContainer = styled.div(() => ({
+export const ControlLoadingContainer = styled.div((props) => ({
   height: "26px",
   width: "26px",
   display: "flex",
   padding: "2px",
   alignItems: "center",
-  backgroundColor: "#FFFFFF",
-  borderBottom: "1px solid #ccc",
+  backgroundColor: props.theme.colors.secondary,
+  borderBottom: `1px solid ${props.theme.colors.septenary}`,
 }));
 
-export const MapControlErrorMessageContainer = styled.div(() => ({
+export const MapControlErrorMessageContainer = styled.div((props) => ({
   display: "flex",
   padding: "2px",
   alignItems: "center",
   flexDirection: "column",
-  backgroundColor: "#FFFFFF",
+  backgroundColor: props.theme.colors.secondary,
 }));
 
 export const MapControlErrorMessage = styled.span((props) => ({
@@ -1120,9 +1120,9 @@ export const NavigationOptionsContainer = styled(NavigationDropDownContainer)(
   })
 );
 
-export const NavigationButton = styled(Button)(() => ({
+export const NavigationButton = styled(Button)((props) => ({
   width: "300px",
-  border: "2px solid #191919",
+  border: `2px solid ${props.theme.colors.octonary}`,
   alignSelf: "flex-start",
 }));
 
@@ -1254,7 +1254,7 @@ export const ZoomButton = styled.button((props) => ({
   transition: "all 200ms",
   cursor: "pointer",
   "&:disabled": {
-    backgroundColor: "#AAAAAA",
+    backgroundColor: props.theme.colors.septenary,
     color: `${props.theme.colors.primary}44`,
     cursor: "default",
   },
@@ -1349,7 +1349,7 @@ export const ToggleCheckbox = styled.input((props) => ({
     width: "18px",
     height: "18px",
     borderRadius: "18px",
-    backgroundColor: "#777777",
+    backgroundColor: props.theme.colors.septenary,
     transition: "all 200ms",
   },
   "&:checked:after": {
