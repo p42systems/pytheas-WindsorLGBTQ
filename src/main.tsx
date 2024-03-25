@@ -21,7 +21,7 @@ const ORSAPIEndpoint = import.meta.env.VITE_ORS_API_ENDPOINT;
 const config = {
   title: "Queer Walk: 2SLGBTQAI+ Windsor Walking Tour",
   logo: {
-    src: "/Main_Logo.png",
+    src: "/main_logo.png",
     alt: "Queer Walk logo",
   },
 };
