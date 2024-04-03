@@ -10,8 +10,9 @@ export function checkForGeoLocationAPI(): Promise<void> {
   });
 }
 
-export async function fetchBoundingBox(): Promise<LatLngBounds> {
-  const boundsUrl = `${window.location.origin}/data/bounds.json`;
+export async function fetchBoundingBox(props: any): Promise<LatLngBounds> {
+  const tourPreference = typeof props === "string" ? props : "full";
+  const boundsUrl = `${window.location.origin}/data/bounds/${tourPreference}.json`;
 
   const res = await fetch(boundsUrl);
 
@@ -19,37 +20,9 @@ export async function fetchBoundingBox(): Promise<LatLngBounds> {
     throw new Error(res.statusText);
   }
 
-  const { full } = await res.json();
-  return new LatLngBounds([full.north, full.east], [full.south, full.west]);
-}
-
-export async function fetchWalkingBoundingBox(): Promise<LatLngBounds> {
-  const boundsUrl = `${window.location.origin}/data/bounds.json`;
-
-  const res = await fetch(boundsUrl);
-
-  if (!res.ok) {
-    throw new Error(res.statusText);
-  }
-
-  const { full, walking } = await res.json();
-  return new LatLngBounds(
-    [walking.north, walking.east],
-    [walking.south, walking.west]
-  );
-}
-
-export async function fetchBusBoundingBox(): Promise<LatLngBounds> {
-  const boundsUrl = `${window.location.origin}/data/bounds.json`;
-
-  const res = await fetch(boundsUrl);
-
-  if (!res.ok) {
-    throw new Error(res.statusText);
-  }
-
-  const { full, walking, bus } = await res.json();
-  return new LatLngBounds([bus.north, bus.east], [bus.south, bus.west]);
+  const { north, east, south, west } = await res.json();
+  console.log(tourPreference);
+  return new LatLngBounds([north, east], [south, west]);
 }
 
 export function checkWithinBounds(

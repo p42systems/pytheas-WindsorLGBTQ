@@ -25,8 +25,10 @@ function isMarkerPoint(point: Feature): point is Feature<Point, IMarker> {
   );
 }
 
-export async function fetchMarkers(): Promise<MarkerPayload> {
-  const markersUrl = `${window.location.origin}/data/markers.geojson`;
+export async function fetchMarkers(
+  tourPreference: string
+): Promise<MarkerPayload> {
+  const markersUrl = `${window.location.origin}/data/tours/${tourPreference}.geojson`;
 
   const res = await fetch(markersUrl);
 

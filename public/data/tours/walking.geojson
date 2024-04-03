@@ -1,0 +1,141 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 1,
+        "name": "British American Hotel",
+        "imageAlt": "A black and white photo of the hotel entrance with a large sign that reads “hotel” in capital letters on both sides of the building",
+        "address": "78 Riverside Dr. W.",
+        "longitude": -83.0411917,
+        "latitude": 42.3198982,
+        "extra": false,
+        "id": "bah",
+        "image": "/photos/bah1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411917, 42.3198982] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 2,
+        "name": "1945-46 Windsor Slasher",
+        "imageAlt": "A black and white comic titled “The Challenge” which shows the back of a man dual-wielding bloody knives standing over a crowd of people. Across his back it says “Slash Slayer” and on the crowd of people it says “Organized Society”",
+        "address": "Caron Ave. & Riverside Drive W.",
+        "longitude": -83.0485844,
+        "latitude": 42.317664,
+        "extra": false,
+        "id": "ws",
+        "image": "/photos/ws1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0485844, 42.317664] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 3,
+        "name": "JP's Disco",
+        "imageAlt": "An old photo of JP’s Disco, a large white warehouse looking building, with the original signage still intact",
+        "address": "623 Riverside Dr. W.",
+        "longitude": -83.0479701,
+        "latitude": 42.3178514,
+        "extra": false,
+        "id": "jpd",
+        "image": "/photos/jpd1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0479701, 42.3178514] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 4,
+        "name": "Lee's Imperial House Hotel, Tavern",
+        "imageAlt": "An old photo of the Imperial Tavern",
+        "address": "193 Riverside Dr.",
+        "longitude": -83.0415987,
+        "latitude": 42.3192643,
+        "extra": false,
+        "id": "lihh",
+        "image": "/photos/lihh.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0415987, 42.3192643] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 5,
+        "name": "Princess Theatre",
+        "imageAlt": "A newspaper clipping which includes a photo of a theatre with a big sign that says “Princess” and a heading and caption that reads as follows: “Windsor’s New Theatre: Exterior view of the Princess Theatre, Windsor’s new theatre, located on Sandwich street east. It has an attractive front that makes big improvement in the appearance of the street”",
+        "address": "45 Riverside Dr. W.",
+        "status": null,
+        "longitude": -83.0411119,
+        "latitude": 42.3191933,
+        "extra": false,
+        "id": "pt",
+        "image": "/photos/pt.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411119, 42.3191933] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 6,
+        "name": "St. Clair College",
+        "imageAlt": "The Windsor Gay Unity logo and address",
+        "address": "201 Riverside Dr. W.",
+        "longitude": -83.0418955,
+        "latitude": 42.3189236,
+        "extra": false,
+        "id": "201rdw",
+        "image": "/photos/201rdw.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0418955, 42.3189236] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 7,
+        "name": "39 Pitt St. W.",
+        "imageAlt": "An old newspaper clipping that shows the caption “The Remodelled Empire Theatre” and a photo of the theatre itself",
+        "address": "39 Pitt St. W.",
+        "longitude": -83.0414419,
+        "latitude": 42.3185121,
+        "extra": false,
+        "id": "39psw",
+        "image": "/photos/39psw.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0414419, 42.3185121] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 8,
+        "name": "Ambassador Hotel",
+        "imageAlt": "An old black and white newspaper clipping with a picture of the Ambassador Hotel and the heading “One of Windsor’s Three Principal Hotels”",
+        "address": "93 Riverside Dr. E.",
+        "longitude": -83.0389402,
+        "latitude": 42.3197692,
+        "extra": false,
+        "id": "93rde",
+        "image": "/photos/93rde.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0389402, 42.3197692] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 9,
+        "name": "Ritz Hotel",
+        "imageAlt": "A black and white photo of the sign of the Ritz Hotel",
+        "address": "88 Pitt St. E.",
+        "longitude": -83.0384486,
+        "latitude": 42.3198566,
+        "extra": false,
+        "id": "rh",
+        "image": "/photos/rh.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0384486, 42.3198566] }
+    }
+  ]
+}

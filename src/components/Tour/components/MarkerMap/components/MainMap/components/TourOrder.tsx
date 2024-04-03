@@ -16,14 +16,11 @@ import {
   tourStateAtom,
   updateSelectedMarkerAtom,
 } from "../../../../../../../atoms";
-import { fetchOrder } from "../../../../../../../services/route";
 import { Marker } from "react-leaflet";
 import { type Icon, type DivIcon, icon, LatLngBounds } from "leaflet";
 
 function TourOrder() {
   const { markers, order } = useAtomValue(markersQueryAtom);
-  const tourPreference = useAtomValue(tourPreferenceAtom);
-  const preferredOrder = fetchOrder(tourPreference, order);
   const markerProgressStates = useAtomValue(getAllMarkerProgressAtom);
   const selectedMarker = useAtomValue(selectedMarkerAtom);
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
@@ -76,7 +73,7 @@ function TourOrder() {
 
   return (
     <>
-      {preferredOrder
+      {order
         .map((makerId) => markers[makerId])
         .map((marker) => (
           <Marker
