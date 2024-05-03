@@ -3,19 +3,15 @@ import { PrimitiveAtom, atom } from "jotai";
 import { atomWithStorage, loadable } from "jotai/utils";
 import { atomWithMachine } from "jotai/xstate";
 import { atomWithQuery } from "jotai/query";
-import { IconOptions, LatLngBounds } from "leaflet";
+import { LatLngBounds } from "leaflet";
 import type { useMap } from "react-leaflet";
 
 import { viewControllerMachine } from "./machines/viewController";
-import { IMarker, TourStates, MarkerProgress } from "./types";
+import { IMarker, TourStates, MarkerProgress, IMapIcons } from "./types";
 import { FeatureCollection } from "geojson";
-import { fetchOrder, fetchRoute } from "./services/route";
+import { fetchRoute } from "./services/route";
 import { fetchMarkerDetails, fetchMarkers } from "./services/markers";
-import {
-  fetchBoundingBox,
-  fetchBusBoundingBox,
-  fetchWalkingBoundingBox,
-} from "./services/boundingBoxServices";
+import { fetchBoundingBox } from "./services/boundingBoxServices";
 import {
   contentWarning,
   tourInstructions,
@@ -67,13 +63,6 @@ export const getAllMarkerProgressAtom = atom((get) => get(markerProgress));
 /*********************************
  * Icon Config Atoms
  *********************************/
-
-interface IMapIcons {
-  base: IconOptions;
-  selected: IconOptions;
-  completed: IconOptions;
-  suggested: IconOptions;
-}
 
 export const iconsAtom = atom<IMapIcons>({
   base: {
@@ -144,12 +133,13 @@ export const toggleEnableDirectionsAtom = atom(null, (get, set) =>
  * Main Tour State / Atoms
  *********************************/
 
-export const viewControllerMachineAtom = atomWithMachine(() => {
+export const viewControllerMachineAtom = atomWithMachine((get) => {
   return viewControllerMachine.withContext({
     boundingBoxRef: null,
     userLocation: null,
     savedUserLocation: null,
     enableHighAccuracy: true,
+    tourPreference: get(tourPreferenceAtom),
   });
 });
 
@@ -204,11 +194,9 @@ export const selectedMarkerAtom = atom<IMarker | null>((get) => {
  *********************************/
 
 export const suggestedMarkerAtom = atom<IMarker | null>((get) => {
-  const tourPreference = get(tourPreferenceAtom);
   const { markers, order } = get(markersQueryAtom);
-  const preferredOrder = fetchOrder(tourPreference, order);
   const progress = get(getAllMarkerProgressAtom);
-  const markersId = preferredOrder
+  const markersId = order
     // Do not suggest extra markers
     .filter((id) => !markers[id].extra)
     .find((id) => !(progress[id] ?? false));
@@ -305,9 +293,13 @@ export const loadableDirectionQueryAtom = loadable(directionQueryAtom);
 export const markersQueryAtom = atomWithQuery<
   ReturnType<typeof fetchMarkers>,
   unknown
->(() => ({
+>((get) => ({
   queryKey: ["markers"],
-  queryFn: fetchMarkers,
+  queryFn: async () => {
+    const tourPreference = get(tourPreferenceAtom);
+
+    return fetchMarkers(tourPreference);
+  },
 }));
 
 /*********************************
@@ -347,30 +339,14 @@ export const detailsQueryAtom = atomWithQuery<
 export const boundingBoxQueryAtom = atomWithQuery<
   ReturnType<typeof fetchBoundingBox>,
   unknown
->((get) => {
-  const tourPreference = get(tourPreferenceAtom);
-  let preferredQuery = {
-    queryKey: ["bounding_box"],
-    queryFn: fetchBoundingBox,
-  };
+>((get) => ({
+  queryKey: ["bounding_box"],
+  queryFn: async () => {
+    const tourPreference = get(tourPreferenceAtom);
 
-  switch (tourPreference) {
-    case "walking":
-      preferredQuery = {
-        queryKey: ["walking_bounding_box"],
-        queryFn: fetchWalkingBoundingBox,
-      };
-      break;
-    case "bus":
-      preferredQuery = {
-        queryKey: ["bus_bounding_box"],
-        queryFn: fetchBusBoundingBox,
-      };
-      break;
-  }
-
-  return preferredQuery;
-});
+    return fetchBoundingBox(tourPreference);
+  },
+}));
 
 export const paddedBoundingBoxAtom = atom<LatLngBounds>((get) => {
   return get(boundingBoxQueryAtom).pad(0.5);

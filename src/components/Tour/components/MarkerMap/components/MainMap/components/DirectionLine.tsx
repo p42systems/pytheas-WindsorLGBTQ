@@ -43,7 +43,7 @@ function DirectionLine() {
           directions.data.features &&
           isLineString(directions.data.features[0]) ? (
             <Polyline
-              color={theme.colors.headerBackground}
+              color={theme.colors.primary}
               dashArray="15 8"
               weight={6}
               positions={LGeoJSON.coordsToLatLngs(

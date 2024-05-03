@@ -1,1 +1,21 @@
-{"id": "201rdw", "url": [{"path": "/photos/201rdw.png", "type": "image", "imageAlt": "The Windsor Gay Unity logo and address"}, {"path": "/photos/201rdw2.jpeg", "type": "image", "imageAlt": "A black adn white photo of 5 people filling up their plates at a buffet table"}], "description": ["Many times, the queer community attempted to get the city to endorse their annual Gay Awareness Week, but the city refused. In 1978, Windsor hosted one of the most historic queer conferences at the time, entitled “Never Going Back.” WGU formally asked the city to endorse the event, but the council refused to recognize it. Alderman Don Clare stated, “I wouldn't vote for a national straight week either.”", "The conference, of course, went on without the city's support, and over 200 people attended from all over the country. Registrations were purchased for $5 at the Ritz Hotel, and the event was held at St. Clair College Windsor Campus.", "1987 was the first AIDS Awareness Week, which included workshops and public forums. These also happened at St Clair College Windsor Campus, as well as at Walkerville High School, specifically about teaching about HIV & AIDS in schools. It was a small turn-out and very few educators attended.", "Kevin Brown was the first Windsorite to come out publicly about having AIDS. While living in Vancouver, he became the first person in Canada to receive AZT treatment. He was also the founder of BC Persons with AIDS Coalition. He did not live in Windsor at this time but came home to visit family. He later died in 1989.", "In 2017, Windsor also hosted the International GSA Conference “Outshine” at this space."], "timeline": null, "image": "/photos/201rdw.png"}
+
+{
+  "id": "201rdw",
+  "url": [
+    {
+      "path": "/photos/201rdw.jpeg",
+      "type": "image",
+      "imageAlt": "A black and white photo of 5 people filling up their plates at a buffet table"
+    }
+  ],
+  "description": [
+    "Many times, the queer community attempted to get the city to endorse their annual Gay Awareness Week, but the city refused. In 1978, Windsor hosted one of the most historic queer conferences at the time, entitled “Never Going Back.” WGU formally asked the city to endorse the event, but the council refused to recognize it. Alderman Don Clare stated, “I wouldn't vote for a national straight week either.”",
+    "The conference, of course, went on without the city's support, and over 200 people attended from all over the country. Registrations were purchased for $5 at the Ritz Hotel, and the event was held at St. Clair College Windsor Campus.",
+    "1987 was the first AIDS Awareness Week, which included workshops and public forums. These also happened at St Clair College Windsor Campus, as well as at Walkerville High School, specifically about teaching about HIV & AIDS in schools. It was a small turn-out and very few educators attended.",
+    "Kevin Brown was the first Windsorite to come out publicly about having AIDS. While living in Vancouver, he became the first person in Canada to receive AZT treatment. He was also the founder of BC Persons with AIDS Coalition. He did not live in Windsor at this time but came home to visit family. He later died in 1989.",
+    "In 2017, Windsor also hosted the International GSA Conference “Outshine” at this space."
+  ],
+  "timeline": null,
+  "image": "/photos/201rdw.jpeg"
+}
+

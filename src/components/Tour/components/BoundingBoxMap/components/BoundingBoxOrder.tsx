@@ -1,22 +1,15 @@
 import { useAtomValue } from "jotai";
-import {
-  baseIconConfigAtom,
-  markersQueryAtom,
-  tourPreferenceAtom,
-} from "../../../../../atoms";
+import { baseIconConfigAtom, markersQueryAtom } from "../../../../../atoms";
 import { Marker } from "react-leaflet";
 import { icon } from "leaflet";
-import { fetchOrder } from "../../../../../services/route";
 
 function BoundingBoxOrder() {
   const { markers, order } = useAtomValue(markersQueryAtom);
-  const tourPreference = useAtomValue(tourPreferenceAtom);
-  const preferredOrder = fetchOrder(tourPreference, order);
   const baseIconConfig = useAtomValue(baseIconConfigAtom);
 
   return (
     <>
-      {preferredOrder
+      {order
         .map((makerId) => markers[makerId])
         .map((marker) => (
           <Marker

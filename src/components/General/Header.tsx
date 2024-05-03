@@ -15,10 +15,7 @@ import {
 
 import bgImage from "/bg_main.jpg";
 
-interface HeaderProps {
-  size?: "short" | "long";
-  children?: React.ReactNode | React.ReactNode[];
-}
+import { HeaderProps } from "../../types";
 
 function Header({ size = "long", children }: HeaderProps) {
   const config = useContext(ConfigContext);

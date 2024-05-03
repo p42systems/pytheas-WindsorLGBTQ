@@ -1,0 +1,127 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 1,
+        "name": "First AIDS Memorial",
+        "imageAlt": "The Pozitive Pathways logo",
+        "address": "Alexander Park",
+        "longitude": -82.9941616,
+        "latitude": 42.3272385,
+        "extra": false,
+        "id": "fam",
+        "image": "/photos/fam.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-82.9941616, 42.3272385] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 2,
+        "name": "Mackenzie Hall Cultural Centre",
+        "imageAlt": "A black and white photo of a group of queer friends dressed for a night out",
+        "address": "3277 Sandwich St.",
+        "status": null,
+        "longitude": -83.0762916,
+        "latitude": 42.3001645,
+        "extra": false,
+        "id": "mhcc",
+        "image": "/photos/mhcc1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0762916, 42.3001645] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 3,
+        "name": "University of Windsor",
+        "imageAlt": "8 members of the WGU posing for a photo",
+        "address": "Assumption Park",
+        "status": null,
+        "longitude": -83.0707003,
+        "latitude": 42.3090004,
+        "extra": false,
+        "id": "uow",
+        "image": "/photos/uow1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0707003, 42.3090004] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 4,
+        "name": "JP's Disco",
+        "imageAlt": "An old photo of JP’s Disco, a large white warehouse looking building, with the original signage still intact",
+        "address": "623 Riverside Dr. W.",
+        "longitude": -83.0479701,
+        "latitude": 42.3178514,
+        "extra": false,
+        "id": "jpd",
+        "image": "/photos/jpd1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0479701, 42.3178514] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 5,
+        "name": "British American Hotel",
+        "imageAlt": "A black and white photo of the hotel entrance with a large sign that reads “hotel” in capital letters on both sides of the building",
+        "address": "78 Riverside Dr. W.",
+        "longitude": -83.0411917,
+        "latitude": 42.3198982,
+        "extra": false,
+        "id": "bah",
+        "image": "/photos/bah1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411917, 42.3198982] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 6,
+        "name": "Vesuvio Steam Bath",
+        "imageAlt": "A gated abandoned building where Edna’s Steam Bath once occupied",
+        "address": "563 Brant St.",
+        "longitude": -83.0295468,
+        "latitude": 42.3175981,
+        "extra": false,
+        "id": "563bs",
+        "image": "/photos/563bs.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0295468, 42.3175981] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 7,
+        "name": "Happy Tap",
+        "imageAlt": "The Happy Tap logo",
+        "address": "1056 Wyandotte St. E.",
+        "longitude": -83.0219564,
+        "latitude": 42.3196244,
+        "extra": false,
+        "id": "ht",
+        "image": "/photos/ht.jpeg"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0219564, 42.3196244] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 8,
+        "name": "First Pride 1992",
+        "imageAlt": "A flyer for Lesbian and Gay Pride Day 1992 with the caption “Get Used to It” and various event info such as the day’s itinerary (live outdoor entertainment, DJ & dancing, bar-b-que, dunk tank, volleyball, & miss pride day ‘92 pageant), and the number to The Lesbian & Gay Pride Committee Hotline",
+        "address": "1880 Wyandotte St. E.",
+        "longitude": -83.0134373,
+        "latitude": 42.3227937,
+        "extra": false,
+        "id": "fp1992",
+        "image": "/photos/fp1992.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0134373, 42.3227937] }
+    }
+  ]
+}

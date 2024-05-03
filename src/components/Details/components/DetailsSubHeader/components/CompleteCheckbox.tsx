@@ -8,11 +8,7 @@ import {
   CheckboxLabel,
   CheckboxLabelText,
 } from "../../../../styled_components";
-
-interface CompleteCheckBoxProps {
-  id: string;
-  markerProgress: boolean;
-}
+import { CompleteCheckBoxProps } from "../../../../../types";
 
 function CompleteCheckBox({ id, markerProgress }: CompleteCheckBoxProps) {
   const toggleMarkerProgress = useSetAtom(toggleMarkerProgressAtom);

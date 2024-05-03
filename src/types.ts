@@ -3,6 +3,7 @@ import type {
   LatLng,
   LatLngBounds,
   ControlOptions,
+  IconOptions,
 } from "leaflet";
 import { ActorRef, ActorRefFrom, EventObject } from "xstate";
 import { boundingBoxMachine } from "./machines/boundingBox";
@@ -36,6 +37,7 @@ export type BoundingBoxContext = {
   enableHighAccuracy: boolean;
   boundingBox: LatLngBounds | null;
   userLocation: UserLocation | null;
+  tourPreference: string | null;
 };
 
 export type BoundingBoxEvents =
@@ -113,6 +115,7 @@ export type ViewControllerContext = {
   userLocation: UserLocation | null;
   savedUserLocation: UserLocation | null;
   enableHighAccuracy: boolean;
+  tourPreference: string | null;
 };
 
 export type NewLocationEvent = {
@@ -157,3 +160,40 @@ export type CopyPayload = {
   body: string[] | null;
   links: [key: string] | null;
 };
+
+export interface MarkerListItemProps {
+  marker: IMarker;
+  selected: boolean;
+  shouldScroll: (top: number, bottom: number) => boolean;
+}
+
+export interface IMapIcons {
+  base: IconOptions;
+  selected: IconOptions;
+  completed: IconOptions;
+  suggested: IconOptions;
+}
+
+export interface CompleteCheckBoxProps {
+  id: string;
+  markerProgress: boolean;
+}
+
+export interface MediaArrayProps {
+  mediaArray: { path: string; type: string; imageAlt: string }[];
+}
+
+export interface HeaderProps {
+  size?: "short" | "long";
+  children?: React.ReactNode | React.ReactNode[];
+}
+
+export interface ZoomControlsProps {
+  minZoom?: number;
+  maxZoom?: number;
+}
+
+export interface TourErrorProps {
+  size?: "short" | "long";
+  children?: React.ReactNode | React.ReactNode[];
+}

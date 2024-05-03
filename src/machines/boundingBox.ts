@@ -40,6 +40,7 @@ export const boundingBoxMachine = createMachine(
       enableHighAccuracy: false,
       boundingBox: null,
       userLocation: null,
+      tourPreference: null,
     },
     states: {
       checkingForGeoLocationAPI: {
@@ -250,7 +251,9 @@ export const boundingBoxMachine = createMachine(
   {
     services: {
       checkForGeoLocationAPI: checkForGeoLocationAPI,
-      fetchBoundingBox: fetchBoundingBox,
+      fetchBoundingBox: (context: BoundingBoxContext) => {
+        return fetchBoundingBox(context.tourPreference);
+      },
       checkWithinBounds: (context: BoundingBoxContext) =>
         checkWithinBounds(context.userLocation, context.boundingBox),
     },

@@ -19,14 +19,12 @@ import DirectionLine from "./components/DirectionLine";
 import CustomControls from "../../../../../General/CustomControls";
 import ZoomControls from "../../../../../General/ZoomControls";
 import { buildCardState } from "../../../../../../services/cards";
-import { fetchOrder } from "../../../../../../services/route";
 import TourOrder from "./components/TourOrder";
 
 function MainMap() {
   const [, setLocation] = useLocation();
   const saveUserLocation = useAtomValue(getSavedUserLocationAtom);
   const boundingBox = useAtomValue(paddedBoundingBoxAtom);
-  const tourPreference = useAtomValue(tourPreferenceAtom);
 
   const setMap = useSetAtom(setMapAtom);
 
@@ -36,14 +34,12 @@ function MainMap() {
   const selectedMarker = useAtomValue(selectedMarkerAtom);
   const suggestedMarker = useAtomValue(suggestedMarkerAtom);
 
-  const preferredOrder = fetchOrder(tourPreference, order);
-
   const cardState = buildCardState(tourState, suggestedMarker, selectedMarker);
 
   const defaultCenterPoint =
     selectedMarker?.point ??
     suggestedMarker?.point ??
-    markers[preferredOrder[0]]?.point ??
+    markers[order[0]]?.point ??
     boundingBox.getCenter();
 
   const centerBetweenUserAndMarker = saveUserLocation

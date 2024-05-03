@@ -30,18 +30,3 @@ export async function fetchRoute(
 
   return await res.json();
 }
-
-export function fetchOrder(tourPreference: string, order: string[]): string[] {
-  const busStops: number[] = [8, 2, 3, 32, 30, 42, 44, 47];
-
-  switch (tourPreference) {
-    case "walking":
-      order = order.slice(30, 39);
-      break;
-    case "bus":
-      order = busStops.map((stopNum) => order[stopNum - 1]);
-      break;
-  }
-
-  return order;
-}

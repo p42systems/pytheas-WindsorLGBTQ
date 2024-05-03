@@ -23,6 +23,7 @@ export const viewControllerMachine = createMachine(
       userLocation: null,
       savedUserLocation: null,
       enableHighAccuracy: false,
+      tourPreference: null,
     },
     states: {
       starting: {
@@ -34,6 +35,7 @@ export const viewControllerMachine = createMachine(
                 enableHighAccuracy: context.enableHighAccuracy,
                 boundingBox: null,
                 userLocation: null,
+                tourPreference: context.tourPreference,
               }),
               "boundingBox"
             ),

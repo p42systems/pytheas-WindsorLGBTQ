@@ -1,0 +1,201 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 1,
+        "name": "British American Hotel",
+        "imageAlt": "A black and white photo of the hotel entrance with a large sign that reads “hotel” in capital letters on both sides of the building",
+        "address": "78 Riverside Dr. W.",
+        "longitude": -83.0411917,
+        "latitude": 42.3198982,
+        "extra": false,
+        "id": "bah",
+        "image": "/photos/bah1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411917, 42.3198982] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 2,
+        "name": "Princess Theatre",
+        "imageAlt": "A newspaper clipping which includes a photo of a theatre with a big sign that says “Princess” and a heading and caption that reads as follows: “Windsor’s New Theatre: Exterior view of the Princess Theatre, Windsor’s new theatre, located on Sandwich street east. It has an attractive front that makes big improvement in the appearance of the street”",
+        "address": "45 Riverside Dr. W.",
+        "status": null,
+        "longitude": -83.0411119,
+        "latitude": 42.3191933,
+        "extra": false,
+        "id": "pt",
+        "image": "/photos/pt.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411119, 42.3191933] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 3,
+        "name": "JP's Disco",
+        "imageAlt": "An old photo of JP’s Disco, a large white warehouse looking building, with the original signage still intact",
+        "address": "623 Riverside Dr. W.",
+        "longitude": -83.0479701,
+        "latitude": 42.3178514,
+        "extra": false,
+        "id": "jpd",
+        "image": "/photos/jpd1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0479701, 42.3178514] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 4,
+        "name": "St. Clair College",
+        "imageAlt": "A black and white photo of 5 people filling up their plates at a buffet table",
+        "address": "201 Riverside Dr. W.",
+        "longitude": -83.0418955,
+        "latitude": 42.3189236,
+        "extra": false,
+        "id": "201rdw",
+        "image": "/photos/201rdw.jpeg"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0418955, 42.3189236] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 5,
+        "name": "Windsor Capitol Theatre",
+        "imageAlt": "A front-row view of an orchestra playing at the Windsor Capitol Theatre",
+        "address": "121 University Ave. W.",
+        "longitude": -83.03999,
+        "latitude": 42.3169444,
+        "extra": false,
+        "id": "wct",
+        "image": "/photos/wct1.jpg"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.03999, 42.3169444] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 6,
+        "name": "137 Park St. W.",
+        "imageAlt": "The Windsor Gay Unity logo and address",
+        "address": "137 Park St. W.",
+        "longitude": -83.04031,
+        "latitude": 42.31592,
+        "extra": false,
+        "id": "137psw",
+        "image": "/photos/137psw.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.04031, 42.31592] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 7,
+        "name": "Windsor Armouries - School of Creative Arts, University of Windsor",
+        "imageAlt": "A large quilt with 8 square panels hangs from the wall behind a gathering of people",
+        "address": "353 Freedom Way",
+        "longitude": -83.0379333,
+        "latitude": 42.3173332,
+        "extra": false,
+        "id": "wa",
+        "image": "/photos/wa1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0379333, 42.3173332] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 8,
+        "name": "City Hall",
+        "imageAlt": null,
+        "address": "350 City Hall Square W.",
+        "longitude": -83.03516,
+        "latitude": 42.31728,
+        "extra": false,
+        "id": "ch",
+        "image": null
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.03516, 42.31728] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 9,
+        "name": "Charles Clark Square & John Damien's Story",
+        "imageAlt": "An old photo of protesters holding signs with various statements like “I’m Gay and Proud”, “Support John Damien”, and the like",
+        "address": "215 Chatham St. E.",
+        "longitude": -83.0363302,
+        "latitude": 42.3188527,
+        "extra": false,
+        "id": "ccs",
+        "image": "/photos/ccs.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0363302, 42.3188527] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 10,
+        "name": "Tower of Freedom & Aunt Nancy",
+        "imageAlt": null,
+        "address": "Pitt St. E.",
+        "longitude": -83.03675,
+        "latitude": 42.31983,
+        "extra": false,
+        "id": "tof",
+        "image": null
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.03675, 42.31983] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 11,
+        "name": "Ambassador Hotel",
+        "imageAlt": "An old black and white newspaper clipping with a picture of the Ambassador Hotel and the heading “One of Windsor’s Three Principal Hotels”",
+        "address": "93 Riverside Dr. E.",
+        "longitude": -83.0389402,
+        "latitude": 42.3197692,
+        "extra": false,
+        "id": "93rde",
+        "image": "/photos/93rde.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0389402, 42.3197692] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 12,
+        "name": "Ritz Hotel",
+        "imageAlt": "A black and white photo of the sign of the Ritz Hotel",
+        "address": "88 Pitt St. E.",
+        "longitude": -83.0384486,
+        "latitude": 42.3198566,
+        "extra": false,
+        "id": "rh",
+        "image": "/photos/rh.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0384486, 42.3198566] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 13,
+        "name": "British American Hotel",
+        "imageAlt": "A black and white photo of the hotel entrance with a large sign that reads “hotel” in capital letters on both sides of the building",
+        "address": "78 Riverside Dr. W.",
+        "longitude": -83.0411917,
+        "latitude": 42.3198982,
+        "extra": false,
+        "id": "bah",
+        "image": "/photos/bah1.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.0411917, 42.3198982] }
+    }
+  ]
+}
