@@ -133,12 +133,13 @@ export const toggleEnableDirectionsAtom = atom(null, (get, set) =>
  * Main Tour State / Atoms
  *********************************/
 
-export const viewControllerMachineAtom = atomWithMachine(() => {
+export const viewControllerMachineAtom = atomWithMachine((get) => {
   return viewControllerMachine.withContext({
     boundingBoxRef: null,
     userLocation: null,
     savedUserLocation: null,
     enableHighAccuracy: true,
+    tourPreference: get(tourPreferenceAtom),
   });
 });
 

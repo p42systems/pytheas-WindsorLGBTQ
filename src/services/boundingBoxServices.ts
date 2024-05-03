@@ -10,8 +10,9 @@ export function checkForGeoLocationAPI(): Promise<void> {
   });
 }
 
-export async function fetchBoundingBox(props: any): Promise<LatLngBounds> {
-  const tourPreference = typeof props === "string" ? props : "full";
+export async function fetchBoundingBox(
+  tourPreference: string | null
+): Promise<LatLngBounds> {
   const boundsUrl = `${window.location.origin}/data/bounds/${tourPreference}.json`;
 
   const res = await fetch(boundsUrl);

@@ -37,6 +37,7 @@ export type BoundingBoxContext = {
   enableHighAccuracy: boolean;
   boundingBox: LatLngBounds | null;
   userLocation: UserLocation | null;
+  tourPreference: string | null;
 };
 
 export type BoundingBoxEvents =
@@ -114,6 +115,7 @@ export type ViewControllerContext = {
   userLocation: UserLocation | null;
   savedUserLocation: UserLocation | null;
   enableHighAccuracy: boolean;
+  tourPreference: string | null;
 };
 
 export type NewLocationEvent = {
