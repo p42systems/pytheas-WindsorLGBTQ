@@ -4,15 +4,18 @@ import { DetailsContentContainer } from "../../styled_components";
 
 function DetailDescription() {
   const detail = useAtomValue(detailsQueryAtom);
+  console.log(detail);
   return (
     <DetailsContentContainer>
-      {typeof detail.description === "string" ? (
-        <p>{detail.description}</p>
-      ) : (
-        detail.description.map((paragraph, index) => (
-          <p key={index}>{paragraph}</p>
-        ))
-      )}
+      {detail.description ? (
+        typeof detail.description === "string" ? (
+          <p>{detail.description}</p>
+        ) : (
+          detail.description.map((paragraph, index) => (
+            <p key={index}>{paragraph}</p>
+          ))
+        )
+      ) : null}
       {detail.timeline ? (
         <>
           <hr />
