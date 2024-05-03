@@ -71,6 +71,15 @@ function NavigationButtons() {
           >
             Guided Bus Tour
           </DropDownOptionButton>
+          <DropDownOptionButton
+            title="Jane's Walking Tour"
+            aria-label="Jane's Walking Tour"
+            onClick={() => {
+              loadTour("jane", setTourPreference, setLocation);
+            }}
+          >
+            Jane's Walking Tour
+          </DropDownOptionButton>
         </NavigationOptionsContainer>
       </NavigationDropDownContainer>
     </NavigationButtonsContainer>
