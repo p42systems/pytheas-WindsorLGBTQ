@@ -82,13 +82,13 @@
       "properties": {
         "sequence": 6,
         "name": "St. Clair College",
-        "imageAlt": "The Windsor Gay Unity logo and address",
+        "imageAlt": "A black and white photo of 5 people filling up their plates at a buffet table",
         "address": "201 Riverside Dr. W.",
         "longitude": -83.0418955,
         "latitude": 42.3189236,
         "extra": false,
         "id": "201rdw",
-        "image": "/photos/201rdw.png"
+        "image": "/photos/201rdw.jpeg"
       },
       "geometry": { "type": "Point", "coordinates": [-83.0418955, 42.3189236] }
     },

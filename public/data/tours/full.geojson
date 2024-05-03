@@ -399,6 +399,21 @@
       "type": "Feature",
       "properties": {
         "sequence": 27,
+        "name": "137 Park St. W.",
+        "imageAlt": "The Windsor Gay Unity logo and address",
+        "address": "137 Park St. W.",
+        "longitude": -83.04031,
+        "latitude": 42.31592,
+        "extra": false,
+        "id": "137psw",
+        "image": "/photos/137psw.png"
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.04031, 42.31592] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 28,
         "name": "Prince Edward Hotel",
         "imageAlt": "A very old photo of the hotel with a sign atop that reads “Hotel Prince Edward” in big white letters",
         "address": "Prince Edward Hotel",
@@ -413,7 +428,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 28,
+        "sequence": 29,
         "name": "Windsor Capitol Theatre",
         "imageAlt": "A front-row view of an orchestra playing at the Windsor Capitol Theatre",
         "address": "121 University Ave. W.",
@@ -428,7 +443,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 29,
+        "sequence": 30,
         "name": "Windsor Theatre",
         "imageAlt": "An old newspaper clipping with the headline “Windsor’s New Playhouse” and an image of the street view of the former Windsor Theatre",
         "address": "Windsor Theatre",
@@ -443,7 +458,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 30,
+        "sequence": 31,
         "name": "British American Hotel",
         "imageAlt": "A black and white photo of the hotel entrance with a large sign that reads “hotel” in capital letters on both sides of the building",
         "address": "78 Riverside Dr. W.",
@@ -458,7 +473,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 31,
+        "sequence": 32,
         "name": "1945-46 Windsor Slasher",
         "imageAlt": "A black and white comic titled “The Challenge” which shows the back of a man dual-wielding bloody knives standing over a crowd of people. Across his back it says “Slash Slayer” and on the crowd of people it says “Organized Society”",
         "address": "Caron Ave. & Riverside Drive W.",
@@ -473,7 +488,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 32,
+        "sequence": 33,
         "name": "JP's Disco",
         "imageAlt": "An old photo of JP’s Disco, a large white warehouse looking building, with the original signage still intact",
         "address": "623 Riverside Dr. W.",
@@ -488,7 +503,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 33,
+        "sequence": 34,
         "name": "Lee's Imperial House Hotel, Tavern",
         "imageAlt": "An old photo of the Imperial Tavern",
         "address": "193 Riverside Dr.",
@@ -503,7 +518,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 34,
+        "sequence": 35,
         "name": "Princess Theatre",
         "imageAlt": "A newspaper clipping which includes a photo of a theatre with a big sign that says “Princess” and a heading and caption that reads as follows: “Windsor’s New Theatre: Exterior view of the Princess Theatre, Windsor’s new theatre, located on Sandwich street east. It has an attractive front that makes big improvement in the appearance of the street”",
         "address": "45 Riverside Dr. W.",
@@ -519,22 +534,22 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 35,
+        "sequence": 36,
         "name": "St. Clair College",
-        "imageAlt": "The Windsor Gay Unity logo and address",
+        "imageAlt": "A black and white photo of 5 people filling up their plates at a buffet table",
         "address": "201 Riverside Dr. W.",
         "longitude": -83.0418955,
         "latitude": 42.3189236,
         "extra": false,
         "id": "201rdw",
-        "image": "/photos/201rdw.png"
+        "image": "/photos/201rdw.jpeg"
       },
       "geometry": { "type": "Point", "coordinates": [-83.0418955, 42.3189236] }
     },
     {
       "type": "Feature",
       "properties": {
-        "sequence": 36,
+        "sequence": 37,
         "name": "39 Pitt St. W.",
         "imageAlt": "An old newspaper clipping that shows the caption “The Remodelled Empire Theatre” and a photo of the theatre itself",
         "address": "39 Pitt St. W.",
@@ -549,7 +564,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 37,
+        "sequence": 38,
         "name": "Ambassador Hotel",
         "imageAlt": "An old black and white newspaper clipping with a picture of the Ambassador Hotel and the heading “One of Windsor’s Three Principal Hotels”",
         "address": "93 Riverside Dr. E.",
@@ -564,7 +579,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 38,
+        "sequence": 39,
         "name": "Ritz Hotel",
         "imageAlt": "A black and white photo of the sign of the Ritz Hotel",
         "address": "88 Pitt St. E.",
@@ -579,7 +594,22 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 39,
+        "sequence": 40,
+        "name": "Tower of Freedom & Aunt Nancy",
+        "imageAlt": null,
+        "address": "Pitt St. E.",
+        "longitude": -83.03675,
+        "latitude": 42.31983,
+        "extra": false,
+        "id": "tof",
+        "image": null
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.03675, 42.31983] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 41,
         "name": "Charles Clark Square & John Damien's Story",
         "imageAlt": "An old photo of protesters holding signs with various statements like “I’m Gay and Proud”, “Support John Damien”, and the like",
         "address": "215 Chatham St. E.",
@@ -594,7 +624,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 40,
+        "sequence": 42,
         "name": "Windsor Armouries - School of Creative Arts, University of Windsor",
         "imageAlt": "A large quilt with 8 square panels hangs from the wall behind a gathering of people",
         "address": "353 Freedom Way",
@@ -609,7 +639,22 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 41,
+        "sequence": 43,
+        "name": "City Hall",
+        "imageAlt": null,
+        "address": "350 City Hall Square W.",
+        "longitude": -83.03516,
+        "latitude": 42.31728,
+        "extra": false,
+        "id": "ch",
+        "image": null
+      },
+      "geometry": { "type": "Point", "coordinates": [-83.03516, 42.31728] }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "sequence": 44,
         "name": "The Story of Stephen Lopatin's Death",
         "imageAlt": null,
         "address": "500 Windsor Ave.",
@@ -624,7 +669,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 42,
+        "sequence": 45,
         "name": "Vesuvio Steam Bath",
         "imageAlt": "A gated abandoned building where Edna’s Steam Bath once occupied",
         "address": "563 Brant St.",
@@ -639,7 +684,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 43,
+        "sequence": 46,
         "name": "783 Wyandotte St. E.",
         "imageAlt": null,
         "address": "783 Wyandotte St. E.",
@@ -654,7 +699,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 44,
+        "sequence": 47,
         "name": "Happy Tap",
         "imageAlt": "The Happy Tap logo",
         "address": "1056 Wyandotte St. E.",
@@ -669,7 +714,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 45,
+        "sequence": 48,
         "name": "Walkerville Theatre",
         "imageAlt": "A black and white photo of five female impersonators standing in a row wearing fancy hats, billowy dresses, ballet shoes, and holding drums at the ready",
         "address": "1564 Wyandotte St. E.",
@@ -684,7 +729,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 46,
+        "sequence": 49,
         "name": "Gay Clubs on Chilver Road",
         "imageAlt": "A flyer for The Complex that promotes two levels: the bar & grill on the main level, and the dance club of the second level. At the bottom, it says that the establishment is 100% gay owned and operated",
         "address": "634 Chilver Rd.",
@@ -699,7 +744,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 47,
+        "sequence": 50,
         "name": "First Pride 1992",
         "imageAlt": "A flyer for Lesbian and Gay Pride Day 1992 with the caption “Get Used to It” and various event info such as the day’s itinerary (live outdoor entertainment, DJ & dancing, bar-b-que, dunk tank, volleyball, & miss pride day ‘92 pageant), and the number to The Lesbian & Gay Pride Committee Hotline",
         "address": "1880 Wyandotte St. E.",
@@ -714,7 +759,7 @@
     {
       "type": "Feature",
       "properties": {
-        "sequence": 48,
+        "sequence": 51,
         "name": "Two Spirit",
         "imageAlt": "An indigenous illustration of a bird with rainbow feathers with  “2 Spirit” written into the design",
         "address": "2090 Wyandotte St. E.",
