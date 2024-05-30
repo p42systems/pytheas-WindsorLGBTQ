@@ -342,10 +342,8 @@ export const boundingBoxQueryAtom = atomWithQuery<
 >((get) => {
   const tourPreference = get(tourPreferenceAtom);
 
-  const keyPrefix = `${tourPreference}_`;
-
   let preferredQuery = {
-    queryKey: [`${keyPrefix}bounding_box`],
+    queryKey: [`${tourPreference}_bounding_box`],
     queryFn: async () => {
       return fetchBoundingBox(tourPreference);
     },
